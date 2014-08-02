@@ -1,0 +1,172 @@
+
+
+
+a {text-decoration: none;}
+
+.wrap {white-space: normal !important;}
+.clear { clear: both;}
+.float_l { float: left; }
+.float_r { float: right; }
+
+.red {
+		background-color:  #E32700;
+		border: 2px solid #DADDE2;
+}
+
+.green{
+	background-color:  #7CD100;
+	border: 2px solid #DADDE2;	
+}
+
+
+					/*HOME*/
+					
+#naslov {
+	width: 100%;
+	margin: 0 auto;
+	font-weight: bold;
+	text-align: center;
+}
+
+#time {
+	line-height: 2em;
+}
+
+.daily_counter span {
+	font-size: 17px;
+}
+
+.risk {
+	width:99%;
+	height: 80px;
+	margin: 0 auto;
+	padding: 0;
+}
+
+.risk img{
+	float:left;
+
+}
+
+.risk p {
+	margin: 0;
+	padding: 5px;
+}
+
+.undefined {color: #ffffff;}
+.undefined_border {	border:1px solid #ffffff; }
+
+.low {color: #00ff00;}
+.low_border { border:1px solid #00ff00; }
+
+.moderate {color: #ffff00;}
+.moderate_border { border:1px solid #ffff00; }
+
+.high {color: #ff0000;}
+.high_border { 	border:1px solid #ff0000; }
+
+.emphasize { background-color: #E9EAED;}
+
+
+
+
+.completed_count {
+	color: #00ff00;
+	font-size:17px;
+}
+
+.completed_list{
+	border: 1px solid #00ff00;
+}
+
+
+.to_do_list{
+	border: 1px solid #ff0000;
+}
+
+
+
+#timer {
+	margin: 0 auto;
+	text-align: center;
+	font-size: 80px;
+	font-weight: bold;
+	width: 80%;
+	height: 100px;
+	color: #ff0000;
+}
+
+#time {
+	text-align: center;
+}
+
+
+/* 16px > 1em */
+.ui-bar,
+.ui-loader-verbose h1,
+.ui-bar h1, .ui-bar h2, .ui-bar h3, .ui-bar h4, .ui-bar h5, .ui-bar h6,
+.ui-header .ui-title, 
+.ui-footer .ui-title,
+.ui-btn-inner,
+.ui-fullsize .ui-btn-inner,
+.ui-fullsize .ui-btn-inner,
+label.ui-submit,
+.ui-collapsible-heading,
+.ui-controlgroup-label,
+.ui-controlgroup .ui-checkbox label, .ui-controlgroup .ui-radio label,
+.ui-popup .ui-title,
+label.ui-select,
+label.ui-input-text,
+textarea.ui-input-text,
+.ui-li-heading,
+label.ui-slider,
+.ui-slider-switch .ui-slider-label {
+    font-size: 1em;
+}
+
+/* 14px > 0.875em */
+.ui-li-divider,
+input.ui-mini, .ui-mini input, textarea.ui-mini,
+input.ui-input-text.ui-slider-input,
+.ui-slider-switch.ui-mini .ui-slider-label {
+    font-size: 16px;
+}
+
+/* 12px > 0.75em */
+.ui-mini .ui-btn-inner,
+.ui-li-desc {
+    font-size: 16px;
+}
+
+/* 11px > 0.65em */
+.ui-li-has-count .ui-li-count {
+    font-size: 16px; 
+}
+
+.ui-dialog-contain {
+  width: 92.5%;
+  max-width: 500px;
+  margin: 20% auto 15px auto;
+  padding: 0;
+  position: relative;
+  top: -15px;
+}
+.list  {
+width: 60%;
+	margin: 10px auto;
+}
+.list li {
+	display: inline-block;
+	float: right;
+}
+
+.list li a {
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+	font-size: 15px;
+	width: 100px;
+	height: 100px;
+
+}
+

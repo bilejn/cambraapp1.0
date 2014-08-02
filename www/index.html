@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html>
+ 
+	<head> 
+	<title>Page Title</title> 
+	
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui"> 
+
+			<link rel="stylesheet" href="css/jquery.mobile-1.4.2.css" />
+
+		
+			<link rel="stylesheet" href="css/mycss.css" />
+			<link rel="stylesheet" href="css/myswatch.css" />
+			<script  type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+			
+			<script type"text/javascript">
+				$(document).bind("mobileinit", function() {
+					$.mobile.defaultPageTransition = "none";
+					$.mobile.defaultDialogTransition = "none";
+					$.mobile.listview.prototype.options.dividerTheme = "b";
+				});
+			</script>
+
+			<script type="text/javascript" src="js/jquery.mobile-1.4.2.js"></script>
+			<script type="text/javascript" src="js/jstorage.js"></script>
+			<script type="text/javascript" src="js/date.js"></script>
+			<script type="text/javascript" src="js/timer.js"></script>
+			<script type="text/javascript" src="js/test_objects.js"></script>
+			<script type="text/javascript" src="js/view.js"></script>
+	<!--			
+			<script type="text/javascript" src="js/events.js"></script>	
+			<script type="text/javascript" src="js/calculate.js"></script>
+			<script type="text/javascript" src="js/submitForm.js"></script>
+			<script type="text/javascript" src="js/registration.js"></script>	
+			<script type="text/javascript" src="phonegap.js"></script>
+		
+	-->
+
+</head>
+
+  <body>
+  
+	
+ 
+  
+<!-- =============================== H O M E ======================================= -->
+
+
+	<section id="home" data-role="page" data-theme="c">
+	
+		<div data-role="header" data-position="fixed">
+			<div data-role="navbar">
+				<ul class="daily_counter">
+				  <li id="to_do_count" ><a href="#to_do"> To do:&nbsp <span class="red"> &nbsp 0 &nbsp </span></a></li>
+				  <li id="snack_count" ><a href="#"> Snack:&nbsp <span class="green"> &nbsp 0 &nbsp </span></a></li>
+				</ul>
+			</div>
+		</div>
+	
+		<div data-role="content" id="content" data-theme="e">
+		
+			<div id="naslov">
+				<div id="place_holder">
+					<div class="risk undefined undefined_border">
+						<img src="img/undefined.png" height="80px" class="float_l">
+						<p>Caries risk level: UNDEFINED</p>
+					</div>
+				</div>
+				
+				<p class="clear"></p>
+
+				<p id="time" class="emphasize">Next dental visit: <span>12.12.2014</span> </p>
+			</div>
+
+		
+			<div id="registrationButtons">
+
+				<a href="#"  data-role="button">Snack</a>				
+				<a href="#oral_hygiene" data-role="button">Oral hygiene</a>	
+				
+				<div id="other_registration_buttons"></div>
+				
+			</div>
+
+		</div>
+		
+		
+		
+		<div data-role="footer" data-position="fixed">
+              	<div data-role="navbar">
+					<ul>
+					  <li><a href="#home"  data-icon="home" class="ui-btn-active ui-state-persist">Home</a></li>
+					  <li><a href="#profile" data-icon="user">Profile</a></li>
+					  <li><a href="#info" data-icon="info">Info</a></li>
+					  <li><a href="#settings" data-icon="gear">Settings</a></li>
+					</ul>
+				</div>
+        </div>	
+		
+	</section>
+
+	
+	
+	
+	
+<!-- =============================== to do list  ======================================= -->
+
+	
+	<section id="to_do" data-role="page" data-theme="b">
+
+	
+		<div data-role="header"  data-position="fixed">
+			<h4>To do list</h4>
+			<a href="#home" data-icon="back">Back</a>
+		</div>
+		
+		
+		<div data-role="content">
+		
+		<ul id="to_do_list" data-role="listview"></ul>
+		
+		</div>
+		
+		</div>
+		
+		<div data-role="footer" data-position="fixed">
+              	<div data-role="navbar">
+					<ul>
+					  <li><a href="#home"  data-icon="home" >Home</a></li>
+					  <li><a href="#profile" data-icon="user">Profile</a></li>
+					  <li><a href="#info" data-icon="info">Info</a></li>
+					  <li><a href="#settings" data-icon="gear">Settings</a></li>
+					</ul>
+				</div>
+        </div>	
+	</section>
+	
+	
+	
+
+	  
+  
+ <!-- =============================== 	ORAL HYGIENE   ======================================= -->
+
+	
+	<section id="oral_hygiene" data-role="page" data-theme="b">
+		<div data-role="header"  data-position="fixed">
+			<h4>Oral hygiene</h4>
+			<a href="#home" data-icon="back">Back</a>
+		</div>
+		
+		
+		<div data-role="content">
+		
+				<a href="#brushing"  data-role="button" >1. Teeth Brushing</a>		
+				<a href="#flossing"  data-role="button" >2. Teeth Flossing</a>
+		
+		</div>
+		
+		
+		
+		<div data-role="footer" data-position="fixed">
+              	<div data-role="navbar">
+					<ul>
+					  <li><a href="#home" data-icon="home">Home</a></li>
+					  <li><a href="#profile" data-icon="user">Profile</a></li>
+					  <li><a href="#info" data-icon="info">Info</a></li>
+					  <li><a href="#settings" data-icon="gear">Settings</a></li>
+					</ul>
+				</div>
+        </div>	
+	</section>		
+	
+	
+	
+<!-- =============================== 	TEETH BRUSHING   ======================================= -->
+
+	
+	<section id="brushing" data-role="page" data-theme="b" >
+	
+			<div data-role="header">
+				<h4>Teeth Brushing</h4> 
+				<a href="#oral_hygiene" data-icon="back">Back</a>
+			</div>		
+
+			<div data-role="content">
+				<a href="#"  data-role="button" id="timer-button"  onclick="timer(120);">Start</a>	
+				<p id="timer">02:00</p>
+				<br />
+				<p>Press start button when ready to begin teeth brushing. The brushing should last 2 minutes, as timer indicates. To learn more about teeth brushing press <a href="#">here</a>.</p>
+				<p class="#fluoride_paste_otc_th">Use standard over-the-counter tooth paste (1100 - 1450 ppm F).</p>
+				<p class="fluoride_paste_5000_th">Use therapeutic tooth paste prescribed by your dentist.(5000 ppm F).</p>
+			</div>
+	
+	</section>	
+	
+	
+<!-- =============================== 	TEETH FLOSSING   ======================================= -->
+
+	
+	<section id="flossing" data-role="page" data-theme="b" >
+	
+			<div data-role="header" >
+				<h4>Teeth Flossing </h4>
+				<a href="#oral_hygiene" data-icon="back">Back</a>
+			</div>		
+		
+			<div data-role="content">
+				<a href="#"  data-role="button" id="flossing-button"  onclick="registration('teeth_flossing_done');">Register</a>
+				<p>You should clean interdental spaces once daily after regular tooth brushing. Use interdental brush prescribed by your dentist.</p>
+			</div>
+			
+	</section>	
+
+
+	
+	
+<!-- =============================== 	DENTAL VISIT   ======================================= -->
+
+	
+	<section id="dental_visit" data-role="page" data-theme="b">
+	
+		<div data-role="header"  data-position="fixed">
+			<h4>Dental visit</h4>
+			<a href="#profile" data-icon="back">Back</a>
+		</div>
+		
+		
+		<div data-role="content">
+		
+
+		<ul data-role="listview">
+				<li><a href="#general_data" >General Data</a></li>	
+				<li><a href="#current_status" >Current Status</a></li>
+				<li><a href="#recommendations" >Recommendations</a></li>
+				<li><a href="#list" >List</a></li>
+		</ul>
+		
+		<br /><br />
+		<a href=""  data-role="button" data-theme="b" onclick= "window.localStorage.clear(); window.location.reload(true);">Clear all</a>
+		
+		</div>
+		
+		<div data-role="footer" data-position="fixed">
+              	<div data-role="navbar">
+					<ul>
+					  <li><a href="#home"  data-icon="home" >Home</a></li>
+					  <li><a href="#profile" data-icon="user">Profile</a></li>
+					  <li><a href="#info" data-icon="info">Info</a></li>
+					  <li><a href="#settings" data-icon="gear">Settings</a></li>
+					</ul>
+				</div>
+        </div>
+	</section>		
+	
+	
+
+	
+	
+<!-- =============================== 	Profile   ======================================= -->
+
+	
+	<section id="profile" data-role="page" data-theme="b">
+		<div data-role="header"  data-position="fixed">
+			<h4>Profile</h4>
+			<a href="#home" data-icon="back">Back</a>
+		</div>
+		
+		
+		<div data-role="content">
+		
+			<ul data-role="listview" >
+				<li><a href="#current_status_info" >Current status</a></li>
+				<li><a href="#current_therapy_info" >Current recomended therapy</a></li>
+				<li><a href="#compliance" >Compliance</a></li>
+			</ul>
+			
+			<br /><br />
+			
+			<a href="#dental_visit" data-role="button" data-theme="b" onclick="alert('This form should be filled by your dentist after dental examination')">Visit to dentist</a>
+
+		
+
+		</div>
+		
+		
+		
+		<div data-role="footer" data-position="fixed">
+              	<div data-role="navbar">
+					<ul>
+					  <li><a href="#home"  data-icon="home" >Home</a></li>
+					  <li><a href="#profile" data-icon="user" class="ui-btn-active ui-state-persist" >Profile</a></li>
+					  <li><a href="#info" data-icon="info">Info</a></li>
+					  <li><a href="#settings" data-icon="gear">Settings</a></li>
+					</ul>
+				</div>
+        </div>	
+	</section>			
+	
+	
+	
+<!-- =============================== 	INFO  ======================================= -->
+
+	
+	<section id="info" data-role="page"  data-theme="b">
+	
+		<div data-role="header"  data-position="fixed">
+			<h4>Info</h4>
+			<a href="#home" data-icon="back">Back</a>
+		</div>
+		
+		
+		<div data-role="content" data-theme="a">
+		
+		<h4>Welcome</h4>
+
+						<p>Our primary intention is to help you keep your teeth free of dental caries.</p>
+						<p>If you use app on your own it will assist you track your behavior related to dietary and oral hygiene recommendations. This will help you to become more aware and modify your risky habits.</p>
+						<p>Usage of the app is much more efficient if you use it in cooperation with your dentist. Dentist will clinically determine your current dental status. Based on this the app will automatically calculate your caries risk level (that is likelihood of having new caries lesions in comming months or years). Apart from in-office treatment dentist may decide to prescribe you additional therapeutic agents aimed to lower your current caries risk level (agents containing fluoride, chlorhexidine, xylitol etc). Protectooth app can help you track your usage of these agents too - if dentist enter his prescriptions in corresponding fields under Recommendations tab.</p>
+						<p>Whether you use this app or not, you should follow these recommendations:<br />
+						1. Eat sugar containing food as little as possible. At least you should keep frequency of eating it below three times a day. Rinse your mouth with water after these sweet snacks.<br />
+						2. Maintain good oral hygiene. Brush your teeth at least two times a day, after breakfast and before bed time. Teeth brushing should last at least two minutes. Use standard over-the-counter tooth paste unless your dentist recommended therapeutic toothpaste. Floss once - before brushing. Proper tecnique of brushing and flossing is of greatest importance.<br />
+						3. Regularly visit your dentist, at least once in six months.</p>
+						<p>Refer to External resources tab to learn more about dental caries and prevention.</p>
+						
+						
+		<h4>Home screen</h4>					
+						<p>Home screen consists of following parts (from top to bottom):</p>
+						<p>1. "To do list button"<br />
+						Press to enter To do list. Colored number shows number of activities left to be done by the end of the day.</p>
+						<p>2. Caries risk level info<br />
+						Indicates your current caries risk level. This can be determined only by your dentist.</p>
+						<p>3. Next dental visit info<br />
+						Info about next dental visit (should be scheduled or date of next visit).</p>
+						<p>4. Registration buttons<br />
+						These buttons will help you track your behaviour related to dental caries. They are placed on home screen for quick and easy access. You should press them when committing corresponding activity (press snack when eating or drinking sugar-containing food. Press oral hygiene when brushing or flossing etc). By pressing registration button you are registering activity which will reflect on to do list and other fields showing you your compliance  to dental care recommendations. <br />
+						Snack and oral hygiene buttons are always present. If your dentist prescribe therapeutic agents (under visit to dentist/recommendations tab) buttons for tracking usage of these agents will appear below.
+						</p>
+										
+		<h4>Profile tab</h4>
+
+						<p>1. current status
+						Your current dental status ( caries risk level, present and treated caries lesions, risk and protective factors). this part will be updated after your dentist conduct clinical examinations and enter findings in corresponding fields in visit to dentist/current status tab.</p>
+						<p>2. current therapy
+						Summary of general preventive measures and specific therapeutic agents prescribed by your dentist ( under visit to dentist/ recommendations tab).</p>
+						<p>3. compliance
+						Your compliance to the different parts of  recommended regimen (regularity of visits to dentist, dietary and oral hygiene habits and usage of prescribed therapeutic agents).</p>
+						<p>4. Visit to dentist button
+						Should be pressed when visiting dentist. Opens visit to dentist screen - only for your dentist. </p>
+
+
+		<h4>Visit to dentist</h4>
+
+						<p>There are fields which should be filled by dentist after clinical examination, eventual therapeutic procedures and decision which therapeutic agents should be prescribed to the patient.</p>
+						<p>1. General data</p>
+						<p>2. Current status
+						Clinical findings related to dental caries ( disease indicators, risk and protective factors).  If dental office is not equipped for conducting specific tests ( Streptococcus mutans or lactobacillus coun, saliva tests etc) - fields for those tests should be left blank.
+						 After entering these data the app will calculate caries risk level for the patient and show it on home screen. 
+						This part of application is  taken from Caries Risk Assesment form ...</p>
+						<p>3. Recommended therapy
+						If any additional agents are prescribed (therapeutic toothpaste, mouthrinses etc.) it should be also entered here in coresponding fields. This way dentist will enable tracking and reminding of the patient for particular agent same as for other activities. Only toothpaste usage (standard or therapeutic) is tracked together with teeth brushing and does not have separate registering button.
+						There are several pre entered therapeutic agents with regimens according to the... But it is also possible to enter other agents in the other tab or to change existing.</p>
+
+								
+		</div>
+		
+		
+		
+		<div data-role="footer" data-position="fixed">
+              	<div data-role="navbar">
+					<ul>
+					  <li><a href="#home"  data-icon="home">Home</a></li>
+					  <li><a href="#profile" data-icon="user">Profile</a></li>
+					  <li><a href="#info" data-icon="info" class="ui-btn-active ui-state-persist" >Info</a></li>
+					  <li><a href="#settings" data-icon="gear">Settings</a></li>
+					</ul>
+				</div>
+        </div>
+	</section>		
+	
+	
+	
+
+	
+<!-- =============================== 	SETTINGS  ======================================= -->
+
+	
+	<section id="settings" data-role="page" data-theme="b">
+	
+		<div data-role="header" data-position="fixed">
+			<h4>Settings</h4>
+			<a href="#home" data-icon="back">Back</a>
+		</div>
+		
+		
+		<div data-role="content">
+		
+		<ul data-role="listview">
+				<li><a href="#">Language</a></li>	
+				<li><a href="#">Sound</a></li>
+				<li><a href="#">Display</a></li>
+				<li><a href="#">About</a></li>
+		</ul>
+		
+		</div>
+		
+		
+		
+		<div data-role="footer" data-id="persistent_navbar" data-position="fixed">
+              	<div data-role="navbar">
+					<ul>
+					  <li><a href="#home"  data-icon="home">Home</a></li>
+					  <li><a href="#profile" data-icon="user">Profile</a></li>
+					  <li><a href="#info" data-icon="info">Info</a></li>
+					  <li><a href="#settings" data-icon="gear"  class="ui-btn-active ui-state-persist" >Settings</a></li>
+					</ul>
+				</div>
+        </div>	
+	</section>		
+	
+	
+	
+	<!-- =============================== 	GENERAL DATA   ======================================= -->
+
+	
+	<section id="general_data" data-role="page" data-theme="b">
+	
+		<div data-role="header"  data-position="fixed">
+			<h4>General data</h4>
+			<a href="#dental_visit" data-icon="back">Back</a>
+		</div>
+		
+		
+		<div data-role="content">
+		
+			<form name="generalData" action="" onsubmit="return generalForm();"  data-ajax="false" >
+				<fieldset>
+					<legend>Patient name:</legend>
+						<div  data-role="controlgroup" data-type="vertical">
+							<label for="first_name" class="ui-hidden-accessible">First name:</label>
+							<input type="text" name="first_name" id="first_name" value="" placeholder="First name"/>
+							<label for="last_name" class="ui-hidden-accessible">Last name:</label>
+							<input type="text" name="last_name" id="last_name" value="" placeholder="Last name"  />
+						</div>
+						
+					<div data-role="controlgroup" data-type="vertical" >
+						<legend>Gender:</legend>
+							<input type="radio" name="gender" id="male" value="male"/>
+							<label for="male">Male</label>
+							<input type="radio" name="gender" id="female" value="female"/>
+							<label for="female">Female</label>
+					</div>
+					
+					<div data-role="controlgroup" data-type="vertical">
+						<legend>Age:</legend>
+							<select name="yearpicker" id="yearpicker" >
+							<option>Please Choose</option>
+							</select>
+					</div>
+
+				</fieldset>
+	
+				<fieldset class="ui-grid-a">
+					<div class="ui-block-a"><input type="submit" value="Submit"  id="submit" data-role="button" data-icon="check"></div>
+					<div class="ui-block-b"><a href="#dental_visit"  id="back" data-role="button" data-icon="back">Back</a></div>	   
+				</fieldset>
+				
+				
+				
+					
+
+			</form>
+
+
+
+
+		</div>
+		
+		</div>
+		
+		<div data-role="footer" data-position="fixed">
+              	<div data-role="navbar">
+					<ul>
+					  <li><a href="#home"  data-icon="home" >Home</a></li>
+					  <li><a href="#profile" data-icon="user">Profile</a></li>
+					  <li><a href="#info" data-icon="info">Info</a></li>
+					  <li><a href="#settings" data-icon="gear">Settings</a></li>
+					</ul>
+				</div>
+        </div>	
+	</section>	
+	
+	
+	
+	
+	<!-- =============================== 	CURRENT STATUS   ======================================= -->
+
+	
+	<section id="current_status" data-role="page" data-theme="b">
+	
+		<div data-role="header"  data-position="fixed">
+			<h4>Current status</h4>
+			<a href="#dental_visit" data-icon="back">Back</a>
+		</div>
+		
+		
+		<div data-role="content">	
+		
+			<ul data-role="listview">
+					<li><a href="#disease_indicators">Disease indicators</a></li>	
+					<li><a href="#risk_factors">Risk factors</a></li>
+					<li><a href="#protective_factors">Protective factors</a></li>
+			</ul>
+		
+		</div>
+		
+
+		
+		<div data-role="footer" data-position="fixed">
+              	<div data-role="navbar">
+					<ul>
+					  <li><a href="#home"  data-icon="home">Home</a></li>
+					  <li><a href="#profile" data-icon="user">Profile</a></li>
+					  <li><a href="#info" data-icon="info">Info</a></li>
+					  <li><a href="#settings" data-icon="gear">Settings</a></li>
+					</ul>
+				</div>
+        </div>	
+	</section>		
+	
+	
+	
+		<!-- =============================== 	Disease indicators   ======================================= -->
+
+	
+	<section id="disease_indicators" data-role="page" data-theme="b">
+		<div data-role="header"  data-position="fixed">
+			<h4>Disease indicators</h4>
+			<a href="#current_status" data-icon="back">Back</a>
+		</div>
+		
+		
+		<div data-role="content">	
+
+		
+				<form name="diseaseIndicators" action="" onsubmit="return fDiseaseIndicators();"  data-ajax="false" >
+
+					  <fieldset data-role="controlgroup" >
+						<legend>Disease Indicators:</legend>
+						  <label for="visible_cavities">Visible cavities or radiographic penetration of the dentin</label>
+						  <input type="checkbox" name="visible_cavities" id="visible_cavities" value="visible_cavities">
+						  <label for="radiographic">Radiographic approximal enamel lesions (not in dentin)</label>
+						  <input type="checkbox" name="radiographic" id="radiographic" value="present" >
+						  <label for="white_spots">White spots on smooth surfaces</label>
+						  <input type="checkbox" name="white_spots" id="white_spots" value="present" > 
+						  <label for="last_3_years">Restorations last 3 years</label>
+						  <input type="checkbox" name="last_3_years" id="last_3_years" value="present" > 
+					  </fieldset>
+					  
+
+				<fieldset class="ui-grid-a">
+					<div class="ui-block-a"><input type="submit" value="Submit"  id="submit" data-role="button" data-icon="check"></div>
+					<div class="ui-block-b"><a href="#current_status"  id="back" data-role="button" data-icon="back">Back</a></div>	   
+				</fieldset>
+					  	
+				</form>
+
+	
+		</div>
+		
+
+		
+		<div data-role="footer" data-position="fixed">
+              	<div data-role="navbar">
+					<ul>
+					  <li><a href="#home" data-icon="home" >Home</a></li>
+					  <li><a href="#profile" data-icon="user">Profile</a></li>
+					  <li><a href="#info" data-icon="info">Info</a></li>
+					  <li><a href="#settings" data-icon="gear">Settings</a></li>
+					</ul>
+				</div>
+        </div>	
+	</section>	
+	
+	
+	
+	
+	
+		<!-- =============================== 	Risk factors   ======================================= -->
+
+	
+	<section id="risk_factors" data-role="page" data-theme="b">
+		<div data-role="header"  data-position="fixed">
+			<h4>Risk factors</h4>
+			<a href="#current_status" data-icon="back">Back</a>
+		</div>
+		
+		
+		<div data-role="content">	
+
+		
+				<form name="riskFactors" id="riskFactors" action="" onsubmit="return fRiskFactors();"  data-ajax="false" >
+
+					<fieldset data-role="controlgroup" >
+						<legend>Risk Factors (Biological predisposing factors):</legend>
+						  <label for="ms_lb">MS and LB both medium or high by culture</label>
+						  <input type="checkbox" name="ms_lb" id="ms_lb" value="ms_lb">
+						  <label for="visible_plaque">Visible heavy plaque on teeth</label>
+						  <input type="checkbox" name="visible_plaque" id="visible_plaque" value="visible_plaque">
+						  <label for="frequent_snack">Frequent snack > 3x daily between meals</label>
+						  <input type="checkbox" name="frequent_snack" id="frequent_snack" value="frequent_snack"> 
+						  <label for="pits_and_fissures">Deep pits and fissures</label>
+						  <input type="checkbox" name="pits_and_fissures" id="pits_and_fissures" value="pits_and_fissures">
+						  <label for="drug_use">Recreational drug use</label>
+						  <input type="checkbox" name="drug_use" id="drug_use" value="drug_use">
+						  <label for="inadequate_saliva">Inadequate saliva flow by observation or measurement</label>
+						  <input type="checkbox" name="inadequate_saliva" id="inadequate_saliva" value="inadequate_saliva">
+						  <label for="saliva_reducing_factors">Saliva reducing factors (medications/radiation/systemic)</label>
+						  <input type="checkbox" name="saliva_reducing_factors" id="saliva_reducing_factors" value="saliva_reducing_factors">
+						  <label for="exposed_roots">Exposed roots</label>
+						  <input type="checkbox" name="exposed_roots" id="exposed_roots" value="exposed_roots"> 
+						  <label for="orthodontic_appliances">Orthodontic appliances</label>
+						  <input type="checkbox" name="orthodontic_appliances" id="orthodontic_appliances" value="orthodontic_appliances"> 
+					  </fieldset>
+					  
+							
+				<fieldset class="ui-grid-a">
+					<div class="ui-block-a"><input type="submit" value="Submit"  id="submit" data-role="button" data-icon="check"></div>
+					<div class="ui-block-b"><a href="#current_status"  id="back" data-role="button" data-icon="back">Back</a></div>	   
+				</fieldset>
+					  	
+				</form>
+
+	
+		</div>
+		
+
+		
+		<div data-role="footer" data-position="fixed">
+              	<div data-role="navbar">
+					<ul>
+					  <li><a href="#home"  data-icon="home" >Home</a></li>
+					  <li><a href="#profile" data-icon="user">Profile</a></li>
+					  <li><a href="#info" data-icon="info">Info</a></li>
+					  <li><a href="#settings" data-icon="gear">Settings</a></li>
+					</ul>
+				</div>
+        </div>	
+	</section>	
+	
+	
+	
+		<!-- =============================== 	Protective factors   ======================================= -->
+
+	
+	<section id="protective_factors" data-role="page" data-theme="b">
+	
+		<div data-role="header" data-position="fixed">
+			<h4>Protective factors</h4>
+			<a href="#current_status" data-icon="back">Back</a>
+		</div>
+		
+		
+		<div data-role="content">	
+
+		
+				<form name="protectiveFactors" action="" onsubmit="return fProtectiveFactors();"  data-ajax="false" >
+
+					  <fieldset data-role="controlgroup" >
+						<legend>Protective Factors:</legend>
+						  <label for="fluoridated_community">Lives/work/school fluoridated community</label>
+						  <input type="checkbox" name="fluoridated_community" id="fluoridated_community"  value="fluoridated_community">
+						  <label for="fluoride_paste_once">Fluoride toothpaste at least once daily</label>
+						  <input type="checkbox" name="fluoride_paste_once" id="fluoride_paste_once" value="fluoride_paste_once" >
+						  <label for="fluoride_paste_twice">Fluoride toothpaste at least 2x daily</label>
+						  <input type="checkbox" name="fluoride_paste_twice" id="fluoride_paste_twice" value="fluoride_paste_twice"> 
+						  <label for="fluoride_mouthrinse">Fluoride mouthrinse (0.05% NaF) daily</label>
+						  <input type="checkbox" name="fluoride_mouthrinse" id="fluoride_mouthrinse" value="fluoride_mouthrinse" >
+						  <label for="fluoride_5000">5,000 ppm F fluoride toothpaste daily</label>
+						  <input type="checkbox" name="fluoride_5000" id="fluoride_5000" value="fluoride_5000" >
+						  <label for="fluoride_varnish">Fluoride varnish in last 6 months</label>
+						  <input type="checkbox" name="fluoride_varnish" id="fluoride_varnish" value="fluoride_varnish" >
+						  <label for="topical_fluoride">Office fluoride topical in last 6 months</label>
+						  <input type="checkbox" name="topical_fluoride" id="topical_fluoride" value="topical_fluoride" >
+						  <label for="chlorhexidine">Chlorhexidine prescribed/used one week each of last 6 months</label>
+						  <input type="checkbox" name="chlorhexidine" id="chlorhexidine" value="chlorhexidine" > 
+						  <label for="xylitol">Xylitol gum/lozenges 4x daily last 6 months</label>
+						  <input type="checkbox" name="xylitol" id="xylitol" value="xylitol" > 
+						  <label for="tooth_mousse">Calcium and phosphate paste during last 6 months</label>
+						  <input type="checkbox" name="tooth_mousse" id="tooth_mousse" value="tooth_mousse"> 
+						  <label for="adequate_saliva">Adequate saliva flow (> 1 ml/min stimulated)</label>
+						  <input type="checkbox" name="adequate_saliva" id="adequate_saliva" value="adequate_saliva">
+					  </fieldset>
+					  
+				<fieldset class="ui-grid-a">
+					<div class="ui-block-a"><input type="submit" value="Submit"  id="submit" data-role="button" data-icon="check"></div>
+					<div class="ui-block-b"><a href="#current_status"  id="back" data-role="button" data-icon="back">Back</a></div>	   
+				</fieldset>
+					  	
+				</form>
+
+	
+		</div>
+		
+
+		
+		<div data-role="footer" data-position="fixed">
+              	<div data-role="navbar">
+					<ul>
+					  <li><a href="#home"  data-icon="home" >Home</a></li>
+					  <li><a href="#profile" data-icon="user">Profile</a></li>
+					  <li><a href="#info" data-icon="info">Info</a></li>
+					  <li><a href="#settings" data-icon="gear">Settings</a></li>
+					</ul>
+				</div>
+        </div>	
+	</section>		
+	
+	
+	
+	<!-- =============================== 	RECOMMENDATIONS   ======================================= -->
+
+	
+	<section id="recommendations" data-role="page" data-theme="b">
+	
+		<div data-role="header"  data-position="fixed">
+			<h4>Recommendations</h4>
+			<a href="#dental_visit" data-icon="back">Back</a>
+		</div>
+		
+		
+		<div data-role="content">
+		
+			<ul data-role="listview">
+					<li><a href="#recall_exams" >Recall exams frequency</a></li>	
+					<li><a href="#antibacterials" >Antibacterial therapy</a>	</li>
+					<li><a href="#fluoride" >Fluoride therapy</a></li>
+					<li><a href="#ph_control" >Ph-control therapy</a>	</li>
+					<li><a href="#cap_paste" >Calcium phosphate paste</a>	</li>
+			</ul>
+			
+		</div>
+		
+
+		
+		<div data-role="footer" data-position="fixed">
+              	<div data-role="navbar">
+					<ul>
+					  <li><a href="#home"  data-icon="home" data-transition="none" >Home</a></li>
+					  <li><a href="#profile" data-icon="user">Profile</a></li>
+					  <li><a href="#info" data-icon="info">Info</a></li>
+					  <li><a href="#settings" data-icon="gear">Settings</a></li>
+					</ul>
+				</div>
+        </div>	
+	</section>	
+	
+	
+		<!-- =============================== 	Recall exams   ======================================= -->
+
+	
+	<section id="recall_exams" data-role="page" data-theme="b">
+	
+		<div data-role="header"  data-position="fixed">
+			<h4>Recall exam frequency</h4>
+			<a href="#recommendations" data-icon="back">Back</a>
+		</div>
+		
+		
+		
+		<div data-role="content">
+		
+		
+				<form name="recallExams" action="" onsubmit="return fRecallExams();"  data-ajax="false" >
+						<fieldset data-role="controlgroup" >	
+						<legend>Recall dental exams:</legend>						
+							  <label for="points">every:</label>
+							  <input type="range" name="recalls" id="recalls" value="6" min="0" max="12">months</input>	
+						</fieldset>	
+		
+				<fieldset class="ui-grid-a">
+					<div class="ui-block-a"><input type="submit" value="Submit"  id="submit" data-role="button" data-icon="check"></div>
+					<div class="ui-block-b"><a href="#recommendations"  id="back" data-role="button" data-icon="back">Back</a></div>	   
+				</fieldset>
+				
+				</form>
+		</div>
+		
+		
+			<div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+				  <li><a href="#home"  data-icon="home">Home</a></li>
+				  <li><a href="#profile" data-icon="user">Profile</a></li>
+				  <li><a href="#info" data-icon="info">Info</a></li>
+				  <li><a href="#settings" data-icon="gear">Settings</a></li>
+				</ul>
+			</div>
+	</div>	
+</section>	
+		
+		
+		
+		<!-- =============================== 	Antibacterials   ======================================= -->
+
+	
+	<section id="antibacterials" data-role="page" data-theme="b">
+	
+		<div data-role="header"  data-position="fixed">
+			<h4>Antibacterial therapy</h4>
+			<a href="#recommendations" data-icon="back">Back</a>
+		</div>
+		
+		
+		
+		<div data-role="content">
+		
+		
+				<form name="antibacterials_th" action="" onsubmit="return fAntibacterials();"  data-ajax="false" >
+	
+	
+						<fieldset data-role="controlgroup" >
+							<legend>Antibacterials:</legend>
+							  <label for="chlorhexidine_th">Chlorhexidine gluconate 0.12% 10 ml rinse for one minute daily for one week each month.</label>
+							  <input type="checkbox" name="chlorhexidine_th" id="chlorhexidine_th"  value="chlorhexidine_th">
+							  <label for="xylitol_th">Xylitol (6-10 grams/day) gum or candies. Two tabs of gum or two candies four times daily.</label>
+							  <input type="checkbox" name="xylitol_th" id="xylitol_th" value="xylitol_th">
+						</fieldset>
+		
+				<fieldset class="ui-grid-a">
+					<div class="ui-block-a"><input type="submit" value="Submit"  id="submit" data-role="button" data-icon="check"></div>
+					<div class="ui-block-b"><a href="#recommendations"  id="back" data-role="button" data-icon="back">Back</a></div>	   
+				</fieldset>
+		
+				</form>
+		
+		</div>
+		
+		
+			<div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+				  <li><a href="#home"  data-icon="home">Home</a></li>
+				  <li><a href="#profile" data-icon="user">Profile</a></li>
+				  <li><a href="#info" data-icon="info">Info</a></li>
+				  <li><a href="#settings" data-icon="gear">Settings</a></li>
+				</ul>
+			</div>
+	</div>	
+</section>			
+		
+		
+		
+		
+		
+				<!-- =============================== 	Fluoride   ======================================= -->
+
+	
+	<section id="fluoride" data-role="page" data-theme="b">
+	
+		<div data-role="header"  data-position="fixed">
+			<h4>Fluoride therapy</h4>
+			<a href="#recommendations" data-icon="back">Back</a>
+		</div>
+		
+		
+		
+		<div data-role="content">
+		
+		
+				<form name="fluoride_th" action="" onsubmit="return fFluoride();"  data-ajax="false" >
+	
+	
+						  <fieldset data-role="controlgroup">
+							<legend>Fluoride:</legend>
+							  <label for="fluoride_paste_otc_th">OTC fluoride-containing toothpaste twice daily, after breakfast and at bedtime.</label>
+							  <input type="checkbox" name="fluoride_paste_otc_th" id="fluoride_paste_otc_th" value="fluoride_paste_otc_th">
+							  <label for="fluoride_paste_5000_th">1.1% NaF toothpaste instead of regular fluoride toothpaste twice daily, after breakfast and at bedtime.</label>
+							  <input type="checkbox" name="fluoride_paste_5000_th" id="fluoride_paste_5000_th" value="fluoride_paste_5000_th">
+							  <label for="fluoride_mouthrinse_th">OTC 0.05% NaF rinse daily.</label>
+							  <input type="checkbox" name="fluoride_mouthrinse_th" id="fluoride_mouthrinse_th" value="fluoride_mouthrinse_th" >
+							  <label for="fluoride_mouthrinse_extra_th">0.2% NaF rinse daily (1 bottle) then OTC 0.05% NaF rinse 2X daily.</label>
+							  <input type="checkbox" name="fluoride_mouthrinse_extra_th" id="fluoride_mouthrinse_extra_th" value="fluoride_mouthrinse_extra_th" >
+							  <label for="fluoride_mouthrinse_xerostomia_th">OTC 0.05% NaF rinse when mouth feels dry, after snacking, breakfast, and lunch.</label>
+							  <input type="checkbox" name="fluoride_mouthrinse_xerostomia_th" id="fluoride_mouthrinse_xerostomia_th" value="fluoride_mouthrinse_xerostomia_th">							  
+						  </fieldset>	
+		
+				<fieldset class="ui-grid-a">
+					<div class="ui-block-a"><input type="submit" value="Submit"  id="submit" data-role="button" data-icon="check"></div>
+					<div class="ui-block-b"><a href="#recommendations"  id="back" data-role="button" data-icon="back">Back</a></div>	   
+				</fieldset>
+		
+				</form>
+		
+		</div>
+		
+		
+			<div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+				  <li><a href="#home"  data-icon="home">Home</a></li>
+				  <li><a href="#profile" data-icon="user">Profile</a></li>
+				  <li><a href="#info" data-icon="info">Info</a></li>
+				  <li><a href="#settings" data-icon="gear">Settings</a></li>
+				</ul>
+			</div>
+	</div>	
+</section>			
+		
+		
+			
+		
+		
+		
+				<!-- =============================== 	Ph-control   ======================================= -->
+
+	
+	<section id="ph_control" data-role="page" data-theme="b">
+	
+		<div data-role="header"  data-position="fixed">
+			<h4>Ph-control therapy</h4>
+			<a href="#recommendations" data-icon="back">Back</a>
+		</div>
+		
+		
+		
+		<div data-role="content">
+		
+		
+				<form name="ph_control" action="" onsubmit="return fPhControl();"  data-ajax="false" >
+	
+	
+						<fieldset data-role="controlgroup" >
+							<legend>Ph-control:</legend>
+							  <label for="ph_th">Acid-neutralizing rinses as needed if mouth feels dry, after snacking, bedtime and after breakfast.</label>
+							  <input type="checkbox" name="ph_th" id="ph_th" value="ph_th">
+							  <label for="phgum_th"> Baking soda gum as needed.</label>
+							  <input type="checkbox" name="phgum_th" id="phgum_th" value="phgum_th">
+						</fieldset>	
+		
+				<fieldset class="ui-grid-a">
+					<div class="ui-block-a"><input type="submit" value="Submit"  id="submit" data-role="button" data-icon="check"></div>
+					<div class="ui-block-b"><a href="#recommendations"  id="back" data-role="button" data-icon="back">Back</a></div>	   
+				</fieldset>
+		
+				</form>
+		
+		</div>
+		
+		
+			<div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+				  <li><a href="#home"  data-icon="home" >Home</a></li>
+				  <li><a href="#profile" data-icon="user">Profile</a></li>
+				  <li><a href="#info" data-icon="info">Info</a></li>
+				  <li><a href="#settings" data-icon="gear">Settings</a></li>
+				</ul>
+			</div>
+	</div>	
+</section>	
+		
+		
+		
+				<!-- =============================== 	CaP paste   ======================================= -->
+
+	
+	<section id="cap_paste" data-role="page" data-theme="b">
+	
+		<div data-role="header"  data-position="fixed">
+			<h4>CaP paste</h4>
+			<a href="#recommendations" data-icon="back">Back</a>
+		</div>
+		
+		
+		
+		<div data-role="content">
+		
+		
+				<form name="cap_paste" action="" onsubmit="return fCaPPaste();"  data-ajax="false" >
+	
+	
+						<fieldset data-role="controlgroup" >
+							<legend>Calcium-phosphate paste:</legend>
+							  <label for="cap_th">Apply calcium/ phosphate paste twice daily.</label>
+							  <input type="checkbox" name="cap_th" id="cap_th" value="cap_th">
+						</fieldset>
+		
+				<fieldset class="ui-grid-a">
+					<div class="ui-block-a"><input type="submit" value="Submit"  id="submit" data-role="button" data-icon="check"></div>
+					<div class="ui-block-b"><a href="#recommendations"  id="back" data-role="button" data-icon="back">Back</a></div>	   
+				</fieldset>
+		
+				</form>
+		
+		</div>
+		
+		
+			<div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+				  <li><a href="#home"  data-icon="home" >Home</a></li>
+				  <li><a href="#profile" data-icon="user">Profile</a></li>
+				  <li><a href="#info" data-icon="info">Info</a></li>
+				  <li><a href="#settings" data-icon="gear">Settings</a></li>
+				</ul>
+			</div>
+	</div>	
+</section>
+		
+		
+		
+				<!-- =============================== 	list   ======================================= -->
+
+	
+	<section id="list" data-role="page" data-theme="b">
+	
+		<div data-role="header"  data-position="fixed">
+			<h4>List</h4>
+			<a href="#dental_visit" data-icon="back">Back</a>
+		</div>
+		
+		
+		
+		<div data-role="content">
+	
+					<p id="list_output"></p>	
+		</div>
+		
+		
+			<div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+				  <li><a href="#home" data-icon="home">Home</a></li>
+				  <li><a href="#profile" data-icon="user">Profile</a></li>
+				  <li><a href="#info" data-icon="info">Info</a></li>
+				  <li><a href="#settings" data-icon="gear">Settings</a></li>
+				</ul>
+			</div>
+		</div>	
+</section>
+
+
+<!-- =============================== 	compliance  ======================================= -->
+
+	
+	<section id="compliance" data-role="page" data-theme="b">
+		<div data-role="header"  data-position="fixed">
+			<h4>Compliance</h4>
+			<a href="#profile" data-icon="back">Back</a>
+		</div>
+		
+		
+		<div data-role="content">
+		
+			<ul data-role="listview">
+			
+				<li data-role="list-divider">General:</li>	
+					
+					<li id="visits_to_dentist"><a href="#"><h2>Dental visits: <span>N/A</span></h2>
+									<p class="wrap">Regularity of periodic dental visits.</p>
+					</a></li>
+					
+					<li id="eating_habits"><a href="#"><h2>Eating habits: <span>N/A</span></h2>
+									<p class="wrap">Frequency of taking sugar containing food.</p>
+					</a></li>	
+					
+					<li id="oral_hygiene_habits"><a href="#"><h2>Oral hygiene: <span>N/A</span></h2>
+									<p class="wrap">Regularity of teeth brushing and flossing.</p>
+					</a></li>
+					
+					
+					
+				<li data-role="list-divider">Prescribed therapy:</li>
+	
+				<li data-role="list-divider"></li>
+				
+			</ul>
+		
+		</div>
+		
+		
+		
+		<div data-role="footer" data-position="fixed">
+              	<div data-role="navbar">
+					<ul>
+					  <li><a href="#home"  data-icon="home" >Home</a></li>
+					  <li><a href="#profile" data-icon="user" class="ui-btn-active ui-state-persist" >Profile</a></li>
+					  <li><a href="#info" data-icon="info">Info</a></li>
+					  <li><a href="#settings" data-icon="gear">Settings</a></li>
+					</ul>
+				</div>
+        </div>	
+	</section>			
+			
+<!-- =============================== 	current status  ======================================= -->
+
+	
+	<section id="current_status_info" data-role="page" data-theme="b">
+		<div data-role="header"  data-position="fixed">
+			<h4>Current Dental Status</h4>
+			<a href="#profile" data-icon="back">Back</a>
+		</div>
+		
+		
+		<div data-role="content">
+			
+			
+			<ul data-role="listview">
+					
+						<li id="overall_caries_risk"><a href="#" ><h2>Caries risk level: <span>N/A</span></h2>
+										<p class="wrap">Likelihood of having new caries lesions in comming months or years.</p>
+						</a></li>
+						<li id="disease_indicators_presence"><a href="#" ><h2>Disease indicators: <span>N/A</span></h2>
+										<p class="wrap">Presence of caries lesions according to last dental examination.</p>
+						</a></li>
+						<li id="risk_factors_presence"><a href="#" ><h2>Risk factors: <span>N/A</span></h2>
+										<p class="wrap">Factors leading to new caries lesions according to last dental examination.</p>
+						</a></li>
+						<li id="protective_factors_presence"><a href="#" ><h2>Protective factors: <span>N/A</span></h2>
+										<p class="wrap">Factors lowering risk for new caries lesions according to last dental examination.</p>
+						</a></li>
+					<li data-role="list-divider"></li>
+					
+			</ul>
+			
+
+			
+		</div>
+		
+		<div data-role="footer" data-position="fixed">
+              	<div data-role="navbar">
+					<ul>
+					  <li><a href="#home"  data-icon="home" >Home</a></li>
+					  <li><a href="#profile" data-icon="user" class="ui-btn-active ui-state-persist" >Profile</a></li>
+					  <li><a href="#info" data-icon="info">Info</a></li>
+					  <li><a href="#settings" data-icon="gear">Settings</a></li>
+					</ul>
+				</div>
+        </div>	
+	</section>
+	
+	
+<!-- =============================== 	current recommended therapy  ======================================= -->
+
+	
+	<section id="current_therapy_info" data-role="page" data-theme="b">
+		<div data-role="header"  data-position="fixed">
+			<h4>Current prescribed therapy</h4>
+			<a href="#profile" data-icon="back">Back</a>
+		</div>
+		
+		
+		<div data-role="content">
+			
+			
+			<ul data-role="listview">
+					
+						<li><a href="#" ><h2>Dietary regimen</h2>
+										<p class="wrap">No matter what your current caries risk level is, you should reduce eating sugar containing food as much as possible. At least keep frequency of eating it below three times a day (tap to learn more).</p>
+						</a></li>
+						<li><a href="#" ><h2>Keeping oral hygiene</h2>
+										<p class="wrap">Brush your teeth two times daily - after breakfast and at bed time. Floss your teeth once daily after teeth brushing. Tap to learn about correct technique and duration of teeth brushing and flossing.</p>
+						</a></li>
+						<li><a href="#" ><h2>Regular dental visits</h2>
+										<p class="wrap">You should regularly visit your dentist for recall exams.</p>
+						</a></li>
+						
+						
+						<li data-role="list-divider" class="wrap">Specific therapy prescribed by your dentist:</li>
+
+					<li data-role="list-divider"></li>
+
+			</ul>
+			
+			
+		</div>
+		
+		<div data-role="footer" data-position="fixed">
+              	<div data-role="navbar">
+					<ul>
+					  <li><a href="#home"  data-icon="home" >Home</a></li>
+					  <li><a href="#profile" data-icon="user" class="ui-btn-active ui-state-persist" >Profile</a></li>
+					  <li><a href="#info" data-icon="info">Info</a></li>
+					  <li><a href="#settings" data-icon="gear">Settings</a></li>
+					</ul>
+				</div>
+        </div>	
+	</section>
+		
+	
+
+<!-- <script type="text/javascript" src="js/getstorage.js"></script> -->
+<script type"text/javascript">
+
+for (i = new Date().getFullYear(); i > 1900; i--)
+{
+    $('#yearpicker').append($('<option />').val(i).html(i));
+}
+</script>
+
+  </body>
+</html>
