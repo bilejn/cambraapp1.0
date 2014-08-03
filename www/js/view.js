@@ -15,7 +15,7 @@ $(document).on("pagebeforeshow", "#home", function (){
 	$("#other_registration_buttons").html(output);
 	
 	var toDoCount = $.jStorage.get("to_do_count");
-	$("#to_do_count span").html("&nbsp "+toDoCount+" &nbsp");
+	$("#to_do_count span").html(" &nbsp "+toDoCount+" &nbsp ");
 	if (toDoCount == 0) {
 		$("#to_do_count span").addClass("green");
 	} else {
@@ -23,7 +23,7 @@ $(document).on("pagebeforeshow", "#home", function (){
 	}
 	
 	var snackCount = $.jStorage.get("snack_count");
-	$("#snack_count span").html("&nbsp "+snackCount+" &nbsp");
+	$("#snack_count span").html(" &nbsp "+snackCount+" &nbsp ");
 	if (snackCount <= 3) {
 		$("#snack_count span").addClass("green");
 	} else {
