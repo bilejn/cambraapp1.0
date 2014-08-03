@@ -61,7 +61,7 @@ $.jStorage.listenKeyChange("to_do_count", function(){
 	if (!$.jStorage.get("init")){
 
 		var toDoCount = $.jStorage.get("to_do_count");
-		$("#to_do_count span").html("&nbsp "+toDoCount+" &nbsp");
+		$("#to_do_count span").html(" &nbsp "+toDoCount+" &nbsp ");
 		if (toDoCount > 0) {
 			$("#to_do_count span").addClass("red");
 		} else {
@@ -75,7 +75,7 @@ $.jStorage.listenKeyChange("to_do_count", function(){
 $.jStorage.listenKeyChange("snack_count", function(){
 	if (!$.jStorage.get("init")){
 		var snackCount = $.jStorage.get("snack_count");
-		$("#snack_count span").html("&nbsp "+snackCount+" &nbsp");
+		$("#snack_count span").html(" &nbsp "+snackCount+" &nbsp ");
 		if (snackCount <= 3) {
 			$("#snack_count span").addClass("green");
 		} else {
