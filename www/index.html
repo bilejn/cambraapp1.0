@@ -12,7 +12,10 @@
 			<link rel="stylesheet" href="css/mycss.css" />
 			<link rel="stylesheet" href="css/myswatch.css" />
 			<script  type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-			
+			<script type="text/javascript" src="js/jstorage.js"></script>
+			<script type="text/javascript" src="js/date.js"></script>
+			<script type="text/javascript" src="js/test_objects.js"></script>
+			<script type="text/javascript" src="js/controller.js"></script>
 			<script type"text/javascript">
 				$(document).bind("mobileinit", function() {
 					$.mobile.defaultPageTransition = "none";
@@ -22,11 +25,9 @@
 			</script>
 
 			<script type="text/javascript" src="js/jquery.mobile-1.4.2.js"></script>
-			<script type="text/javascript" src="js/jstorage.js"></script>
-			<script type="text/javascript" src="js/date.js"></script>
 			<script type="text/javascript" src="js/timer.js"></script>
-			<script type="text/javascript" src="js/test_objects.js"></script>
 			<script type="text/javascript" src="js/view.js"></script>
+			<script type="text/javascript" src="js/event.js"></script>
 	<!--			
 			<script type="text/javascript" src="js/events.js"></script>	
 			<script type="text/javascript" src="js/calculate.js"></script>
@@ -50,9 +51,9 @@
 	
 		<div data-role="header" data-position="fixed">
 			<div data-role="navbar">
-				<ul class="daily_counter">
-				  <li id="to_do_count" ><a href="#to_do"> To do:&nbsp <span class="red"> &nbsp 0 &nbsp </span></a></li>
-				  <li id="snack_count" ><a href="#"> Snack:&nbsp <span class="green"> &nbsp 0 &nbsp </span></a></li>
+				<ul id="counter_list" class="daily_counter">
+				  <li id="to_do_count" ><a href="#to_do"> To do:&nbsp <span> &nbsp 0 &nbsp </span></a></li>
+				  <li id="snack_count" ><a href="#" onclick='alert("snack!");'> Snack:&nbsp <span> &nbsp 0 &nbsp </span></a></li>
 				</ul>
 			</div>
 		</div>
@@ -75,8 +76,8 @@
 		
 			<div id="registrationButtons">
 
-				<a href="#"  data-role="button">Snack</a>				
-				<a href="#oral_hygiene" data-role="button">Oral hygiene</a>	
+				<a href="#"  data-role="button" id="snack_registration_button" data-theme="a" onclick="registration('snack')">Snack</a>				
+				<a href="#oral_hygiene" data-role="button" data-theme="a">Oral hygiene</a>	
 				
 				<div id="other_registration_buttons"></div>
 				
@@ -121,7 +122,7 @@
 		
 		</div>
 		
-		</div>
+
 		
 		<div data-role="footer" data-position="fixed">
               	<div data-role="navbar">
@@ -206,7 +207,7 @@
 			</div>		
 		
 			<div data-role="content">
-				<a href="#"  data-role="button" id="flossing-button"  onclick="registration('teeth_flossing_done');">Register</a>
+				<a href="#" data-role="button" id="flossing_registration_button" data-theme="a" onclick="registration('flossing')">Register</a>
 				<p>You should clean interdental spaces once daily after regular tooth brushing. Use interdental brush prescribed by your dentist.</p>
 			</div>
 			

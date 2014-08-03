@@ -17,7 +17,7 @@ function delayedLoop(){
 
 	if (secTrue<0) { 
 	$("#timer").html("00:00");
-	registration("teeth_brushing_done");
+	registration("brushing");
 	$("#timer-button").removeClass('ui-disabled'); 
 	$("#timer").html("02:00");
 	window.plugins.insomnia.allowSleepAgain();
