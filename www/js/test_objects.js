@@ -1,9 +1,24 @@
+var disease_indicators = {
+	id: "disease_indicators",
+	publicName: "Disease indicators",
+	text: "Presence of caries lesions according to last dental examination.",
+	
+	type: "status",
+	present: "n/a",
+	
+	visibleCavities: "n/a",
+	radiographic: "n/a",
+	whiteSpots: "n/a",
+	restorationsLast3y: "n/a",
+};
+
 var snack = {
 	id: "snack",
 	publicName: "Snack",
 	text: "Do not eat sugar containing food more than 3 times a day.",
 	alertMessage: "Snack registered. Keep taking sugar containing food below 3 times a day.",
 	
+	type: "tracking",
 	therapy: false,
 	active: true,
 	specific: false,
@@ -23,6 +38,7 @@ var brushing = {
 	toDoText: "Brush your teeth",
 	alertMessage: "Brushing registered. Brush your teeth 2 times a day: after breakfast and before bed.",
 	
+	type: "tracking",
 	therapy: true,
 	active: true,
 	specific: false,
@@ -41,6 +57,7 @@ var flossing = {
 	toDoText: "Floss your teeth",
 	alertMessage: "Flossing registered. Floss your teeth once daily before brushing.",
 	
+	type: "tracking",
 	therapy: true,
 	active: true,
 	specific: false,
@@ -59,6 +76,7 @@ var xylitol = {
 	toDoText: "Take xylitol candy",
 	alertMessage: "Xylitol candy taking registered. Take one or two xylitol candies four times daily.",
 	
+	type: "tracking",
 	therapy: true,
 	active: true,
 	specific: true,
@@ -77,6 +95,7 @@ var chlorhexidine = {
 	toDoText: "Rinse with chlorhexidine solution",
 	alertMessage: "Rinsing with chlorhexidine solution registered. Rinse once daily for seven days a month.",
 	
+	type: "tracking",
 	therapy: true,
 	active: true,
 	specific: true,
@@ -95,6 +114,7 @@ var fluoride_mouthrinse = {
 	toDoText: "Rinse with fluoride mouthrinse",
 	alertMessage: "Rinsing with fluoride mouthrinse registered. Rinse once daily.",
 	
+	type: "tracking",
 	therapy: true,
 	active: true,
 	specific: true,
