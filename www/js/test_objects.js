@@ -133,4 +133,4 @@ $.jStorage.set("flossing", flossing);
 $.jStorage.set("xylitol", xylitol);
 $.jStorage.set("chlorhexidine", chlorhexidine);
 $.jStorage.set("fluoride_mouthrinse", fluoride_mouthrinse);
-$.jStorage.set("objects", ["snack","brushing","flossing","xylitol","chlorhexidine","fluoride_mouthrinse"]);
+$.jStorage.set("objects", ["snack","brushing","flossing","xylitol","chlorhexidine"]);
