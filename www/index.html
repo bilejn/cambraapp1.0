@@ -52,8 +52,8 @@
 		<div data-role="header" data-position="fixed" data-theme="b">
 			<div data-role="navbar">
 				<ul id="counter_list" class="daily_counter">
-				  <li id="to_do_count" ><a href="#to_do"> To do:&nbsp <span></span></a></li>
-				  <li id="snack_count" ><a href="#" onclick='alert("snack!");'> Snack:&nbsp <span></span></a></li>
+				  <li id="to_do_count" ><a href="#to_do" data-theme="c"> To do:&nbsp <span></span></a></li>
+				  <li id="snack_count" > <a href="#" data-theme="c">Snack:&nbsp <span></span></a></li>
 				</ul>
 			</div>
 		</div>
@@ -71,13 +71,15 @@
 
 				</ul>
 			<!--	<p id="time" class="emphasize">Next dental visit: <span>12.12.2014</span> </p> -->
+						<p class="clear">  </p>
 			</div>
+			
 
 		
 			<div id="registrationButtons">
 
-				<a href="#"  data-role="button" id="snack_registration_button" data-theme="a" onclick="registration('snack')">Snack</a>				
-				<a href="#oral_hygiene" data-role="button" data-theme="a">Oral hygiene</a>	
+				<a href="#"  data-role="button" id="snack_registration_button" data-theme="d" onclick="registration('snack')">Snack</a>				
+				<a href="#oral_hygiene" data-role="button" data-theme="d">Oral hygiene</a>	
 				
 				<div id="other_registration_buttons"></div>
 				
@@ -107,10 +109,10 @@
 <!-- =============================== to do list  ======================================= -->
 
 	
-	<section id="to_do" data-role="page" data-theme="b">
+	<section id="to_do" data-role="page"  data-theme="a">
 
 	
-		<div data-role="header"  data-position="fixed">
+		<div data-role="header"  data-position="fixed" data-theme="b">
 			<h4>To do list</h4>
 			<a href="#home" data-icon="back">Back</a>
 		</div>
@@ -124,7 +126,7 @@
 		
 
 		
-		<div data-role="footer" data-position="fixed">
+		<div data-role="footer" data-position="fixed" data-theme="b">
               	<div data-role="navbar">
 					<ul>
 					  <li><a href="#home"  data-icon="home" >Home</a></li>
@@ -261,8 +263,8 @@
 <!-- =============================== 	Profile   ======================================= -->
 
 	
-	<section id="profile" data-role="page" data-theme="b">
-		<div data-role="header"  data-position="fixed">
+	<section id="profile" data-role="page" data-theme="a">
+		<div data-role="header"  data-position="fixed" data-theme="b">
 			<h4>Profile</h4>
 			<a href="#home" data-icon="back">Back</a>
 		</div>
@@ -271,14 +273,14 @@
 		<div data-role="content">
 		
 			<ul data-role="listview" >
-				<li><a href="#current_status_info" >Current status</a></li>
-				<li><a href="#current_therapy_info" >Current recomended therapy</a></li>
-				<li><a href="#compliance" >Compliance</a></li>
+				<li><a href="#current_status_info" data-theme="d">Current status</a></li>
+				<li><a href="#current_therapy_info" data-theme="d" >Current recomended therapy</a></li>
+				<li><a href="#compliance" data-theme="d" >Compliance</a></li>
 			</ul>
 			
 			<br /><br />
 			
-			<a href="#dental_visit" data-role="button" data-theme="b" onclick="alert('This form should be filled by your dentist after dental examination')">Visit to dentist</a>
+			<a href="#dental_visit" data-role="button" onclick="alert('This form should be filled by your dentist after dental examination')">Visit to dentist</a>
 
 		
 
@@ -286,7 +288,7 @@
 		
 		
 		
-		<div data-role="footer" data-position="fixed">
+		<div data-role="footer" data-position="fixed" data-theme="b">
               	<div data-role="navbar">
 					<ul>
 					  <li><a href="#home"  data-icon="home" >Home</a></li>
@@ -1042,11 +1044,96 @@
 </section>
 
 
+
+			
+<!-- =============================== 	current status  ======================================= -->
+
+	
+	<section id="current_status_info" data-role="page" data-theme="a">
+		<div data-role="header"  data-position="fixed" data-theme="b">
+			<h4>Current Dental Status</h4>
+			<a href="#profile" data-icon="back">Back</a>
+		</div>
+		
+		
+		<div data-role="content">
+			
+			
+			<ul id="current_status_list" data-role="listview">
+					
+
+					
+			</ul>
+			
+
+			
+		</div>
+		
+		<div data-role="footer" data-position="fixed" data-theme="b">
+              	<div data-role="navbar">
+					<ul>
+					  <li><a href="#home"  data-icon="home" >Home</a></li>
+					  <li><a href="#profile" data-icon="user" class="ui-btn-active ui-state-persist" >Profile</a></li>
+					  <li><a href="#info" data-icon="info">Info</a></li>
+					  <li><a href="#settings" data-icon="gear">Settings</a></li>
+					</ul>
+				</div>
+        </div>	
+	</section>
+	
+	
+<!-- =============================== 	current recommended therapy  ======================================= -->
+
+	
+	<section id="current_therapy_info" data-role="page" data-theme="a">
+		<div data-role="header"  data-position="fixed" data-theme="b">
+			<h4>Current prescribed therapy</h4>
+			<a href="#profile" data-icon="back">Back</a>
+		</div>
+		
+		
+		<div data-role="content">
+			
+			
+			<ul id="current_therapy_list" data-role="listview">
+					
+						<li><h2>Dietary regimen</h2>
+										<p class="wrap">No matter what your current caries risk level is, you should reduce eating sugar containing food as much as possible. At least keep frequency of eating it below three times a day (refer to info section).</p>
+						</li>
+						<li><h2>Keeping oral hygiene</h2>
+										<p class="wrap">Brush your teeth two times daily - after breakfast and at bed time. Floss your teeth once daily after teeth brushing. Refer to info section to learn about correct technique and duration of teeth brushing and flossing.</p>
+						</li>
+						<li><h2>Regular dental visits</h2>
+										<p class="wrap">You should regularly visit your dentist for recall exams.</p>
+						</li>
+						
+						
+						<li data-role="list-divider" class="wrap">Specific therapy prescribed by your dentist:</li>
+
+
+			</ul>
+			
+			
+		</div>
+		
+		<div data-role="footer" data-position="fixed" data-theme="b">
+              	<div data-role="navbar">
+					<ul>
+					  <li><a href="#home"  data-icon="home" >Home</a></li>
+					  <li><a href="#profile" data-icon="user" class="ui-btn-active ui-state-persist" >Profile</a></li>
+					  <li><a href="#info" data-icon="info">Info</a></li>
+					  <li><a href="#settings" data-icon="gear">Settings</a></li>
+					</ul>
+				</div>
+        </div>	
+	</section>
+		
+	
 <!-- =============================== 	compliance  ======================================= -->
 
 	
-	<section id="compliance" data-role="page" data-theme="b">
-		<div data-role="header"  data-position="fixed">
+	<section id="compliance" data-role="page" data-theme="a">
+		<div data-role="header"  data-position="fixed" data-theme="b">
 			<h4>Compliance</h4>
 			<a href="#profile" data-icon="back">Back</a>
 		</div>
@@ -1082,7 +1169,7 @@
 		
 		
 		
-		<div data-role="footer" data-position="fixed">
+		<div data-role="footer" data-position="fixed" data-theme="b">
               	<div data-role="navbar">
 					<ul>
 					  <li><a href="#home"  data-icon="home" >Home</a></li>
@@ -1093,104 +1180,8 @@
 				</div>
         </div>	
 	</section>			
-			
-<!-- =============================== 	current status  ======================================= -->
 
 	
-	<section id="current_status_info" data-role="page" data-theme="b">
-		<div data-role="header"  data-position="fixed">
-			<h4>Current Dental Status</h4>
-			<a href="#profile" data-icon="back">Back</a>
-		</div>
-		
-		
-		<div data-role="content">
-			
-			
-			<ul data-role="listview">
-					
-						<li id="overall_caries_risk"><a href="#" ><h2>Caries risk level: <span>N/A</span></h2>
-										<p class="wrap">Likelihood of having new caries lesions in comming months or years.</p>
-						</a></li>
-						<li id="disease_indicators_presence"><a href="#" ><h2>Disease indicators: <span>N/A</span></h2>
-										<p class="wrap">Presence of caries lesions according to last dental examination.</p>
-						</a></li>
-						<li id="risk_factors_presence"><a href="#" ><h2>Risk factors: <span>N/A</span></h2>
-										<p class="wrap">Factors leading to new caries lesions according to last dental examination.</p>
-						</a></li>
-						<li id="protective_factors_presence"><a href="#" ><h2>Protective factors: <span>N/A</span></h2>
-										<p class="wrap">Factors lowering risk for new caries lesions according to last dental examination.</p>
-						</a></li>
-					<li data-role="list-divider"></li>
-					
-			</ul>
-			
-
-			
-		</div>
-		
-		<div data-role="footer" data-position="fixed">
-              	<div data-role="navbar">
-					<ul>
-					  <li><a href="#home"  data-icon="home" >Home</a></li>
-					  <li><a href="#profile" data-icon="user" class="ui-btn-active ui-state-persist" >Profile</a></li>
-					  <li><a href="#info" data-icon="info">Info</a></li>
-					  <li><a href="#settings" data-icon="gear">Settings</a></li>
-					</ul>
-				</div>
-        </div>	
-	</section>
-	
-	
-<!-- =============================== 	current recommended therapy  ======================================= -->
-
-	
-	<section id="current_therapy_info" data-role="page" data-theme="b">
-		<div data-role="header"  data-position="fixed">
-			<h4>Current prescribed therapy</h4>
-			<a href="#profile" data-icon="back">Back</a>
-		</div>
-		
-		
-		<div data-role="content">
-			
-			
-			<ul data-role="listview">
-					
-						<li><a href="#" ><h2>Dietary regimen</h2>
-										<p class="wrap">No matter what your current caries risk level is, you should reduce eating sugar containing food as much as possible. At least keep frequency of eating it below three times a day (tap to learn more).</p>
-						</a></li>
-						<li><a href="#" ><h2>Keeping oral hygiene</h2>
-										<p class="wrap">Brush your teeth two times daily - after breakfast and at bed time. Floss your teeth once daily after teeth brushing. Tap to learn about correct technique and duration of teeth brushing and flossing.</p>
-						</a></li>
-						<li><a href="#" ><h2>Regular dental visits</h2>
-										<p class="wrap">You should regularly visit your dentist for recall exams.</p>
-						</a></li>
-						
-						
-						<li data-role="list-divider" class="wrap">Specific therapy prescribed by your dentist:</li>
-
-					<li data-role="list-divider"></li>
-
-			</ul>
-			
-			
-		</div>
-		
-		<div data-role="footer" data-position="fixed">
-              	<div data-role="navbar">
-					<ul>
-					  <li><a href="#home"  data-icon="home" >Home</a></li>
-					  <li><a href="#profile" data-icon="user" class="ui-btn-active ui-state-persist" >Profile</a></li>
-					  <li><a href="#info" data-icon="info">Info</a></li>
-					  <li><a href="#settings" data-icon="gear">Settings</a></li>
-					</ul>
-				</div>
-        </div>	
-	</section>
-		
-	
-
 <!-- <script type="text/javascript" src="js/getstorage.js"></script> -->
 <script type"text/javascript">
 

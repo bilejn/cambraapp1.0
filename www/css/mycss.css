@@ -39,6 +39,10 @@ a {text-decoration: none;}
 	line-height: 2em;
 }
 
+#registrationButtons {
+	margin-top: 30px;
+}
+
 .daily_counter span {
 	font-size: 17px;
 }

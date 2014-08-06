@@ -1,16 +1,89 @@
-var disease_indicators = {
-	id: "disease_indicators",
-	publicName: "Disease indicators",
+
+
+var riskLevel = {
+	id: "riskLevel",
+	publicName: "Caries risk level",
+	text: "Likelihood of having new caries lesions in coming months or years.",
+	
+	type: "status",
+	present: "high",
+	specificRisk: "low2",
+	style: "red",
+
+};
+
+var diseaseIndicators = {
+	id: "diseaseIndicators",
+	publicName: "Disease Indicators",
 	text: "Presence of caries lesions according to last dental examination.",
 	
 	type: "status",
-	present: "n/a",
 	
-	visibleCavities: "n/a",
-	radiographic: "n/a",
-	whiteSpots: "n/a",
-	restorationsLast3y: "n/a",
+	present: 2,
+	style: "red",
+	
+	visibleCavities: false,
+	radiographic: true,
+	whiteSpots: false,
+	last3y: true,
+
 };
+
+var riskFactors = {
+	id: "riskFactors",
+	publicName: "Caries risk factors",
+	text: "Factors leading to new caries lesions according to last dental examination.",
+	
+	type: "status",
+	
+	present: 0,
+	style: "green",
+	
+	mslbCount: false,
+	heavyPlaque: true,
+	frequentSnacks: false,
+	deepPits: true,
+	drugUse: true,
+	inadequateSaliva: false,
+	exposedRoots: false,
+	orthodonticAppliances:false,
+
+};
+
+var protectiveFactors = {
+	id: "protectiveFactors",
+	publicName: "Caries protective factors",
+	text: "Factors lowering risk for new caries lesions according to last dental examination.",
+	
+	type: "status",
+	
+	present: 4,
+	style: "green",
+	
+	fluoridatedCommunity: false,
+	ftoothpOnce: true,
+	ftoothpTwice: false,
+	fMouthrinse: true,
+	fthpasteDaily: true,
+	fVarnish: false,
+	fTopical: false,
+	chlorhexidine:false,
+	xylitol:false,
+	cap:false,
+	adequateSaliva: true,
+
+};
+
+$.jStorage.set("diseaseIndicators", diseaseIndicators);
+$.jStorage.set("riskFactors", riskFactors);
+$.jStorage.set("protectiveFactors", protectiveFactors);
+$.jStorage.set("riskLevel", riskLevel);
+$.jStorage.set ("diagnostic" ,["riskLevel", "diseaseIndicators", "riskFactors", "protectiveFactors"]);
+
+
+
+
+
 
 var snack = {
 	id: "snack",
