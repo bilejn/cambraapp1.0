@@ -1,84 +1,122 @@
+	
+	function GeneralData(firstName,lastName,age,gender) {
+	
+			this.firstName = firstName;
+			this.lastName = lastName;	
+			this.age = age;
+			this.gender = gender;
+			
+	}
+	
+	function DiseaseIndicators (visibleCavities,radiographic,whiteSpots,last3y) {
+
+			this.args = [].slice.call(arguments);
+			this.fCount = function () {
+				var count = 0;
+				for (var i = 0; i < this.args.length; i++){
+					if (this.args[i]) count = count + 1;
+				}
+				return count;
+			};
+			this.count = this.fCount();	
+			this.visibleCavities = visibleCavities;
+			this.radiographic = radiographic;
+			this.whiteSpots = whiteSpots;
+			this.last3y = last3y;
+	
+	}
+	
+	function RiskFactors(msLb,visiblePlaque,frequentSnack,pitsAndFissures,drugUse,inadequateSaliva,salivaReducingFactors,exposedRoots,orthodonticAppliances) {
+	
+			this.args = [].slice.call(arguments);
+			this.fCount = function () {
+				var count = 0;
+				for (var i = 0; i < this.args.length; i++){
+					if (this.args[i]) count = count + 1;
+				}
+				return count;
+			};
+			this.count = this.fCount();			
+			this.msLb = msLb;
+			this.visiblePlaque = visiblePlaque;
+			this.frequentSnack = frequentSnack;
+			this.pitsAndFissures = pitsAndFissures;
+			this.drugUse = drugUse;
+			this.inadequateSaliva = inadequateSaliva;
+			this.salivaReducingFactors = salivaReducingFactors;
+			this.exposedRoots = exposedRoots;
+			this.orthodonticAppliances = orthodonticAppliances;
+			
+	}
+	
+	function ProtectiveFactors(fluoridatedCommunity,fluoridePasteOnce,fluoridePasteTwice,fluorideMouthrinse,fluoridePasteHighF,fluorideVarnish,fluorideTopical,chlorhexidine,xylitol,cap,adequateSaliva) {
+			
+			this.args = [].slice.call(arguments);
+			this.fCount = function () {
+				var count = 0;
+				for (var i = 0; i < this.args.length; i++){
+					if (this.args[i]) count = count + 1;
+				}
+				return count;
+			};
+			this.count = this.fCount();
+			this.fluoridatedCommunity = fluoridatedCommunity;
+			this.fluoridePasteOnce = fluoridePasteOnce;
+			this.fluoridePasteTwice = fluoridePasteTwice;
+			this.fluorideMouthrinse = fluorideMouthrinse;
+			this.fluoridePasteHighF = fluoridePasteHighF;
+			this.fluorideVarnish = fluorideVarnish;
+			this.fluorideTopical = fluorideTopical;
+			this.chlorhexidine = chlorhexidine;
+			this.xylitol = xylitol;
+			this.cap = cap;
+			this.adequateSaliva = adequateSaliva;
+			
+	}
 
 
-var riskLevel = {
-	id: "riskLevel",
-	publicName: "Caries risk level",
-	text: "Likelihood of having new caries lesions in coming months or years.",
+	function RiskLevel () {
 	
-	type: "status",
-	present: "high",
-	specificRisk: "low2",
-	style: "red",
+		this.id = "riskLevel";
+		this.publicName = "Caries risk level";
+		this.text = "Likelihood of having new caries lesions in coming months or years.";
+		
+		this.fCalculate = function() {
+			var result = "";
+			if ($.jStorage.get("disease_indicators") != null && $.jStorage.get("risk_factors") != null && $.jStorage.get("protective_factors") != null){
+				var diseaseIndicators = $.jStorage.get("disease_indicators");
+				var riskFactors = $.jStorage.get("risk_factors");
+				var protectiveFactors = $.jStorage.get("protective_factors");
+				
+				if (diseaseIndicators.count != 0) {
+					if (riskFactors.inadequateSaliva || riskFactors.salivaReducingFactors || riskFactors.drugUse) {
+						result = "extreme";
+					} else {
+						result = "high1";				
+					}
+				} else {
+					if (riskFactors.count > protectiveFactors.count){
+						result = "high2";
+					}else if (riskFactors.count == protectiveFactors.count){
+						result = "moderate";
+					}else if(riskFactors.count < protectiveFactors.count && riskFactors.count > 0 ){
+						result = "low1";
+					} else {
+						result = "low2";
+					}
+				}	
+			} else {
+				result = "undefined";
+			}
+			return result;
+		};
 
-};
+		this.level = this.fCalculate();
+		this.style = "red";
+		
+		
+	}
 
-var diseaseIndicators = {
-	id: "diseaseIndicators",
-	publicName: "Disease Indicators",
-	text: "Presence of caries lesions according to last dental examination.",
-	
-	type: "status",
-	
-	present: 2,
-	style: "red",
-	
-	visibleCavities: false,
-	radiographic: true,
-	whiteSpots: false,
-	last3y: true,
-
-};
-
-var riskFactors = {
-	id: "riskFactors",
-	publicName: "Caries risk factors",
-	text: "Factors leading to new caries lesions according to last dental examination.",
-	
-	type: "status",
-	
-	present: 0,
-	style: "green",
-	
-	mslbCount: false,
-	heavyPlaque: true,
-	frequentSnacks: false,
-	deepPits: true,
-	drugUse: true,
-	inadequateSaliva: false,
-	exposedRoots: false,
-	orthodonticAppliances:false,
-
-};
-
-var protectiveFactors = {
-	id: "protectiveFactors",
-	publicName: "Caries protective factors",
-	text: "Factors lowering risk for new caries lesions according to last dental examination.",
-	
-	type: "status",
-	
-	present: 4,
-	style: "green",
-	
-	fluoridatedCommunity: false,
-	ftoothpOnce: true,
-	ftoothpTwice: false,
-	fMouthrinse: true,
-	fthpasteDaily: true,
-	fVarnish: false,
-	fTopical: false,
-	chlorhexidine:false,
-	xylitol:false,
-	cap:false,
-	adequateSaliva: true,
-
-};
-
-$.jStorage.set("diseaseIndicators", diseaseIndicators);
-$.jStorage.set("riskFactors", riskFactors);
-$.jStorage.set("protectiveFactors", protectiveFactors);
-$.jStorage.set("riskLevel", riskLevel);
-$.jStorage.set ("diagnostic" ,["riskLevel", "diseaseIndicators", "riskFactors", "protectiveFactors"]);
 
 
 

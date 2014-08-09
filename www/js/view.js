@@ -1,9 +1,15 @@
 
 $(document).on("pagebeforeshow", "#home", function (){
 
-	$("#place_holder").html('<img src="img/'+riskLevel.specificRisk+'.png" />');
+	if ($.jStorage.get("risk_level").level == "undefined"){
+		$("#place_holder").html('<img src="img/undefined.png" />');	
+	} else {
+		riskLevel=$.jStorage.get("risk_level");
+		$("#place_holder").html('<img src="img/'+riskLevel.level+'.png" />');		
+	}
+	
 
-	if ($.jStorage.get("active_therapy")){
+
 		$("#other_registration_buttons").html("");
 		var trackingButtons = $.jStorage.get("objects");
 			var output = "";
@@ -12,9 +18,10 @@ $(document).on("pagebeforeshow", "#home", function (){
 			if (model.specific)
 			output = output + '<a href="#" data-role="button" id="'+model.id+'_registration_button" data-theme="d" onclick="registration(\''+model.id+'\')">'+model.publicName+'</a>';
 			}
-	}
+		$("#other_registration_buttons").html(output);	
+
 	
-	$("#other_registration_buttons").html(output);
+
 	
 	var toDoCount = $.jStorage.get("to_do_count");
 	$("#to_do_count span").html(" &nbsp "+toDoCount+" &nbsp ");
@@ -91,36 +98,120 @@ $(document).on("pagebeforeshow", "#current_status_info", function (){
 });
 
 
+/* ================== FORMS ==================*/
 
-/*================= EVENTS =================*/
+$(document).on("pagebeforeshow", "#general_data", function (){
 
-$.jStorage.listenKeyChange("to_do_count", function(){
-	if (!$.jStorage.get("init")){
-
-		var toDoCount = $.jStorage.get("to_do_count");
-		$("#to_do_count span").html(" &nbsp "+toDoCount+" &nbsp ");
-		if (toDoCount > 0) {
-			$("#to_do_count span").addClass("red");
-		} else {
-			$("#to_do_count span").removeClass("red");
-			$("#to_do_count span").addClass("green");
-		}
-	$("#home").trigger("create");
+	if ($.jStorage.get("general_data") != null){
+	
+		var generalData = $.jStorage.get("general_data");
+		document.generalData.first_name.value = generalData.firstName;
+		document.generalData.last_name.value = generalData.lastName;	
+		document.generalData.gender.value = generalData.gender;
+		document.generalData.yearpicker.value = generalData.age;
+		$("#general_data").trigger("create");
 	}
+
 });
 
-$.jStorage.listenKeyChange("snack_count", function(){
-	if (!$.jStorage.get("init")){
-		var snackCount = $.jStorage.get("snack_count");
-		$("#snack_count span").html(" &nbsp "+snackCount+" &nbsp ");
-		if (snackCount <= 3) {
-			$("#snack_count span").addClass("green");
-		} else {
-			$("#snack_count span").removeClass("green");
-			$("#snack_count span").addClass("red");
-		}
-	$("#home").trigger("create");
+
+$(document).on("pagebeforeshow", "#disease_indicators", function (){
+
+	if ($.jStorage.get("disease_indicators") != null){
+	
+		var diseaseIndicators = $.jStorage.get("disease_indicators");
+		document.diseaseIndicators.visible_cavities.checked = diseaseIndicators.visibleCavities;
+		document.diseaseIndicators.radiographic.checked = diseaseIndicators.radiographic;	
+		document.diseaseIndicators.white_spots.checked = diseaseIndicators.whiteSpots;
+		document.diseaseIndicators.last_3_years.checked = diseaseIndicators.last3y;
+		
+		$("#disease_indicators").trigger("create");
 	}
+
+});
+
+
+$(document).on("pagebeforeshow", "#risk_factors", function (){
+
+	if ($.jStorage.get("risk_factors") != null){
+	
+		var riskFactors = $.jStorage.get("risk_factors");
+		document.riskFactors.ms_lb.checked = riskFactors.msLb;
+		document.riskFactors.visible_plaque.checked = riskFactors.visiblePlaque;
+		document.riskFactors.frequent_snack.checked = riskFactors.frequentSnack;
+		document.riskFactors.pits_and_fissures.checked = riskFactors.pitsAndFissures;
+		document.riskFactors.drug_use.checked = riskFactors.drugUse;
+		document.riskFactors.inadequate_saliva.checked = riskFactors.inadequateSaliva;
+		document.riskFactors.saliva_reducing_factors.checked = riskFactors.salivaReducingFactors;
+		document.riskFactors.exposed_roots.checked = riskFactors.exposedRoots;
+		document.riskFactors.orthodontic_appliances.checked = riskFactors.orthodonticAppliances;
+
+		$("#risk_factors").trigger("create");
+	}
+
+});
+
+$(document).on("pagebeforeshow", "#protective_factors", function (){
+
+	if ($.jStorage.get("protective_factors") != null){
+		
+		var protectiveFactors = $.jStorage.get("protective_factors");
+		document.protectiveFactors.fluoridated_community.checked = protectiveFactors.fluoridatedCommunity;
+		document.protectiveFactors.fluoride_paste_once.checked = protectiveFactors.fluoridePasteOnce;
+		document.protectiveFactors.fluoride_paste_twice.checked = protectiveFactors.fluoridePasteTwice;
+		document.protectiveFactors.fluoride_mouthrinse.checked = protectiveFactors.fluorideMouthrinse;
+		document.protectiveFactors.fluoride_5000.checked = protectiveFactors.fluoridePasteHighF;
+		document.protectiveFactors.fluoride_varnish.checked = protectiveFactors.fluorideVarnish;
+		document.protectiveFactors.topical_fluoride.checked = protectiveFactors.fluorideTopical;
+		document.protectiveFactors.chlorhexidine.checked = protectiveFactors.chlorhexidine;
+		document.protectiveFactors.xylitol.checked = protectiveFactors.xylitol;
+		document.protectiveFactors.tooth_mousse.checked = protectiveFactors.cap;
+		document.protectiveFactors.adequate_saliva.checked = protectiveFactors.adequateSaliva;
+
+		$("#protective_factors").trigger("create");
+	}
+
+});
+
+/*================= EVENTS =================*/
+$(function(){
+
+	$.jStorage.listenKeyChange("to_do_count", function(){
+		if (!$.jStorage.get("init")){
+
+			var toDoCount = $.jStorage.get("to_do_count");
+			$("#to_do_count span").html(" &nbsp "+toDoCount+" &nbsp ");
+			if (toDoCount > 0) {
+				$("#to_do_count span").addClass("red");
+			} else {
+				$("#to_do_count span").removeClass("red");
+				$("#to_do_count span").addClass("green");
+			}
+		$("#home").trigger("create");
+		}
+	});
+
+	$.jStorage.listenKeyChange("snack_count", function(){
+		if (!$.jStorage.get("init")){
+			var snackCount = $.jStorage.get("snack_count");
+			$("#snack_count span").html(" &nbsp "+snackCount+" &nbsp ");
+			if (snackCount <= 3) {
+				$("#snack_count span").addClass("green");
+			} else {
+				$("#snack_count span").removeClass("green");
+				$("#snack_count span").addClass("red");
+			}
+		$("#home").trigger("create");
+		}
+	});
+
+
+	if ($.jStorage.get("risk_level") == "undefined"){
+		var message = "Your current caries risk level is undefined. Visit your dentist to evaluate your caries risk level.";	
+	} else {
+		var message = "Your current caries risk level is: " +$.jStorage.get("risk_level").present+".";		
+	}
+	$( "#place_holder" ).bind( "tap", function () {alert( message)} );
 });
 
 

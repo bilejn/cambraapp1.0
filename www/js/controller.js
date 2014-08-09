@@ -1,5 +1,11 @@
 $(function (){
 	$.jStorage.set("init", true);
+	
+	
+	var riskLevel = new RiskLevel();
+	$.jStorage.set("risk_level", riskLevel);
+	
+	
 	var today = Date.today().toString("dd.MM.yyyy");
 	var trackingDay = "31.07.2014";
 
