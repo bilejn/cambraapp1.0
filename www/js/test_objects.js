@@ -91,22 +91,29 @@
 				if (diseaseIndicators.count != 0) {
 					if (riskFactors.inadequateSaliva || riskFactors.salivaReducingFactors || riskFactors.drugUse) {
 						result = "extreme";
+						this.message =  "Your current caries risk level is: Extreme.";
 					} else {
-						result = "high1";				
+						result = "high1";		
+						this.message =  "Your current caries risk level is: High.";						
 					}
 				} else {
 					if (riskFactors.count > protectiveFactors.count){
 						result = "high2";
+						this.message =  "Your current caries risk level is: High.";	
 					}else if (riskFactors.count == protectiveFactors.count){
 						result = "moderate";
+						this.message =  "Your current caries risk level is: Moderate.";	
 					}else if(riskFactors.count < protectiveFactors.count && ((protectiveFactors.count - riskFactors.count) < 3)){
 						result = "low1"
+						this.message =  "Your current caries risk level is: Low.";	
 					} else {
 						result = "low2";
+						this.message =  "Your current caries risk level is: Low.";	
 					}
 				}	
 			} else {
 				result = "undefined";
+				this.message = "Your current caries risk level is undefined. Visit your dentist to evaluate your caries risk level.";
 			}
 			return result;
 		};

@@ -209,18 +209,7 @@ $(function(){
 
 	$( "#place_holder" ).bind( "tap", function () {
 	
-			if ($.jStorage.get("risk_level") == "undefined"){
-				var message = "Your current caries risk level is undefined. Visit your dentist to evaluate your caries risk level.";	
-			} else {
-				var riskLevel = $.jStorage.get("risk_level");
-				if (riskLevel.level == "extreme") var message = "Your current caries risk level is: Extreme.";
-				if (riskLevel.level == "high1") var message = "Your current caries risk level is: High.";
-				if (riskLevel.level == "high2") var message = "Your current caries risk level is: High.";
-				if (riskLevel.level == "moderate") var message = "Your current caries risk level is: Moderate.";
-				if (riskLevel.level == "low1") var message = "Your current caries risk level is: Low.";
-				if (riskLevel.level == "low2") var message = "Your current caries risk level is: Low.";
-			}
-	
+	var message = $.jStorage.get("risk_level").message;
 	
 	alert( message);
 	});
