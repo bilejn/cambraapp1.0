@@ -10,7 +10,7 @@ $(document).on("pagebeforeshow", "#home", function (){
 	
 	if($.jStorage.get("next_appointment") != null){
 		var nextAppointment = $.jStorage.get("next_appointment");
-		$("#time span").html(nextAppointment.toString($.jStorage.get("date_format").selected));
+		$("#time span").html(nextAppointment);
 	}
 
 		$("#other_registration_buttons").html("");
