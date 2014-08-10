@@ -6,7 +6,7 @@ $(function (){
 		selected: "mm-dd-yyyy",
 		headerFormat: '%A, %B %-d, %Y',
 		dateFieldOrder: ['m', 'd', 'y'],
-		dateFormat: "%m-%d-%Y"		
+		dateFormat: '%m-%d-%Y'		
 		};
 		$.jStorage.set("date_format",dateFormat);
 	}

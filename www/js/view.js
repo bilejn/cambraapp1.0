@@ -237,7 +237,7 @@ $(function(){
 				selected: "dd-mm-yyyy",
 				headerFormat: '%A, %B %-d, %Y',
 				dateFieldOrder: ['d', 'm', 'y'],
-				dateFormat: "%d-%m-%Y"		
+				dateFormat: '%d-%m-%Y'		
 			};
 			$.jStorage.set("date_format",dateFormat);
 			window.location.reload(true);
@@ -246,7 +246,7 @@ $(function(){
 				selected: "mm-dd-yyyy",
 				headerFormat: '%A, %B %-d, %Y',
 				dateFieldOrder: ['m', 'd', 'y'],
-				dateFormat: "%m-%d-%Y"		
+				dateFormat: '%m-%d-%Y'		
 			};
 			$.jStorage.set("date_format",dateFormat);
 			window.location.reload(true);
