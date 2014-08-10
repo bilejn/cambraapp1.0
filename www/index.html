@@ -9,6 +9,7 @@
 			<link rel="stylesheet" href="css/jquery.mobile-1.4.2.css" />
 			<link rel="stylesheet" href="css/mycss.css" />
 			<link rel="stylesheet" href="css/myswatch.css" />
+			<link rel="stylesheet" href="css/jqm-datebox.css" />
 			
 			<script  type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
 			<script type="text/javascript" src="phonegap.js"></script>
@@ -26,6 +27,9 @@
 			</script>
 
 			<script type="text/javascript" src="js/jquery.mobile-1.4.2.js"></script>
+			<script type="text/javascript" src="js/jqm-datebox.core.js"></script>
+			<script type="text/javascript" src="js/jqm-datebox.mode.datebox.js"></script>
+			<script type="text/javascript" src="js/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
 			<script type="text/javascript" src="js/timer.js"></script>
 			<script type="text/javascript" src="js/view.js"></script>
 			<script type="text/javascript" src="js/event.js"></script>
@@ -69,7 +73,7 @@
 				
 				<p class="clear"></p>
 				<ul  data-role="listview">
-					  <li id="time"  data-theme="a" class="emphasize">Next dental visit: <span>12.12.2014</span> </li>
+					  <li id="time"  data-theme="a" class="emphasize">Next dental visit: <span>not set.</span> </li>
 
 				</ul>
 			<!--	<p id="time" class="emphasize">Next dental visit: <span>12.12.2014</span> </p> -->
@@ -241,8 +245,8 @@
 				<li><a href="#list" >List</a></li>
 		</ul>
 		
-		<br /><br />
-		<a href=""  data-role="button" data-theme="b" onclick= "window.localStorage.clear(); window.location.reload(true);">Clear all</a>
+
+
 		
 		</div>
 		
@@ -390,9 +394,9 @@
 <!-- =============================== 	SETTINGS  ======================================= -->
 
 	
-	<section id="settings" data-role="page" data-theme="b">
+	<section id="settings" data-role="page" data-theme="a">
 	
-		<div data-role="header" data-position="fixed">
+		<div data-role="header" data-position="fixed" data-theme="b">
 			<h4>Settings</h4>
 			<a href="#home" data-icon="back">Back</a>
 		</div>
@@ -400,18 +404,24 @@
 		
 		<div data-role="content">
 		
-		<ul data-role="listview">
-				<li><a href="#">Language</a></li>	
-				<li><a href="#">Sound</a></li>
-				<li><a href="#">Display</a></li>
-				<li><a href="#">About</a></li>
-		</ul>
-		
+
+					<form name="settings" action="" onsubmit="return settings();"  data-ajax="false" >
+					<div  data-role="controlgroup" data-type="vertical">
+						<legend>Date format:</legend>
+							<input type="radio" name="date_format" class="pick_format" id="ddmmyyyy" value="dd-mm-yyyy"/>
+							<label for="ddmmyyyy">dd-mm-yyyy</label>
+							<input type="radio" name="date_format" class="pick_format" id="mmddyyyy" value="mm-dd-yyyy"/>
+							<label for="mmddyyyy">mm-dd-yyyy</label>
+					</div>
+					</form>
+
+					<br /><br />
+					<a href=""  data-role="button" onclick= "window.localStorage.clear(); window.location.reload(true);">RESET ALL</a>
 		</div>
 		
 		
 		
-		<div data-role="footer" data-id="persistent_navbar" data-position="fixed">
+		<div data-role="footer" data-position="fixed" data-theme="b">
               	<div data-role="navbar">
 					<ul>
 					  <li><a href="#home"  data-icon="home">Home</a></li>
@@ -456,12 +466,10 @@
 							<label for="female">Female</label>
 					</div>
 					
-					<div data-role="controlgroup" data-type="vertical">
-						<legend>Age:</legend>
-							<select name="yearpicker" id="yearpicker" >
-							<option>Please Choose</option>
-							</select>
-					</div>
+
+						<p>Date of birth:</p>
+						<input type="text" name="birthday" id="birthday" data-role="datebox" data-options='{"mode":"datebox"}' />
+
 
 				</fieldset>
 	
@@ -726,9 +734,9 @@
 	<!-- =============================== 	RECOMMENDATIONS   ======================================= -->
 
 	
-	<section id="recommendations" data-role="page" data-theme="b">
+	<section id="recommendations" data-role="page" data-theme="a">
 	
-		<div data-role="header"  data-position="fixed">
+		<div data-role="header"  data-position="fixed" data-theme="b">
 			<h4>Recommendations</h4>
 			<a href="#dental_visit" data-icon="back">Back</a>
 		</div>
@@ -737,7 +745,7 @@
 		<div data-role="content">
 		
 			<ul data-role="listview">
-					<li><a href="#recall_exams" >Recall exams frequency</a></li>	
+					<li><a href="#next_appointment" >Next dental appointment</a></li>	
 					<li><a href="#antibacterials" >Antibacterial therapy</a>	</li>
 					<li><a href="#fluoride" >Fluoride therapy</a></li>
 					<li><a href="#ph_control" >Ph-control therapy</a>	</li>
@@ -748,7 +756,7 @@
 		
 
 		
-		<div data-role="footer" data-position="fixed">
+		<div data-role="footer" data-position="fixed" data-theme="b">
               	<div data-role="navbar">
 					<ul>
 					  <li><a href="#home"  data-icon="home" data-transition="none" >Home</a></li>
@@ -764,10 +772,10 @@
 		<!-- =============================== 	Recall exams   ======================================= -->
 
 	
-	<section id="recall_exams" data-role="page" data-theme="b">
+	<section id="next_appointment" data-role="page" data-theme="a">
 	
-		<div data-role="header"  data-position="fixed">
-			<h4>Recall exam frequency</h4>
+		<div data-role="header"  data-position="fixed" data-theme="b">
+			<h4>Next appointment</h4>
 			<a href="#recommendations" data-icon="back">Back</a>
 		</div>
 		
@@ -776,12 +784,10 @@
 		<div data-role="content">
 		
 		
-				<form name="recallExams" action="" onsubmit="return fRecallExams();"  data-ajax="false" >
-						<fieldset data-role="controlgroup" >	
-						<legend>Recall dental exams:</legend>						
-							  <label for="points">every:</label>
-							  <input type="range" name="recalls" id="recalls" value="6" min="0" max="12">months</input>	
-						</fieldset>	
+				<form name="nextAppointment" action="" onsubmit="return fNextAppointment();"  data-ajax="false" >
+							<p>Please choose date of next dental appointment:</p>
+							  <input type="text" name="next_appointment" id="next_appointment" data-role="datebox" data-options='{"mode":"datebox"}' />
+		
 		
 				<fieldset class="ui-grid-a">
 					<div class="ui-block-a"><input type="submit" value="Submit"  id="submit" data-role="button" data-icon="check"></div>
@@ -792,7 +798,7 @@
 		</div>
 		
 		
-			<div data-role="footer" data-position="fixed">
+			<div data-role="footer" data-position="fixed" data-theme="b">
 			<div data-role="navbar">
 				<ul>
 				  <li><a href="#home"  data-icon="home">Home</a></li>
@@ -1183,13 +1189,6 @@
         </div>	
 	</section>			
 
-	
-
-<script type"text/javascript">
-	for (i = new Date().getFullYear(); i > 1900; i--){
-		$('#yearpicker').append($('<option />').val(i).html(i));
-	}
-</script>
 
   </body>
 </html>

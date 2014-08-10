@@ -4,9 +4,9 @@
 	function generalForm() {
 
 			var firstName = document.generalData.first_name.value;
-			var lastName = document.generalData.last_name.value;	
-			var age = document.generalData.yearpicker.value;			
+			var lastName = document.generalData.last_name.value;				
 			var gender = document.generalData.gender.value;
+			var age = document.generalData.birthday.value;
 
 			var generalData = new GeneralData(firstName,lastName,gender,age);
 			$.jStorage.set("general_data",generalData);
@@ -92,25 +92,15 @@
 	/* ============================ THERAPY RECOMMENDATIONS FUNCTIONS ================ */
 	
 	
-	function fRecallExams () {
+	function fNextAppointment () {
 	
-	var _RecallExamsFrequency = document.recallExams.recalls.value;
-	var broj = parseInt(_RecallExamsFrequency);
-	var date = new Date();
+	var date = document.nextAppointment.next_appointment.value;
+	$.jStorage.set("next_appointment", date);
+	
+	
 
-	var day = date.getDate(); if (day < 10) { day = "0" + day; }
-	var month = date.getMonth() + 1 + broj; 
-	var year = date.getFullYear()
- 		if (month > 12) {month = month % 12; year = year + 1}
-		if (month < 10) { month = "0" + month; }
-	var item = day + "." + month + "." + year + ".";
-
-	$.jStorage.set("recallExam", item.toString());
-
-		alert("submitted");
-		$.jStorage.set("submit_form_th", "submit");
-		$.jStorage.set("submit_form", "submit");		
-		$.mobile.changePage( "#recall_exams", { allowSamePageTransition: true } );
+		alert("submitted");	
+		$.mobile.changePage( "#next_appointment", { allowSamePageTransition: true } );
 		return false;
 	}
 	

@@ -1,6 +1,16 @@
 $(function (){
 	$.jStorage.set("init", true);
 	
+	if ($.jStorage.get("date_format") == null){
+		var dateFormat = {
+		selected: "mm-dd-yyyy",
+		headerFormat: '%A, %B %-d, %Y',
+		dateFieldOrder: ['m', 'd', 'y'],
+		dateFormat: "%m-%d-%Y"		
+		};
+		$.jStorage.set("date_format",dateFormat);
+	}
+	
 	
 	var riskLevel = new RiskLevel();
 	$.jStorage.set("risk_level", riskLevel);

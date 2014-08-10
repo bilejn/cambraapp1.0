@@ -8,7 +8,10 @@ $(document).on("pagebeforeshow", "#home", function (){
 		$("#place_holder").html('<img src="img/'+riskLevel.level+'.png" />');		
 	}
 	
-
+	if($.jStorage.get("next_appointment") != null){
+		var nextAppointment = $.jStorage.get("next_appointment");
+		$("#time span").html(nextAppointment.toString($.jStorage.get("date_format").selected));
+	}
 
 		$("#other_registration_buttons").html("");
 		var trackingButtons = $.jStorage.get("objects");
@@ -108,7 +111,7 @@ $(document).on("pagebeforeshow", "#general_data", function (){
 		document.generalData.first_name.value = generalData.firstName;
 		document.generalData.last_name.value = generalData.lastName;	
 		document.generalData.gender.value = generalData.gender;
-		document.generalData.yearpicker.value = generalData.age;
+		document.generalData.birthday.value = generalData.age;
 		$("#general_data").trigger("create");
 	}
 
@@ -173,6 +176,17 @@ $(document).on("pagebeforeshow", "#protective_factors", function (){
 
 });
 
+
+
+$(document).on("pagebeforeshow", "#settings", function (){
+	var dateFormat = $.jStorage.get("date_format");
+	document.settings.date_format.value = dateFormat.selected;
+	$("#settings").trigger("create");
+});
+
+
+
+
 /*================= EVENTS =================*/
 $(function(){
 
@@ -213,6 +227,33 @@ $(function(){
 	
 	alert( message);
 	});
+	
+	
+	
+    $(".pick_format").change(function () {
+                     
+		if (document.settings.date_format.value == "dd-mm-yyyy") {
+            var dateFormat = {
+				selected: "dd-mm-yyyy",
+				headerFormat: '%A, %B %-d, %Y',
+				dateFieldOrder: ['d', 'm', 'y'],
+				dateFormat: "%d-%m-%Y"		
+			};
+			$.jStorage.set("date_format",dateFormat);
+			window.location.reload(true);
+        } else {
+			var dateFormat = {
+				selected: "mm-dd-yyyy",
+				headerFormat: '%A, %B %-d, %Y',
+				dateFieldOrder: ['m', 'd', 'y'],
+				dateFormat: "%m-%d-%Y"		
+			};
+			$.jStorage.set("date_format",dateFormat);
+			window.location.reload(true);
+		}
+    });	
+	
+	
 });
 
 

@@ -1,10 +1,10 @@
 	
-	function GeneralData(firstName,lastName,age,gender) {
+	function GeneralData(firstName,lastName,gender,age) {
 	
 			this.firstName = firstName;
 			this.lastName = lastName;	
-			this.age = age;
 			this.gender = gender;
+			this.age = age;
 			
 	}
 	
