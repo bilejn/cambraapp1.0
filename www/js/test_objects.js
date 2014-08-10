@@ -99,8 +99,8 @@
 						result = "high2";
 					}else if (riskFactors.count == protectiveFactors.count){
 						result = "moderate";
-					}else if(riskFactors.count < protectiveFactors.count && riskFactors.count > 0 ){
-						result = "low1";
+					}else if(riskFactors.count < protectiveFactors.count && ((protectiveFactors.count - riskFactors.count) < 3)){
+						result = "low1"
 					} else {
 						result = "low2";
 					}
