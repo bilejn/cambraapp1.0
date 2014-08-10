@@ -178,11 +178,6 @@ $(document).on("pagebeforeshow", "#protective_factors", function (){
 
 
 
-$(document).on("pagebeforeshow", "#settings", function (){
-	var dateFormat = $.jStorage.get("date_format");
-	document.settings.date_format.value = dateFormat.selected;
-	$("#settings").trigger("create");
-});
 
 
 
@@ -230,28 +225,7 @@ $(function(){
 	
 	
 	
-    $(".pick_format").change(function () {
-                     
-		if (document.settings.date_format.value == "dd-mm-yyyy") {
-            var dateFormat = {
-				selected: "dd-mm-yyyy",
-				headerFormat: '%A, %B %-d, %Y',
-				dateFieldOrder: ['d', 'm', 'y'],
-				dateFormat: '%d-%m-%Y'		
-			};
-			$.jStorage.set("date_format",dateFormat);
-			window.location.reload(true);
-        } else {
-			var dateFormat = {
-				selected: "mm-dd-yyyy",
-				headerFormat: '%A, %B %-d, %Y',
-				dateFieldOrder: ['m', 'd', 'y'],
-				dateFormat: '%m-%d-%Y'		
-			};
-			$.jStorage.set("date_format",dateFormat);
-			window.location.reload(true);
-		}
-    });	
+  
 	
 	
 });
