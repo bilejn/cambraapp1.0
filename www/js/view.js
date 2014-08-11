@@ -18,7 +18,7 @@ $(document).on("pagebeforeshow", "#home", function (){
 			var output = "";
 			for (var i = 0; i < trackingButtons.length; i++){
 			var model = $.jStorage.get(trackingButtons[i]);
-			if (model.specific)
+			if (model.specific && model.strict)
 			output = output + '<a href="#" data-role="button" id="'+model.id+'_registration_button" data-theme="d" onclick="registration(\''+model.id+'\')">'+model.publicName+'</a>';
 			}
 		$("#other_registration_buttons").html(output);	
@@ -50,16 +50,26 @@ $(document).on("pagebeforeshow", "#home", function (){
 
 $(document).on("pagebeforeshow", "#to_do", function (){
 
-	var output = "";
+	var output = "<li data-role=\"list divider\"  data-theme=\"b\">Daily:</li>";
 	var objects = $.jStorage.get("objects");
 	for (var i = 0; i < objects.length; i++){
 		model = $.jStorage.get(objects[i]);
-		if (model.therapy){
+		if (model.therapy && model.strict){
 			var sum = model.daily - model.today; if (sum < 0) sum = 0;
-			output = output + "<li>" + model.toDoText + ": " + sum + "</li>";
+			output = output + "<li>" + model.toDoText + ": <span class=\"ui-li-count ui-btn-corner-all countBubl \">" + sum + "</span></li>";
 		}
 	}
-
+	
+	output = output + "<li data-role=\"list divider\"  data-theme=\"b\">As needed:</li>";
+			
+	for (var i = 0; i < objects.length; i++){
+		model = $.jStorage.get(objects[i]);
+		if (model.therapy && !model.strict){
+			var sum = model.daily - model.today; if (sum < 0) sum = 0;
+			output = output + "<li>" + model.toDoText + "</li>";
+		}
+	}
+	
 	$("#to_do_list").html(output).listview("refresh");
 
 
@@ -86,18 +96,19 @@ $(document).on("pagebeforeshow", "#current_therapy_info", function (){
 
 $(document).on("pagebeforeshow", "#current_status_info", function (){
 
-	var output = "";
-	var diagnostic = $.jStorage.get("diagnostic");
-	for (var i = 0; i < diagnostic.length; i++){
-		model = $.jStorage.get(diagnostic[i]);
 
-			output = output + "<li><h2>" + model.publicName + ": <span class="+model.style+">" + model.present +"</span></h2><p class='wrap'>" + model.text + "</p></li>";
+		var output = "";
+		var diagnostic = $.jStorage.get("diagnostic");
+		for (var i = 0; i < diagnostic.length; i++){
+			model = $.jStorage.get(diagnostic[i]);
 
-	}
+				output = output + "<li><h2>" + model.publicName + ": <span class=\"ui-li-count ui-btn-corner-all countBubl \">" + model.count +"</span></h2><p class='wrap'>" + model.text + "</p></li>";
 
-	$("#current_status_list").html(output).listview("refresh");
+		}
 
+		$("#current_status_list").html(output).listview("refresh");
 
+	
 });
 
 

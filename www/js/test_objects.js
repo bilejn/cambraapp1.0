@@ -9,6 +9,10 @@
 	}
 	
 	function DiseaseIndicators (visibleCavities,radiographic,whiteSpots,last3y) {
+		
+			this.id = "diseaseIndicators";
+			this.publicName = "Disease indicators";
+			this.text = "Presence of caries lesions according to last dental examination.";
 
 			this.args = [].slice.call(arguments);
 			this.fCount = function () {
@@ -18,6 +22,7 @@
 				}
 				return count;
 			};
+			this.defined = true;
 			this.count = this.fCount();	
 			this.visibleCavities = visibleCavities;
 			this.radiographic = radiographic;
@@ -27,6 +32,10 @@
 	}
 	
 	function RiskFactors(msLb,visiblePlaque,frequentSnack,pitsAndFissures,drugUse,inadequateSaliva,salivaReducingFactors,exposedRoots,orthodonticAppliances) {
+		
+			this.id = "riskFactors";
+			this.publicName = "Risk factors";
+			this.text = "Factors leading to new caries lesions according to last dental examination.";
 	
 			this.args = [].slice.call(arguments);
 			this.fCount = function () {
@@ -36,6 +45,7 @@
 				}
 				return count;
 			};
+			this.defined = true;
 			this.count = this.fCount();			
 			this.msLb = msLb;
 			this.visiblePlaque = visiblePlaque;
@@ -50,6 +60,10 @@
 	}
 	
 	function ProtectiveFactors(fluoridatedCommunity,fluoridePasteOnce,fluoridePasteTwice,fluorideMouthrinse,fluoridePasteHighF,fluorideVarnish,fluorideTopical,chlorhexidine,xylitol,cap,adequateSaliva) {
+		
+			this.id = "protectiveFactors";
+			this.publicName = "Protective factors";
+			this.text = "Factors lowering risk for new caries lesions according to last dental examination.";
 			
 			this.args = [].slice.call(arguments);
 			this.fCount = function () {
@@ -59,6 +73,7 @@
 				}
 				return count;
 			};
+			this.defined = true;
 			this.count = this.fCount();
 			this.fluoridatedCommunity = fluoridatedCommunity;
 			this.fluoridePasteOnce = fluoridePasteOnce;
@@ -79,11 +94,11 @@
 	
 		this.id = "riskLevel";
 		this.publicName = "Caries risk level";
-		this.text = "Likelihood of having new caries lesions in coming months or years.";
+		this.text = "Likelihood of having <br />  new caries lesions <br /> in coming months or years.";
 		
 		this.fCalculate = function() {
 			var result = "";
-			if ($.jStorage.get("disease_indicators") != null && $.jStorage.get("risk_factors") != null && $.jStorage.get("protective_factors") != null){
+			if ($.jStorage.get("disease_indicators").defined && $.jStorage.get("risk_factors").defined && $.jStorage.get("protective_factors").defined){
 				var diseaseIndicators = $.jStorage.get("disease_indicators");
 				var riskFactors = $.jStorage.get("risk_factors");
 				var protectiveFactors = $.jStorage.get("protective_factors");
@@ -119,7 +134,7 @@
 		};
 
 		this.level = this.fCalculate();
-		this.style = "red";
+		this.count = this.level;
 		
 		
 	}
@@ -136,8 +151,8 @@ var snack = {
 	text: "Do not eat sugar containing food more than 3 times a day.",
 	alertMessage: "Snack registered. Keep taking sugar containing food below 3 times a day.",
 	
-	type: "tracking",
 	therapy: false,
+	strict: true,
 	active: true,
 	specific: false,
 	daily: 3,
@@ -156,8 +171,8 @@ var brushing = {
 	toDoText: "Brush your teeth",
 	alertMessage: "Brushing registered. Brush your teeth 2 times a day: after breakfast and before bed.",
 	
-	type: "tracking",
 	therapy: true,
+	strict: true,
 	active: true,
 	specific: false,
 	daily: 2,
@@ -175,8 +190,8 @@ var flossing = {
 	toDoText: "Floss your teeth",
 	alertMessage: "Flossing registered. Floss your teeth once daily before brushing.",
 	
-	type: "tracking",
 	therapy: true,
+	strict: true,
 	active: true,
 	specific: false,
 	daily: 1,
@@ -192,10 +207,10 @@ var xylitol = {
 	publicName: "Xylitol",
 	text: "Take 1 to 2 candies four times each day.",
 	toDoText: "Take xylitol candy",
-	alertMessage: "Xylitol candy taking registered. Take one or two xylitol candies four times daily.",
+	alertMessage: "Xylitol candy registered. Take one or two xylitol candies four times daily.",
 	
-	type: "tracking",
 	therapy: true,
+	strict: true,
 	active: true,
 	specific: true,
 	daily: 4,
@@ -208,16 +223,17 @@ var xylitol = {
 
 var chlorhexidine = {
 	id: "chlorhexidine",
-	publicName: "Chlorhexidine",
+	publicName: "Chlorhexidine solution",
 	text: "Rinse your mouth once daily for seven days in month. Do not use together with fluoride mouthrinse.",
 	toDoText: "Rinse with chlorhexidine solution",
-	alertMessage: "Rinsing with chlorhexidine solution registered. Rinse once daily for seven days a month.",
+	alertMessage: "Chlorhexidine solution registered. Rinse once daily for seven days a month.",
 	
-	type: "tracking",
 	therapy: true,
+	strict: true,
 	active: true,
 	specific: true,
 	daily: 1,
+	daysInMonth: 7,
 	
 	today:0,
 	last: "",
@@ -228,12 +244,12 @@ var chlorhexidine = {
 var fluoride_mouthrinse = {
 	id: "fluoride_mouthrinse",
 	publicName: "Fluoride mouthrinse",
-	text: "Rinse your mouth once daily with fluoride mouthrinse.",
+	text: "Rinse your mouth with fluoride mouthrinse when mouth feels dry.",
 	toDoText: "Rinse with fluoride mouthrinse",
 	alertMessage: "Rinsing with fluoride mouthrinse registered. Rinse once daily.",
 	
-	type: "tracking",
 	therapy: true,
+	strict: false,
 	active: true,
 	specific: true,
 	daily: 1,
@@ -251,4 +267,4 @@ $.jStorage.set("flossing", flossing);
 $.jStorage.set("xylitol", xylitol);
 $.jStorage.set("chlorhexidine", chlorhexidine);
 $.jStorage.set("fluoride_mouthrinse", fluoride_mouthrinse);
-$.jStorage.set("objects", ["snack","brushing","flossing","xylitol","chlorhexidine"]);
+$.jStorage.set("objects", ["snack","brushing","flossing","xylitol","chlorhexidine","fluoride_mouthrinse"]);

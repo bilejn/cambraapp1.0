@@ -18,7 +18,7 @@
 			<script type="text/javascript" src="js/submitForm.js"></script>
 			<script type="text/javascript" src="js/test_objects.js"></script>
 			<script type="text/javascript" src="js/controller.js"></script>
-			<script type"text/javascript">
+			<script type="text/javascript">
 				$(document).bind("mobileinit", function() {
 					$.mobile.defaultPageTransition = "none";
 					$.mobile.defaultDialogTransition = "none";
@@ -406,10 +406,20 @@
 
 
 					<br /><br />
-					<a href=""  data-role="button" onclick= "window.localStorage.clear(); window.location.reload(true);">RESET ALL</a>
+					<a href=""  data-role="button" onclick="clearAll()">RESET ALL</a>
 		</div>
 		
-		
+		<script type="text/javascript">
+		function clearAll () {
+			var r = confirm("Are you sure?");
+			if (r == true) {
+				 window.localStorage.clear(); 
+				 window.location.reload(true);
+			} else {
+				alert("Canceled");
+			}
+		}
+		</script>
 		
 		<div data-role="footer" data-position="fixed" data-theme="b">
               	<div data-role="navbar">
@@ -443,7 +453,7 @@
 					<legend>Patient name:</legend>
 						<div  data-role="controlgroup" data-type="vertical">
 							<label for="first_name" class="ui-hidden-accessible">First name:</label>
-							<input type="text" name="first_name" id="first_name" value="" placeholder="First name"/>
+							<input type="text" name="first_name" id="first_name" value="" placeholder="Product name"/>
 							<label for="last_name" class="ui-hidden-accessible">Last name:</label>
 							<input type="text" name="last_name" id="last_name" value="" placeholder="Last name"  />
 						</div>
@@ -1009,7 +1019,61 @@
 	</div>	
 </section>
 		
+				<!-- =============================== 	CUSTOM ENTRY  ======================================= -->	
+
+	<section id="custom_entry" data-role="page" data-theme="a">
+	
+		<div data-role="header"  data-position="fixed" data-theme="b">
+			<h4>Custom</h4>
+			<a href="#recommendations" data-icon="back">Back</a>
+		</div>
 		
+		
+		
+		<div data-role="content">
+		
+		
+				<form name="custom" action="" onsubmit="return fCaPPaste();"  data-ajax="false" >
+	
+	
+				<fieldset data-role="controlgroup" >
+					<legend>Other Product:</legend>
+						<div  data-role="controlgroup" data-type="vertical">
+							<input type="text" name="first_name" id="first_name" value="" placeholder="Product name"/>
+							<input type="textarea" name="last_name" id="last_name" value="" placeholder="Instruction to the pati"  />
+							<input type="text" name="last_name" id="last_name" value="" placeholder="Use times daily"  />
+							<input type="text" name="last_name" id="last_name" value="" placeholder="Days in month"  />
+						</div>
+						</fieldset>
+		
+				<fieldset class="ui-grid-a">
+					<div class="ui-block-a"><input type="submit" value="Submit"  id="submit" data-role="button" data-icon="check"></div>
+					<div class="ui-block-b"><a href="#recommendations"  id="back" data-role="button" data-icon="back">Back</a></div>	   
+				</fieldset>
+		
+				</form>
+		
+		</div>
+		
+		
+			<div data-role="footer" data-position="fixed" data-theme="b">
+			<div data-role="navbar">
+				<ul>
+				  <li><a href="#home"  data-icon="home" >Home</a></li>
+				  <li><a href="#profile" data-icon="user">Profile</a></li>
+				  <li><a href="#info" data-icon="info">Info</a></li>
+				  <li><a href="#settings" data-icon="gear">Settings</a></li>
+				</ul>
+			</div>
+	</div>	
+</section>
+
+
+
+
+
+
+				
 		
 				<!-- =============================== 	list   ======================================= -->
 
