@@ -14,10 +14,10 @@ $(document).on("pagebeforeshow", "#home", function (){
 	}
 
 		$("#other_registration_buttons").html("");
-		var trackingButtons = $.jStorage.get("objects");
+		var objects = $.jStorage.get("objects");
 			var output = "";
-			for (var i = 0; i < trackingButtons.length; i++){
-			var model = $.jStorage.get(trackingButtons[i]);
+			for (var i = 0; i < objects.length; i++){
+			var model = $.jStorage.get(objects[i]);
 			if (model.specific && model.strict)
 			output = output + '<a href="#" data-role="button" id="'+model.id+'_registration_button" data-theme="d" onclick="registration(\''+model.id+'\')">'+model.publicName+'</a>';
 			}
@@ -54,9 +54,9 @@ $(document).on("pagebeforeshow", "#to_do", function (){
 	var objects = $.jStorage.get("objects");
 	for (var i = 0; i < objects.length; i++){
 		model = $.jStorage.get(objects[i]);
-		if (model.therapy && model.strict){
+		if (model.therapy && model.strict && model.active){
 			var sum = model.daily - model.today; if (sum < 0) sum = 0;
-			output = output + "<li>" + model.toDoText + ": <span class=\"ui-li-count ui-btn-corner-all countBubl \">" + sum + "</span></li>";
+			output = output + "<li>" + model.publicName + ": <span class=\"ui-li-count ui-btn-corner-all countBubl \">" + sum + "</span></li>";
 		}
 	}
 	
@@ -64,7 +64,7 @@ $(document).on("pagebeforeshow", "#to_do", function (){
 			
 	for (var i = 0; i < objects.length; i++){
 		model = $.jStorage.get(objects[i]);
-		if (model.therapy && !model.strict){
+		if (model.therapy && !model.strict && model.active){
 			var sum = model.daily - model.today; if (sum < 0) sum = 0;
 			output = output + "<li>" + model.toDoText + "</li>";
 		}
@@ -79,7 +79,7 @@ $(document).on("pagebeforeshow", "#to_do", function (){
 
 $(document).on("pagebeforeshow", "#current_therapy_info", function (){
 
-	var output = "";
+	var output = "<li><h2>Dietary regimen</h2><p class=\"wrap\">No matter what your current caries risk level is, you should reduce eating sugar containing food as much as possible. At least keep frequency of eating it below three times a day (refer to info section).</p></li><li><h2>Keeping oral hygiene</h2><p class=\"wrap\">Brush your teeth two times daily - after breakfast and at bed time. Floss your teeth once daily after teeth brushing. Refer to info section to learn about correct technique and duration of teeth brushing and flossing.</p></li><li><h2>Regular dental visits</h2><p class=\"wrap\">You should regularly visit your dentist for recall exams.</p></li><li data-role=\"list-divider\" class=\"wrap\">Specific therapy prescribed by your dentist:</li>";
 	var objects = $.jStorage.get("objects");
 	for (var i = 0; i < objects.length; i++){
 	
@@ -89,7 +89,9 @@ $(document).on("pagebeforeshow", "#current_therapy_info", function (){
 
 	}
 
-	$("#current_therapy_list").append(output).listview("refresh");
+	$("#current_therapy_list").html(output).listview("refresh");;
+	
+
 
 
 });

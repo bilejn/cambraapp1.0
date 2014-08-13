@@ -1,3 +1,61 @@
+/*====================== GENERAL FUNCTIONS ====================*/
+
+
+			function fCount() {
+				var count = 0;
+				for (var i = 0; i < this.args.length; i++){
+					if (this.args[i]) count = count + 1;
+				}
+				return count;
+			}
+			
+			
+			
+			function handle (operation,objectName, objects){
+				if (operation == "add"){		
+					objects.push(objectName);
+					$.jStorage.set("objects", objects);
+					
+					var object = $.jStorage.get(objectName);
+					toDoCount(object.daily);
+					
+				} else {
+					objects.splice(objects.indexOf(objectName),1);
+					$.jStorage.set("objects", objects);
+				
+					var object = $.jStorage.get(objectName);
+					var count = object.today - object.daily;
+					if (count > 0) count = 0;
+					toDoCount(count);
+				
+				}
+			
+			}
+			
+
+/* toDoCount handles to do counter on home screen indirectly, through local storage "to_do_count" value. Parameter -1 sets to do count for new day. other values increase/decrease to do count if new objects are added or old ones removed during runtime */
+
+			function toDoCount (parametar){
+				var toDoCount = $.jStorage.get("to_do_count");
+				if (parametar == "reset"){
+					var toDoCount = 0;
+					var objects = $.jStorage.get("objects");
+					for (var i = 0; i < objects.length; i++){
+						var model = $.jStorage.get(objects[i]);
+						if (model.therapy && model.active && model.strict){
+							toDoCount = toDoCount + model.daily;
+						}
+					}
+				} else {				
+					toDoCount = toDoCount + parametar;			
+				}			
+			$.jStorage.set("to_do_count", toDoCount);					
+			}
+
+
+
+			
+/*====================== DIAGNOSTIC OBJECTS CONSTRUCTORS ====================*/
 	
 	function GeneralData(firstName,lastName,gender,age) {
 	
@@ -8,20 +66,16 @@
 			
 	}
 	
+	
+	
 	function DiseaseIndicators (visibleCavities,radiographic,whiteSpots,last3y) {
 		
 			this.id = "diseaseIndicators";
 			this.publicName = "Disease indicators";
-			this.text = "Presence of caries lesions according to last dental examination.";
+			this.text = "Presence of caries lesions <br />  according to last dental examination.";
 
 			this.args = [].slice.call(arguments);
-			this.fCount = function () {
-				var count = 0;
-				for (var i = 0; i < this.args.length; i++){
-					if (this.args[i]) count = count + 1;
-				}
-				return count;
-			};
+			this.fCount = fCount;
 			this.defined = true;
 			this.count = this.fCount();	
 			this.visibleCavities = visibleCavities;
@@ -31,20 +85,16 @@
 	
 	}
 	
+	
+	
 	function RiskFactors(msLb,visiblePlaque,frequentSnack,pitsAndFissures,drugUse,inadequateSaliva,salivaReducingFactors,exposedRoots,orthodonticAppliances) {
 		
 			this.id = "riskFactors";
 			this.publicName = "Risk factors";
-			this.text = "Factors leading to new caries lesions according to last dental examination.";
+			this.text = "Factors leading to new caries lesions <br />  according to last dental examination.";
 	
 			this.args = [].slice.call(arguments);
-			this.fCount = function () {
-				var count = 0;
-				for (var i = 0; i < this.args.length; i++){
-					if (this.args[i]) count = count + 1;
-				}
-				return count;
-			};
+			this.fCount = fCount;
 			this.defined = true;
 			this.count = this.fCount();			
 			this.msLb = msLb;
@@ -59,20 +109,16 @@
 			
 	}
 	
+	
+	
 	function ProtectiveFactors(fluoridatedCommunity,fluoridePasteOnce,fluoridePasteTwice,fluorideMouthrinse,fluoridePasteHighF,fluorideVarnish,fluorideTopical,chlorhexidine,xylitol,cap,adequateSaliva) {
 		
 			this.id = "protectiveFactors";
 			this.publicName = "Protective factors";
-			this.text = "Factors lowering risk for new caries lesions according to last dental examination.";
+			this.text = "Factors lowering risk for new caries lesions <br />  according to last dental examination.";
 			
 			this.args = [].slice.call(arguments);
-			this.fCount = function () {
-				var count = 0;
-				for (var i = 0; i < this.args.length; i++){
-					if (this.args[i]) count = count + 1;
-				}
-				return count;
-			};
+			this.fCount = fCount;
 			this.defined = true;
 			this.count = this.fCount();
 			this.fluoridatedCommunity = fluoridatedCommunity;
@@ -90,6 +136,7 @@
 	}
 
 
+	
 	function RiskLevel () {
 	
 		this.id = "riskLevel";
@@ -139,7 +186,32 @@
 		
 	}
 
-
+	
+	
+	
+/*====================== THERAPEUTIC OBJECTS CONSTRUCTORS ====================*/
+	
+	
+	
+	
+	function Therapy (id,publicName,text,therapy,strict,specific,active,daily,monthly){
+	
+		this.id = id;
+		this.publicName = publicName;
+		this.text = text;
+		
+		this.therapy = therapy;
+		this.strict = strict;
+		this.specific = specific;
+		this.active = active;
+		
+		this.daily = daily;
+		this.monthly = monthly;
+		this.start = Date.today().toString("dd.MM.yyyy");
+		this.today = 0,
+		this.last = "",
+		this.registration = []
+	}
 
 
 
@@ -153,20 +225,19 @@ var snack = {
 	
 	therapy: false,
 	strict: true,
-	active: true,
 	specific: false,
 	daily: 3,
 	
 	today:0,
 	last: "",
-	registration: []
-
+	registration: [],
+	active: true
 };
 
 
 var brushing = {
 	id: "brushing",
-	publicName: "Teeth brushing",
+	publicName: "Brushing",
 	text: "Brush your teeth two times daily (after breakfast and before bed).",
 	toDoText: "Brush your teeth",
 	alertMessage: "Brushing registered. Brush your teeth 2 times a day: after breakfast and before bed.",
@@ -185,7 +256,7 @@ var brushing = {
 
 var flossing = {
 	id: "flossing",
-	publicName: "Teeth flossing",
+	publicName: "Flossing",
 	text: "floss your teeth once daily (after brushing).",
 	toDoText: "Floss your teeth",
 	alertMessage: "Flossing registered. Floss your teeth once daily before brushing.",
@@ -201,7 +272,7 @@ var flossing = {
 	registration: []	
 
 };
-
+/*
 var xylitol = {
 	id: "xylitol",
 	publicName: "Xylitol",
@@ -259,12 +330,12 @@ var fluoride_mouthrinse = {
 	registration: []
 	
 };
-
+*/
 
 $.jStorage.set("snack", snack);
 $.jStorage.set("brushing", brushing);
 $.jStorage.set("flossing", flossing);
+/*
 $.jStorage.set("xylitol", xylitol);
-$.jStorage.set("chlorhexidine", chlorhexidine);
 $.jStorage.set("fluoride_mouthrinse", fluoride_mouthrinse);
-$.jStorage.set("objects", ["snack","brushing","flossing","xylitol","chlorhexidine","fluoride_mouthrinse"]);
+*/

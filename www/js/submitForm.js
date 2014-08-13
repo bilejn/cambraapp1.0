@@ -107,28 +107,43 @@
 	
 	
 	function fAntibacterials () {
-	
-		if (document.antibacterials_th.chlorhexidine_th.checked == true){
-			if ($.jStorage.get("chlorhexidine_th") =="false"){
-			$.jStorage.set("chlorhexidine_th", "true");
-			track("chlorhexidine_th", "add");}
+
+		var objects = $.jStorage.get("objects");
+		if (document.antibacterials_th.chlorhexidine_th.checked){
+				var objectName = "chlorhexidine";
+				if (objects.indexOf(objectName) == -1){
+					var chlorhexidine = new Therapy("chlorhexidine","Chlorhexidine","Rinse your mouth with chlorhexidine solution once daily for seven days a month. Do not use together with fluoride mouthrinse.",true,true,true,true,1,7);
+					$.jStorage.set(objectName, chlorhexidine);
+					handle("add", objectName, objects);
+				}
 		} else {
-			$.jStorage.set("chlorhexidine_th", "false");
-			track("chlorhexidine_th", "remove");
+				var objectName = "chlorhexidine";
+				if (objects.indexOf(objectName) != -1){
+					handle("remove", objectName, objects);			
+					$.jStorage.deleteKey(objectName);	
+				}
 		}
 		
-		if (document.antibacterials_th.xylitol_th.checked == true){
-			if ($.jStorage.get("xylitol_th")=="false"){
-			$.jStorage.set("xylitol_th", "true");
-			track("xylitol_th", "add");}
+		if (document.antibacterials_th.xylitol_th.checked){
+				var objectName = "xylitol";
+				if (objects.indexOf(objectName) == -1){
+					var xylitol = new Therapy("xylitol","Xylitol","Take one or two xylitol candies four times a day.",true,true,true,true,4,"all");
+					$.jStorage.set(objectName, xylitol);
+					handle("add", objectName, objects);
+				}
 		} else {
-			$.jStorage.set("xylitol_th", "false");
-			track("xylitol_th", "remove");
+				var objectName = "xylitol";
+				if (objects.indexOf(objectName) != -1){
+					handle("remove", objectName, objects);			
+					$.jStorage.deleteKey(objectName);	
+				}
 		}
+		
+		
+		
+
 		
 		alert("submitted");	
-		$.jStorage.set("submit_form", "submit");
-		$.jStorage.set("submit_form_th", "submit");
 		$.mobile.changePage( "#antibacterials", { allowSamePageTransition: true } );
 		return false;
 	}

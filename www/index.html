@@ -151,8 +151,8 @@
  <!-- =============================== 	ORAL HYGIENE   ======================================= -->
 
 	
-	<section id="oral_hygiene" data-role="page" data-theme="b">
-		<div data-role="header"  data-position="fixed">
+	<section id="oral_hygiene" data-role="page" data-theme="a">
+		<div data-role="header"  data-position="fixed" data-theme="b">
 			<h4>Oral hygiene</h4>
 			<a href="#home" data-icon="back">Back</a>
 		</div>
@@ -160,14 +160,14 @@
 		
 		<div data-role="content">
 		
-				<a href="#brushing"  data-role="button" >1. Teeth Brushing</a>		
-				<a href="#flossing"  data-role="button" >2. Teeth Flossing</a>
+				<a href="#brushing"  data-role="button" >Brushing</a>		
+				<a href="#flossing"  data-role="button" >Flossing</a>
 		
 		</div>
 		
 		
 		
-		<div data-role="footer" data-position="fixed">
+		<div data-role="footer" data-position="fixed" data-theme="b">
               	<div data-role="navbar">
 					<ul>
 					  <li><a href="#home" data-icon="home">Home</a></li>
@@ -184,10 +184,10 @@
 <!-- =============================== 	TEETH BRUSHING   ======================================= -->
 
 	
-	<section id="brushing" data-role="page" data-theme="b" >
+	<section id="brushing" data-role="page" data-theme="a" >
 	
-			<div data-role="header">
-				<h4>Teeth Brushing</h4> 
+			<div data-role="header" data-theme="b" >
+				<h4>Brushing</h4> 
 				<a href="#oral_hygiene" data-icon="back">Back</a>
 			</div>		
 
@@ -195,29 +195,51 @@
 				<a href="#"  data-role="button" id="timer-button"  onclick="timer(120);">Start</a>	
 				<p id="timer">02:00</p>
 				<br />
-				<p>Press start button when ready to begin teeth brushing. The brushing should last 2 minutes, as timer indicates. To learn more about teeth brushing press <a href="#">here</a>.</p>
-				<p class="#fluoride_paste_otc_th">Use standard over-the-counter tooth paste (1100 - 1450 ppm F).</p>
-				<p class="fluoride_paste_5000_th">Use therapeutic tooth paste prescribed by your dentist.(5000 ppm F).</p>
+				<p>Press start button when ready to begin teeth brushing. The brushing should last 2 minutes, as timer indicates.</p>
+				<p id="tooth_paste">Use standard over-the-counter tooth paste (1100 - 1450 ppm F).</p>
+				<p >Refer to info section/resources to learn more about teeth brushing.</p>
+
 			</div>
-	
+			
+		<div data-role="footer" data-position="fixed" data-theme="b">
+              	<div data-role="navbar">
+					<ul>
+					  <li><a href="#home" data-icon="home">Home</a></li>
+					  <li><a href="#profile" data-icon="user">Profile</a></li>
+					  <li><a href="#info" data-icon="info">Info</a></li>
+					  <li><a href="#settings" data-icon="gear">Settings</a></li>
+					</ul>
+				</div>
+        </div>	
 	</section>	
 	
 	
 <!-- =============================== 	TEETH FLOSSING   ======================================= -->
 
 	
-	<section id="flossing" data-role="page" data-theme="b" >
+	<section id="flossing" data-role="page" data-theme="a" >
 	
-			<div data-role="header" >
-				<h4>Teeth Flossing </h4>
+			<div data-role="header"  data-theme="b" >
+				<h4>Flossing </h4>
 				<a href="#oral_hygiene" data-icon="back">Back</a>
 			</div>		
 		
 			<div data-role="content">
 				<a href="#" data-role="button" id="flossing_registration_button" data-theme="a" onclick="registration('flossing')">Register</a>
-				<p>You should clean interdental spaces once daily after regular tooth brushing. Use interdental brush prescribed by your dentist.</p>
+				<p>You should clean interdental spaces once daily before brushing. Use interdental brush prescribed by your dentist.</p>
+				<p >Refer to info section/resources to learn more about flossing.</p>
 			</div>
 			
+		<div data-role="footer" data-position="fixed" data-theme="b">
+              	<div data-role="navbar">
+					<ul>
+					  <li><a href="#home" data-icon="home">Home</a></li>
+					  <li><a href="#profile" data-icon="user">Profile</a></li>
+					  <li><a href="#info" data-icon="info">Info</a></li>
+					  <li><a href="#settings" data-icon="gear">Settings</a></li>
+					</ul>
+				</div>
+        </div>				
 	</section>	
 
 
@@ -1158,21 +1180,6 @@
 			
 			
 			<ul id="current_therapy_list" data-role="listview">
-					
-						<li><h2>Dietary regimen</h2>
-										<p class="wrap">No matter what your current caries risk level is, you should reduce eating sugar containing food as much as possible. At least keep frequency of eating it below three times a day (refer to info section).</p>
-						</li>
-						<li><h2>Keeping oral hygiene</h2>
-										<p class="wrap">Brush your teeth two times daily - after breakfast and at bed time. Floss your teeth once daily after teeth brushing. Refer to info section to learn about correct technique and duration of teeth brushing and flossing.</p>
-						</li>
-						<li><h2>Regular dental visits</h2>
-										<p class="wrap">You should regularly visit your dentist for recall exams.</p>
-						</li>
-						
-						
-						<li data-role="list-divider" class="wrap">Specific therapy prescribed by your dentist:</li>
-
-
 			</ul>
 			
 			
