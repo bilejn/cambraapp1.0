@@ -1,4 +1,8 @@
 
+
+/* =========================== H O M E =====================================*/
+
+
 $(document).on("pagebeforeshow", "#home", function (){
 
 	if ($.jStorage.get("risk_level").level == "undefined"){
@@ -48,6 +52,9 @@ $(document).on("pagebeforeshow", "#home", function (){
 });
 
 
+
+/* =========================== TO DO =====================================*/
+
 $(document).on("pagebeforeshow", "#to_do", function (){
 
 	var output = "<li data-role=\"list divider\"  data-theme=\"b\">Daily:</li>";
@@ -65,8 +72,7 @@ $(document).on("pagebeforeshow", "#to_do", function (){
 	for (var i = 0; i < objects.length; i++){
 		model = $.jStorage.get(objects[i]);
 		if (model.therapy && !model.strict && model.active){
-			var sum = model.daily - model.today; if (sum < 0) sum = 0;
-			output = output + "<li>" + model.toDoText + "</li>";
+			output = output + "<li>" + model.publicName + "</li>";
 		}
 	}
 	
@@ -76,6 +82,22 @@ $(document).on("pagebeforeshow", "#to_do", function (){
 });
 
 
+
+/* =========================== BRUSHING =====================================*/
+
+$(document).on("pagebeforeshow", "#brushing", function (){
+
+	if ($.jStorage.get("fluoride_paste_5000_th") == "true"){
+		$("#tooth_paste").html("Use therapeutic toothpaste (5000ppmF) prescribed by your dentist.");
+	} else {
+
+		$("#tooth_paste").html("Use standard over-the-counter tooth paste (1100 - 1450 ppm F).");
+	}
+	$("#brushing").trigger("create");
+
+});
+
+/* =========================== CURRENT THERAPY INFO =====================================*/
 
 $(document).on("pagebeforeshow", "#current_therapy_info", function (){
 
@@ -96,6 +118,11 @@ $(document).on("pagebeforeshow", "#current_therapy_info", function (){
 
 });
 
+
+
+/* =========================== CURRENT STATUS INFO =====================================*/
+
+
 $(document).on("pagebeforeshow", "#current_status_info", function (){
 
 
@@ -114,7 +141,9 @@ $(document).on("pagebeforeshow", "#current_status_info", function (){
 });
 
 
-/* ================== FORMS ==================*/
+
+
+/* =================================== GENERAL DATA =========================================*/
 
 $(document).on("pagebeforeshow", "#general_data", function (){
 
@@ -131,6 +160,8 @@ $(document).on("pagebeforeshow", "#general_data", function (){
 });
 
 
+/* =================================== DISEASE INDICATORS =========================================*/
+
 $(document).on("pagebeforeshow", "#disease_indicators", function (){
 
 	if ($.jStorage.get("disease_indicators") != null){
@@ -146,6 +177,8 @@ $(document).on("pagebeforeshow", "#disease_indicators", function (){
 
 });
 
+
+/* =================================== RISK FACTORS =========================================*/
 
 $(document).on("pagebeforeshow", "#risk_factors", function (){
 
@@ -166,6 +199,14 @@ $(document).on("pagebeforeshow", "#risk_factors", function (){
 	}
 
 });
+
+
+
+
+/* =================================== PROTECTIVE FACTORS =========================================*/
+
+
+
 
 $(document).on("pagebeforeshow", "#protective_factors", function (){
 
@@ -195,6 +236,87 @@ $(document).on("pagebeforeshow", "#protective_factors", function (){
 
 
 
+
+
+/* =================================== ANTIBACTERIALS =========================================*/
+
+
+$(document).on("pagebeforeshow", "#antibacterials", function (){
+
+	if ($.jStorage.get("chlorhexidine") != null){
+		document.antibacterials_th.chlorhexidine_th.checked=true;
+	}
+
+	if ($.jStorage.get("xylitol") != null){
+		document.antibacterials_th.xylitol_th.checked=true;
+	}
+	
+		$("#antibacterials").trigger("create");
+});	
+	
+	
+/* =================================== FLUORIDE THERAPY =========================================*/
+
+
+$(document).on("pagebeforeshow", "#fluoride", function (){
+
+	if ($.jStorage.get("fluoride_paste_5000_th") == "true"){
+		document.fluoride_th.fluoride_paste_5000_th.checked = true;
+	}
+
+	if ($.jStorage.get("fluoride_mouthrinse_th_once") != null){
+		document.fluoride_th.fluoride_mouthrinse_th_once.checked=true;
+	}
+
+	if ($.jStorage.get("fluoride_mouthrinse_th_twice") != null){
+		document.fluoride_th.fluoride_mouthrinse_th_twice.checked=true;
+	}
+	
+	if ($.jStorage.get("fluoride_mouthrinse_extra_th") != null){
+		document.fluoride_th.fluoride_mouthrinse_extra_th.checked=true;
+	}
+	
+	if ($.jStorage.get("fluoride_mouthrinse_xerostomia_th") != null){
+		document.fluoride_th.fluoride_mouthrinse_xerostomia_th.checked=true;
+	}
+	
+		$("#fluoride").trigger("create");
+});		
+	
+	
+/* =================================== PH CONTROL THERAPY =========================================*/	
+	
+$(document).on("pagebeforeshow", "#ph_control", function (){	
+	
+	if ($.jStorage.get("ph_th") != null){
+		document.ph_control.ph_th.checked=true;
+	}	
+	
+	if ($.jStorage.get("phgum_th") != null){
+		document.ph_control.phgum_th.checked=true;
+	}
+	
+		$("#ph_control").trigger("create");
+});		
+	
+	
+	
+/* =================================== PH CONTROL THERAPY =========================================*/	
+	
+$(document).on("pagebeforeshow", "#cap_paste", function (){	
+	
+	if ($.jStorage.get("cap_th") != null){
+		document.cap_paste.cap_th.checked=true;
+	}	
+	
+	
+		$("#cap_paste").trigger("create");
+});			
+	
+	
+	
+	
+	
 /*================= EVENTS =================*/
 $(function(){
 

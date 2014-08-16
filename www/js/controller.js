@@ -63,10 +63,16 @@ $(function (){
 	var today = Date.today().toString("dd.MM.yyyy");
 	var trackingDay = "31.07.2014";
 
+	
 	if ($.jStorage.get("objects") == undefined){
 		$.jStorage.set("objects", ["snack","brushing","flossing"]);	
 	}
 
+	
+	if ($.jStorage.get("fluoride_paste_5000_th") == undefined){	
+	$.jStorage.set("fluoride_paste_5000_th", "false");
+	}
+	
 	
 	var objects = $.jStorage.get("objects");
 	/* ================== TO DO LIST & COUNT ================== */	

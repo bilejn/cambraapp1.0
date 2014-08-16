@@ -149,53 +149,85 @@
 	}
 	
 	
+	
+	
+	
+	
+	
+	
+	
 	function fFluoride () {
 	
-		if (document.fluoride_th.fluoride_paste_otc_th.checked == true){
-			if ($.jStorage.get("fluoride_paste_otc_th")=="false")
-			$.jStorage.set("fluoride_paste_otc_th", "true");
-		} else {
-			$.jStorage.set("fluoride_paste_otc_th", "false");
-		}
+		var objects = $.jStorage.get("objects");
 		
-		if (document.fluoride_th.fluoride_paste_5000_th.checked == true){
-			if ($.jStorage.get("fluoride_paste_5000_th")=="false")
+		if (document.fluoride_th.fluoride_paste_5000_th.checked){
 			$.jStorage.set("fluoride_paste_5000_th", "true");
 		} else {
 			$.jStorage.set("fluoride_paste_5000_th", "false");
 		}
 
-		if (document.fluoride_th.fluoride_mouthrinse_th.checked == true){
-			if ($.jStorage.get("fluoride_mouthrinse_th")=="false"){
-			$.jStorage.set("fluoride_mouthrinse_th", "true");
-			track("fluoride_mouthrinse_th", "add");}
-		} else {
-			$.jStorage.set("fluoride_mouthrinse_th", "false");
-			track("fluoride_mouthrinse_th", "remove");
+		if (document.fluoride_th.fluoride_mouthrinse_th_once.checked){
+				var objectName = "fluoride_mouthrinse_th_once";
+				if (objects.indexOf(objectName) == -1){
+					var fluoride_mouthrinse_th_once = new Therapy("fluoride_mouthrinse_th_once","Fluoride mouthrinse 0.05%","Rinse your mouth once daily with fluoride mouthrinse.",true,true,true,true,1,"all");
+					$.jStorage.set(objectName, fluoride_mouthrinse_th_once);
+					handle("add", objectName, objects);
+				}
+		}  else {
+				var objectName = "fluoride_mouthrinse_th_once";
+				if (objects.indexOf(objectName) != -1){
+					handle("remove", objectName, objects);			
+					$.jStorage.deleteKey(objectName);	
+				}
 		}
 		
 		
-		if (document.fluoride_th.fluoride_mouthrinse_extra_th.checked == true){
-			if ($.jStorage.get("fluoride_mouthrinse_extra_th")=="false"){
-			$.jStorage.set("fluoride_mouthrinse_extra_th", "true");
-			track("fluoride_mouthrinse_extra_th", "add");}
-		} else {
-			$.jStorage.set("fluoride_mouthrinse_extra_th", "false");
-			track("fluoride_mouthrinse_extra_th", "remove");
+		if (document.fluoride_th.fluoride_mouthrinse_th_twice.checked){
+				var objectName = "fluoride_mouthrinse_th_twice";
+				if (objects.indexOf(objectName) == -1){
+					var fluoride_mouthrinse_th_twice = new Therapy("fluoride_mouthrinse_th_twice","Fluoride mouthrinse 0.05%","Rinse your mouth twice daily with fluoride mouthrinse.",true,true,true,true,2,"all");
+					$.jStorage.set(objectName, fluoride_mouthrinse_th_twice);
+					handle("add", objectName, objects);
+				}
+		}  else {
+				var objectName = "fluoride_mouthrinse_th_twice";
+				if (objects.indexOf(objectName) != -1){
+					handle("remove", objectName, objects);			
+					$.jStorage.deleteKey(objectName);	
+				}
 		}
 		
-		if (document.fluoride_th.fluoride_mouthrinse_xerostomia_th.checked == true){
-			if ($.jStorage.get("fluoride_mouthrinse_xerostomia_th")=="false"){
-			$.jStorage.set("fluoride_mouthrinse_xerostomia_th", "true");
-			as_needed("fluoride_mouthrinse_xerostomia_th", "add");}
-		} else {
-			$.jStorage.set("fluoride_mouthrinse_xerostomia_th", "false");
-			as_needed("fluoride_mouthrinse_xerostomia_th", "remove");
+		if (document.fluoride_th.fluoride_mouthrinse_extra_th.checked){
+				var objectName = "fluoride_mouthrinse_extra_th";
+				if (objects.indexOf(objectName) == -1){
+					var fluoride_mouthrinse_extra_th = new Therapy("fluoride_mouthrinse_extra_th","Fluoride mouthrinse 0.2%","Rinse your mouth once daily with 0.2% fluoride mouthrinse.",true,true,true,true,1,"all");
+					$.jStorage.set(objectName, fluoride_mouthrinse_extra_th);
+					handle("add", objectName, objects);
+				}
+		}  else {
+				var objectName = "fluoride_mouthrinse_extra_th";
+				if (objects.indexOf(objectName) != -1){
+					handle("remove", objectName, objects);			
+					$.jStorage.deleteKey(objectName);	
+				}
+		}
+		
+		if (document.fluoride_th.fluoride_mouthrinse_xerostomia_th.checked){
+				var objectName = "fluoride_mouthrinse_xerostomia_th";
+				if (objects.indexOf(objectName) == -1){
+					var fluoride_mouthrinse_xerostomia_th = new Therapy("fluoride_mouthrinse_xerostomia_th","Fluoride mouthrinse 0.05%","Rinse with fluoride mouthrinse when mouth feels dry, after snacking, breakfast, and lunch.",true,false,true,true,0,"all");
+					$.jStorage.set(objectName, fluoride_mouthrinse_xerostomia_th);
+					handle("add", objectName, objects);
+				}
+		}  else {
+				var objectName = "fluoride_mouthrinse_xerostomia_th";
+				if (objects.indexOf(objectName) != -1){
+					handle("remove", objectName, objects);			
+					$.jStorage.deleteKey(objectName);	
+				}
 		}
 	
 		alert("submitted");	
-		$.jStorage.set("submit_form", "submit");
-		$.jStorage.set("submit_form_th", "submit");
 		$.mobile.changePage( "#fluoride", { allowSamePageTransition: true } );
 		return false;
 	}
@@ -205,28 +237,40 @@
 	
 	
 function fPhControl () {
+
+		var objects = $.jStorage.get("objects");
 	
-		if (document.ph_control.ph_th.checked == true){
-			if ($.jStorage.get("ph_th")=="false"){
-			$.jStorage.set("ph_th", "true");
-			as_needed("ph_th", "add");}
-		} else {
-			$.jStorage.set("ph_th", "false");
-			track("ph_th", "remove");
+		if (document.ph_control.ph_th.checked){
+				var objectName = "ph_th";
+				if (objects.indexOf(objectName) == -1){
+					var ph_th = new Therapy("ph_th","Acid-neutralizing rinse"," Use as needed if mouth feels dry, after snacking, bedtime and after breakfast.",true,false,true,true,0,"all");
+					$.jStorage.set(objectName, ph_th);
+					handle("add", objectName, objects);
+				}
+		}  else {
+				var objectName = "ph_th";
+				if (objects.indexOf(objectName) != -1){
+					handle("remove", objectName, objects);			
+					$.jStorage.deleteKey(objectName);	
+				}
 		}
 		
-		if (document.ph_control.phgum_th.checked == true){
-			if ($.jStorage.get("phgum_th")=="false"){
-			$.jStorage.set("phgum_th", "true");
-			as_needed("phgum_th", "add");}
-		} else {
-			$.jStorage.set("phgum_th", "false");
-			as_needed("phgum_th", "remove");
+		if (document.ph_control.phgum_th.checked){
+				var objectName = "phgum_th";
+				if (objects.indexOf(objectName) == -1){
+					var phgum_th = new Therapy("phgum_th","Baking soda chewing gum"," Use as needed if mouth feels dry, after snacking, bedtime and after breakfast.",true,false,true,true,0,"all");
+					$.jStorage.set(objectName, phgum_th);
+					handle("add", objectName, objects);
+				}
+		}  else {
+				var objectName = "phgum_th";
+				if (objects.indexOf(objectName) != -1){
+					handle("remove", objectName, objects);			
+					$.jStorage.deleteKey(objectName);	
+				}
 		}
 	
 		alert("submitted");	
-		$.jStorage.set("submit_form", "submit");
-		$.jStorage.set("submit_form_th", "submit");
 		$.mobile.changePage( "#ph_control", { allowSamePageTransition: true } );
 		return false;
 	}
@@ -234,18 +278,24 @@ function fPhControl () {
 	
 	function fCaPPaste() {
 	
-		if (document.cap_paste.cap_th.checked == true){
-			if ($.jStorage.get("cap_th")=="false"){
-			$.jStorage.set("cap_th", "true");
-			track("cap_th", "add");}
-		} else {
-			$.jStorage.set("cap_th", "false");
-			track("cap_th", "remove");
+		var objects = $.jStorage.get("objects");
+		
+		if (document.cap_paste.cap_th.checked){
+		var objectName = "cap_th";
+				if (objects.indexOf(objectName) == -1){
+					var cap_th = new Therapy("cap_th","Calcium phosphate paste"," Apply calcium phosphate paste twice daily.",true,true,true,true,2,"all");
+					$.jStorage.set(objectName, cap_th);
+					handle("add", objectName, objects);
+				}
+		}  else {
+				var objectName = "cap_th";
+				if (objects.indexOf(objectName) != -1){
+					handle("remove", objectName, objects);			
+					$.jStorage.deleteKey(objectName);	
+				}
 		}
 	
 		alert("submitted");	
-		$.jStorage.set("submit_form", "submit");	
-		$.jStorage.set("submit_form_th", "submit");		
 		$.mobile.changePage( "#cap_paste", { allowSamePageTransition: true } );
 		return false;
 	}
