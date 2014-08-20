@@ -57,39 +57,94 @@ $(function (){
 	
 	
 	
-/* ================== TRACKING OBJECTS INITIALIZATION ================== */
+	
+/* ================== THERAPEUTIC OBJECTS INITIALIZATION ================== */
 	
 	
-	var today = Date.today().toString("dd.MM.yyyy");
-	var trackingDay = "31.07.2014";
-
+	var today = new XDate().toString("yyyy-MM-dd");
+	if ($.jStorage.get("tracking_day")  == undefined){
+		var trackingDay = "1976-04-01";
+	} else {
+		var trackingDay = $.jStorage.get("tracking_day");
+	}
+	
+	
 	
 	if ($.jStorage.get("objects") == undefined){
+		var snack = new Therapy("snack","Snack","Do not eat sugar containing food more than 3 times a day.",false,true,false,true,3,"all");
+		$.jStorage.set("snack", snack);
+		
+		var brushing = new Therapy("brushing","Brushing","Brush your teeth two times daily (after breakfast and before bed).",true,true,false,true,2,"all");
+		$.jStorage.set("brushing", brushing);
+		
+		var flossing = new Therapy("flossing","Flossing","Floss your teeth once daily (after brushing).",true,true,false,true,1,"all");
+		$.jStorage.set("flossing", flossing);
+		
 		$.jStorage.set("objects", ["snack","brushing","flossing"]);	
 	}
 
 	
 	if ($.jStorage.get("fluoride_paste_5000_th") == undefined){	
-	$.jStorage.set("fluoride_paste_5000_th", "false");
+		$.jStorage.set("fluoride_paste_5000_th", "false");
 	}
+
 	
+	
+
+
+
+	
+	/* ================== THERAPEUTIC OBJECTS UPDATE ================== */	
+
 	
 	var objects = $.jStorage.get("objects");
-	/* ================== TO DO LIST & COUNT ================== */	
 	
-	if (today != trackingDay){
-		 toDoCount("reset");
+	for (var i = 0; i < objects.length; i++){
+		model = $.jStorage.get(objects[i]);
+		var todaysDate = new XDate();
+		var nextMonth =  new XDate(model.nextMonth);
+		if (todaysDate.diffDays(nextMonth) <= 0){
+			model.nextMonth = nextMonth.addMonths(1).toString("yyyy-MM-dd");
+			model.thisMonth = 0;
+		}
+		
+		if (model.monthly != "all"){
+			if (model.monthly <= model.thisMonth){
+				model.active = false;
+			}else{
+				model.active = true;
+			}
+		}
+		
+		if (model.last != ""){
+			if(model.last != today){
+				var yesterday = new XDate().addDays(-1).toString("yyyy-MM-dd");
+				var last = new XDate(model.last);
+				while (last.diffDays(yesterday)>0){
+					var newEntry = new XDate(last);
+					last.addDays(1);
+					var newEntry = new XDate(last).toString("yyyy-MM-dd");
+					model.registration.push([newEntry,0]);
+				}
+				model.last = last.toString("yyyy-MM-dd");
+			}
+		}	
+		
+		$.jStorage.set(objects[i], model);
 
 	}
+
+
 	
-	
-	
-	/* ================== SNACK ================== */	
+
+	/* ================== TO DO LIST & COUNT & snack count ================== */	
 	
 	if (today != trackingDay){
-		var snack = 0;
-			$.jStorage.set("snack_count", snack);
+
+		toDoCount("reset");
+		snackCount("reset");
 	}
+
 	
 	
 	$.jStorage.set("tracking_day", today);
@@ -102,11 +157,12 @@ $(function (){
 
 function registration (model){
 
-	var today = Date.today().toString("dd.MM.yyyy");
+	var today = new XDate().toString("yyyy-MM-dd");
 	
 
 	var model = $.jStorage.get(model);
 	
+
 	if (model.last == today){
 		model.registration[model.registration.length - 1][1] = model.registration[model.registration.length - 1][1] + 1;
 	} else {
@@ -114,6 +170,9 @@ function registration (model){
 	}
 	
 	model.today = model.today + 1;
+	if (model.specific == true && model.daily >= model.today){
+		model.thisMonth = model.thisMonth + 1;
+	}
 	model.last = today;
 	
 	var sum = model.daily-model.today;
@@ -122,9 +181,7 @@ function registration (model){
 	}
 	
 	if (model.id == "snack"){
-		var snackCount = $.jStorage.get("snack_count");
-		snackCount = snackCount + 1;
-		$.jStorage.set("snack_count", snackCount);
+		snackCount(1);
 	}
 	
 	
@@ -132,5 +189,6 @@ function registration (model){
 	$.jStorage.set("model", model);
 
 }
+
 
 

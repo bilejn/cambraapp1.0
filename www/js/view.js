@@ -22,8 +22,8 @@ $(document).on("pagebeforeshow", "#home", function (){
 			var output = "";
 			for (var i = 0; i < objects.length; i++){
 			var model = $.jStorage.get(objects[i]);
-			if (model.specific && model.strict)
-			output = output + '<a href="#" data-role="button" id="'+model.id+'_registration_button" data-theme="d" onclick="registration(\''+model.id+'\')">'+model.publicName+'</a>';
+			if (model.specific && model.strict && model.active)
+				output = output + '<a href="#" data-role="button" id="'+model.id+'_registration_button" data-theme="d" onclick="registration(\''+model.id+'\')">'+model.publicName+'</a>';
 			}
 		$("#other_registration_buttons").html(output);	
 

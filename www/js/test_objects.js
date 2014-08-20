@@ -1,4 +1,6 @@
-/*====================== GENERAL FUNCTIONS ====================*/
+/*====================== FUNCTIONS ====================*/
+
+/*function fCount is method of diagnostic objects constructors. Calculates number of attributes set to true.  The function is called from view.js, - pagebeforeshow #current status event.*/
 
 
 			function fCount() {
@@ -10,6 +12,7 @@
 			}
 			
 			
+/*function handle adds/removes objects from object list and updates to do counter during runtime when new therapeutic objects are added/removed. The function is called from submitForm.js functions. */			
 			
 			function handle (operation,objectName, objects){
 				if (operation == "add"){		
@@ -33,7 +36,9 @@
 			}
 			
 
-/* toDoCount handles to do counter on home screen indirectly, through local storage "to_do_count" value. Parameter -1 sets to do count for new day. other values increase/decrease to do count if new objects are added or old ones removed during runtime */
+/* toDoCount and snackCount handle counters on home screen indirectly, through local storage values.
+ Parameter "reset" sets counters for new day. Other values increase/decrease counters.
+ToDoCount handles to do counter if new objects are added or old ones removed during runtime */
 
 			function toDoCount (parametar){
 				var toDoCount = $.jStorage.get("to_do_count");
@@ -51,9 +56,19 @@
 				}			
 			$.jStorage.set("to_do_count", toDoCount);					
 			}
-
-
-
+		
+		
+			function snackCount (parametar){
+				var snackCount = $.jStorage.get("snack_count");
+				if (parametar == "reset"){
+					var snackCount = 0;
+				} else {				
+					snackCount = snackCount + parametar;			
+				}			
+			$.jStorage.set("snack_count", snackCount);					
+			}		
+			
+			
 			
 /*====================== DIAGNOSTIC OBJECTS CONSTRUCTORS ====================*/
 	
@@ -65,8 +80,6 @@
 			this.age = age;
 			
 	}
-	
-	
 	
 	function DiseaseIndicators (visibleCavities,radiographic,whiteSpots,last3y) {
 		
@@ -189,7 +202,11 @@
 	
 	
 	
-/*====================== THERAPEUTIC OBJECTS CONSTRUCTORS ====================*/
+	
+	
+	
+	
+/*====================== THERAPEUTIC OBJECTS CONSTRUCTOR ====================*/
 	
 	
 	
@@ -207,8 +224,10 @@
 		
 		this.daily = daily;
 		this.monthly = monthly;
-		this.start = Date.today().toString("dd.MM.yyyy");
+		this.start = new XDate().toString("yyyy-MM-dd");
+		this.nextMonth = new XDate().addMonths(1).toString("yyyy-MM-dd");
 		this.today = 0,
+		this.thisMonth = 0,
 		this.last = "",
 		this.registration = []
 	}
@@ -217,125 +236,3 @@
 
 
 
-var snack = {
-	id: "snack",
-	publicName: "Snack",
-	text: "Do not eat sugar containing food more than 3 times a day.",
-	alertMessage: "Snack registered. Keep taking sugar containing food below 3 times a day.",
-	
-	therapy: false,
-	strict: true,
-	specific: false,
-	daily: 3,
-	
-	today:0,
-	last: "",
-	registration: [],
-	active: true
-};
-
-
-var brushing = {
-	id: "brushing",
-	publicName: "Brushing",
-	text: "Brush your teeth two times daily (after breakfast and before bed).",
-	toDoText: "Brush your teeth",
-	alertMessage: "Brushing registered. Brush your teeth 2 times a day: after breakfast and before bed.",
-	
-	therapy: true,
-	strict: true,
-	active: true,
-	specific: false,
-	daily: 2,
-	
-	today:0,
-	last: "",
-	registration: []
-
-};
-
-var flossing = {
-	id: "flossing",
-	publicName: "Flossing",
-	text: "floss your teeth once daily (after brushing).",
-	toDoText: "Floss your teeth",
-	alertMessage: "Flossing registered. Floss your teeth once daily before brushing.",
-	
-	therapy: true,
-	strict: true,
-	active: true,
-	specific: false,
-	daily: 1,
-	
-	today:0,
-	last: "",
-	registration: []	
-
-};
-/*
-var xylitol = {
-	id: "xylitol",
-	publicName: "Xylitol",
-	text: "Take 1 to 2 candies four times each day.",
-	toDoText: "Take xylitol candy",
-	alertMessage: "Xylitol candy registered. Take one or two xylitol candies four times daily.",
-	
-	therapy: true,
-	strict: true,
-	active: true,
-	specific: true,
-	daily: 4,
-	
-	today:0,
-	last: "",
-	registration: []
-
-};
-
-var chlorhexidine = {
-	id: "chlorhexidine",
-	publicName: "Chlorhexidine solution",
-	text: "Rinse your mouth once daily for seven days in month. Do not use together with fluoride mouthrinse.",
-	toDoText: "Rinse with chlorhexidine solution",
-	alertMessage: "Chlorhexidine solution registered. Rinse once daily for seven days a month.",
-	
-	therapy: true,
-	strict: true,
-	active: true,
-	specific: true,
-	daily: 1,
-	daysInMonth: 7,
-	
-	today:0,
-	last: "",
-	registration: []
-	
-};
-
-var fluoride_mouthrinse = {
-	id: "fluoride_mouthrinse",
-	publicName: "Fluoride mouthrinse",
-	text: "Rinse your mouth with fluoride mouthrinse when mouth feels dry.",
-	toDoText: "Rinse with fluoride mouthrinse",
-	alertMessage: "Rinsing with fluoride mouthrinse registered. Rinse once daily.",
-	
-	therapy: true,
-	strict: false,
-	active: true,
-	specific: true,
-	daily: 1,
-	
-	today:0,
-	last: "",
-	registration: []
-	
-};
-*/
-
-$.jStorage.set("snack", snack);
-$.jStorage.set("brushing", brushing);
-$.jStorage.set("flossing", flossing);
-/*
-$.jStorage.set("xylitol", xylitol);
-$.jStorage.set("fluoride_mouthrinse", fluoride_mouthrinse);
-*/
