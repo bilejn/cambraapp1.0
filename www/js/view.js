@@ -5,12 +5,10 @@
 
 $(document).on("pagebeforeshow", "#home", function (){
 
-	if ($.jStorage.get("risk_level").level == "undefined"){
-		$("#place_holder").html('<img src="img/undefined.png" />');	
-	} else {
+
 		riskLevel=$.jStorage.get("risk_level");
 		$("#place_holder").html('<img src="img/'+riskLevel.level+'.png" />');		
-	}
+	
 	
 	if($.jStorage.get("next_appointment") != null){
 		var nextAppointment = $.jStorage.get("next_appointment");

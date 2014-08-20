@@ -46,8 +46,9 @@ $(function (){
 				publicName: "Caries risk level",
 				text: "Likelihood of having <br />  new caries lesions <br /> in coming months or years.",
 
-				level: "Undefined",
-				count: "Undefined"
+				result: "undefined",
+				message: "Your current caries risk level is undefined. Visit your dentist to evaluate your caries risk level.",
+				count: "undefined"
 		}
 		$.jStorage.set("risk_level", riskLevel);
 	 } 
