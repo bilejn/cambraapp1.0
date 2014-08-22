@@ -138,10 +138,15 @@ $(function (){
 
 	
 
-	/* ================== TO DO LIST & COUNT & snack count ================== */	
+	/* ================== TO DO LIST & COUNT & snack count RESET ================== */	
 	
 	if (today != trackingDay){
-
+		var objects = $.jStorage.get("objects");
+		for (var i = 0; i < objects.length; i++){
+			model = $.jStorage.get(objects[i]);
+			model.today = 0;
+			$.jStorage.set(objects[i], model);			
+		}
 		toDoCount("reset");
 		snackCount("reset");
 	}
