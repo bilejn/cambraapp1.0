@@ -63,9 +63,40 @@
 
 		function drawGraph (object) {
 		
-			$.jStorage.set("chartLabels", [1,2,3,4,5,6,7,8,9,10]);
-			$.jStorage.set("chartData", [1,2,3,4,5,15,7,0,9,14]);
-			$.jStorage.set("chartLimit", [3,3,3,3,3,3,3,3,3,3]);
+		var model=$.jStorage.get(object);
+		
+		var dateString = model.registration[model.registration.length-1][0];
+		var chartLabels = [];
+		var date = new XDate(dateString);
+		for (var i = 0; i < 10; i++){
+			chartLabels.push(date.getDate());
+			date.addDays(-1,true);
+		}
+		chartLabels = chartLabels.reverse();
+		
+		var counter = model.registration.length;
+		var value = model.registration[counter -1][1];
+		var chartData = [];
+		for (var i = 0; i < model.registration.length -1; i++){
+			chartData.push(value);
+			counter = counter -1;
+			value = model.registration[counter -1][1];
+		}
+		for (var i = chartData.length; i < 10; i++){
+			chartData.push(0);
+		}
+		chartData = chartData.reverse();
+		
+		chartLimit =[];
+		limit = model.daily;
+		for (var i = 0; i< 10; i++){
+			chartLimit.push(limit);
+		}
+		chartLimit = chartLimit.reverse();		
+		
+			$.jStorage.set("chartLabels", chartLabels);
+			$.jStorage.set("chartData", chartData);
+			$.jStorage.set("chartLimit", chartLimit);
 		
 			$.mobile.changePage("#graph");
 
@@ -264,10 +295,10 @@ ToDoCount handles to do counter if new objects are added or old ones removed dur
 		this.monthly = monthly;
 		this.start = new XDate().toString("yyyy-MM-dd");
 		this.nextMonth = new XDate().addMonths(1).toString("yyyy-MM-dd");
-		this.today = 0,
-		this.thisMonth = 0,
-		this.last = "",
-		this.registration = []
+		this.today = 0;
+		this.thisMonth = 0;
+		this.last = new XDate().toString("yyyy-MM-dd");
+		this.registration = [[new XDate().toString("yyyy-MM-dd"),0]];
 	}
 
 

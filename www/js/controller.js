@@ -117,19 +117,19 @@ $(function (){
 			}
 		}
 		
-		if (model.last != ""){
-			if(model.last != today){
-				var yesterday = new XDate().addDays(-1).toString("yyyy-MM-dd");
-				var last = new XDate(model.last);
-				while (last.diffDays(yesterday)>0){
-					var newEntry = new XDate(last);
-					last.addDays(1);
-					var newEntry = new XDate(last).toString("yyyy-MM-dd");
-					model.registration.push([newEntry,0]);
-				}
-				model.last = last.toString("yyyy-MM-dd");
+
+		if(model.last != today){
+			var today = new XDate().toString("yyyy-MM-dd");
+			var last = new XDate(model.last);
+			while (last.diffDays(today)>0){
+				var newEntry = new XDate(last);
+				last.addDays(1);
+				var newEntry = new XDate(last).toString("yyyy-MM-dd");
+				model.registration.push([newEntry,0]);
 			}
-		}	
+			model.last = last.toString("yyyy-MM-dd");
+		}
+
 		
 		$.jStorage.set(objects[i], model);
 
