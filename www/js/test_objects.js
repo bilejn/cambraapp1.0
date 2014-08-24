@@ -75,12 +75,12 @@
 		chartLabels = chartLabels.reverse();
 		
 		var counter = model.registration.length;
-		var value = model.registration[counter -1][1];
+
 		var chartData = [];
-		for (var i = 0; i < model.registration.length -1; i++){
+		for (var i = 0; i < model.registration.length; i++){
+			var value = model.registration[counter -1][1];
 			chartData.push(value);
 			counter = counter -1;
-			value = model.registration[counter -1][1];
 		}
 		for (var i = chartData.length; i < 10; i++){
 			chartData.push(0);
@@ -294,7 +294,7 @@ ToDoCount handles to do counter if new objects are added or old ones removed dur
 		this.daily = daily;
 		this.monthly = monthly;
 		this.start = new XDate().toString("yyyy-MM-dd");
-		this.nextMonth = new XDate().addMonths(1).toString("yyyy-MM-dd");
+		this.nextMonth = new XDate().addMonths(1,true).toString("yyyy-MM-dd");
 		this.today = 0;
 		this.thisMonth = 0;
 		this.last = new XDate().toString("yyyy-MM-dd");

@@ -105,7 +105,7 @@ $(function (){
 		var todaysDate = new XDate();
 		var nextMonth =  new XDate(model.nextMonth);
 		if (todaysDate.diffDays(nextMonth) <= 0){
-			model.nextMonth = nextMonth.addMonths(1).toString("yyyy-MM-dd");
+			model.nextMonth = nextMonth.addMonths(1,true).toString("yyyy-MM-dd");
 			model.thisMonth = 0;
 		}
 		
@@ -192,7 +192,7 @@ function registration (model){
 	
 	
 	alert (model.publicName+" registered. "+model.text);
-	$.jStorage.set("model", model);
+	$.jStorage.set(model.id, model);
 
 }
 
