@@ -323,9 +323,9 @@ $(document).on("pageshow", "#graph", function (){
 
 				{
 					label: "My First dataset",
-					fillColor: "rgba(151,187,205,0)",
-					strokeColor: "rgba(88,88,88,1)",
-					pointColor: "rgba(88,88,88,1)",
+					fillColor: "rgba(120,120,120,0)",
+					strokeColor: "rgba(120,120,120,1)",
+					pointColor: "rgba(120,120,120,1)",
 					pointStrokeColor: "#fff",
 					pointHighlightFill: "#fff",
 					pointHighlightStroke: "rgba(151,187,205,1)",
@@ -333,12 +333,12 @@ $(document).on("pageshow", "#graph", function (){
 				},
 				{
 					label: "limit",
-					fillColor: "rgba(124,209,0,0.1)",
-					strokeColor: "rgba(124,209,0,0.3)",
-					pointColor: "rgba(124,209,0,0.3)",
+					fillColor: "rgba(4,129,158,0.1)",
+					strokeColor: "rgba(4,129,158,0.3)",
+					pointColor: "rgba(4,129,158,0.3)",
 					pointStrokeColor: "#fff",
 					pointHighlightFill: "#fff",
-					pointHighlightStroke: "rgba(151,187,205,0.3)",
+					pointHighlightStroke: "rgba(4,129,158,0.3)",
 					data: limit
 				}
 			]
