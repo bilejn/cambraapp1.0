@@ -15,6 +15,8 @@
 			<script type="text/javascript" src="phonegap.js"></script>
 			<script type="text/javascript" src="js/jstorage.js"></script>
 			<script type="text/javascript" src="js/xdate.js"></script>
+			<script src="js/Chart.js"></script>
+			<script src="js/chartGlobals.js"></script>
 			<script type="text/javascript" src="js/submitForm.js"></script>
 			<script type="text/javascript" src="js/test_objects.js"></script>
 			<script type="text/javascript" src="js/controller.js"></script>
@@ -430,17 +432,7 @@
 					<a href=""  data-role="button" onclick="clearAll()">RESET ALL</a>
 		</div>
 		
-		<script type="text/javascript">
-		function clearAll () {
-			var r = confirm("Are you sure?");
-			if (r == true) {
-				 window.localStorage.clear(); 
-				 window.location.reload(true);
-			} else {
-				alert("Canceled");
-			}
-		}
-		</script>
+
 		
 		<div data-role="footer" data-position="fixed" data-theme="b">
               	<div data-role="navbar">
@@ -1170,7 +1162,7 @@
 	
 	<section id="current_therapy_info" data-role="page" data-theme="a">
 		<div data-role="header"  data-position="fixed" data-theme="b">
-			<h4>Current prescribed therapy</h4>
+			<h4 class="wrap">All therapy</h4>
 			<a href="#profile" data-icon="back">Back</a>
 		</div>
 		
@@ -1209,21 +1201,21 @@
 		
 		<div data-role="content">
 		
-			<ul data-role="listview">
+			<ul data-role="listview" data-split-icon="refresh">
 			
 				<li data-role="list-divider">General:</li>	
 					
-					<li id="visits_to_dentist"><a href="#"><h2>Dental visits: <span>N/A</span></h2>
-									<p class="wrap">Regularity of periodic dental visits.</p>
-					</a></li>
+					<li id="snack_compliance"><a href="#" onclick="graph()"><h4>Snack:</h4>
+									<p>Compliance: <span class="redWhite">good(2,5 / day)</span></p>									
+					</a>
+					<a href="#" onclick="clearStatistic()"></a>
+					</li>	
 					
-					<li id="eating_habits"><a href="#"><h2>Eating habits: <span>N/A</span></h2>
-									<p class="wrap">Frequency of taking sugar containing food.</p>
-					</a></li>	
-					
-					<li id="oral_hygiene_habits"><a href="#"><h2>Oral hygiene: <span>N/A</span></h2>
-									<p class="wrap">Regularity of teeth brushing and flossing.</p>
-					</a></li>
+					<li id="brushing_compliance"><a href="#graph"><h4>Brushing:</h4>
+									<p>Compliance: <span class="greenWhite">good(2 / day)</span></p>
+					</a>
+					<a href="#" onclick="clearStatistic()"></a>
+					</li>
 					
 					
 					
@@ -1249,6 +1241,34 @@
         </div>	
 	</section>			
 
+<!-- =============================== 	graph  ======================================= -->
 
+	
+	<section id="graph" data-role="page" data-theme="a">
+		<div data-role="header"  data-position="fixed" data-theme="b">
+			<h4>Statistic</h4>
+			<a href="#compliance" data-icon="back">Back</a>
+		</div>
+		
+		
+		<div data-role="content">
+				<canvas id="myChart" width="400" height="400"></canvas>
+		</div>
+		
+		
+		
+		<div data-role="footer" data-position="fixed" data-theme="b">
+              	<div data-role="navbar">
+					<ul>
+					  <li><a href="#home"  data-icon="home" >Home</a></li>
+					  <li><a href="#profile" data-icon="user" >Profile</a></li>
+					  <li><a href="#info" data-icon="info">Info</a></li>
+					  <li><a href="#settings" data-icon="gear">Settings</a></li>
+					</ul>
+				</div>
+        </div>	
+	</section>	
+
+	
   </body>
 </html>

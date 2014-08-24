@@ -34,6 +34,32 @@
 				}
 			
 			}
+
+/*function clearAll deletes local storage. The function is called from settings section of index.html . */			
+			
+		function clearAll () {
+			var r = confirm("Are you sure?");
+			if (r == true) {
+				 window.localStorage.clear(); 
+				 window.location.reload(true);
+			} else {
+				alert("Canceled");
+			}
+		}
+		
+		
+/*function clearStatistic deletes registration data for particular object. The function is called from compliance section of index.html . */
+
+		function clearStatistic () {
+			var r = confirm("Are you sure?");
+			if (r == true) {
+				alert("OK");
+			} else {
+				alert("Canceled");
+			}
+		}
+
+
 			
 
 /* toDoCount and snackCount handle counters on home screen indirectly, through local storage values.
