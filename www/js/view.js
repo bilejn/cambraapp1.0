@@ -315,18 +315,9 @@ $(document).on("pagebeforeshow", "#cap_paste", function (){
 $(document).on("pagebeforeshow", "#graph", function (){	
 
 		var data = {
-			labels: [01, 02, 03, 04, 05, 06, 07],
+			labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
 			datasets: [
-				{
-					label: "My First dataset",
-					fillColor: "rgba(220,220,220,0.2)",
-					strokeColor: "rgba(220,220,220,1)",
-					pointColor: "rgba(220,220,220,1)",
-					pointStrokeColor: "#fff",
-					pointHighlightFill: "#fff",
-					pointHighlightStroke: "rgba(220,220,220,1)",
-					data: [65, 59, 80, 81, 56, 55, 40]
-				},
+
 				{
 					label: "My Second dataset",
 					fillColor: "rgba(151,187,205,0.2)",
@@ -335,17 +326,18 @@ $(document).on("pagebeforeshow", "#graph", function (){
 					pointStrokeColor: "#fff",
 					pointHighlightFill: "#fff",
 					pointHighlightStroke: "rgba(151,187,205,1)",
-					data: [28, 48, 40, 19, 86, 27, 90]
+					data: [0, 1, 3, 3, 4, 5, 6, 5, 4, 3]
 				}
 			]
 		};
-	
-	var ctx = document.getElementById("myChart").getContext("2d");
+    var graph = document.getElementById("myChart");
+    graph.height = window.innerHeight/2;
+	graph.width = window.innerWidth -20;
+	var ctx = graph.getContext("2d");
 	var myNewChart = new Chart(ctx).Line(data);
 	$("#graph").trigger("create");
 });		
-	
-	
+
 /*================= EVENTS =================*/
 $(function(){
 

@@ -123,6 +123,18 @@ a {text-decoration: none;}
 }
 
 
+/* ===== graph ======== */
+.canvas-container {
+	margin: 20px auto;
+    min-height: 300px;
+    max-height: 600px;
+    position: relative;
+}
+
+
+
+
+
 /* 16px > 1em */
 .ui-bar,
 .ui-loader-verbose h1,
@@ -191,4 +203,5 @@ width: 60%;
 	height: 100px;
 
 }
+
 
