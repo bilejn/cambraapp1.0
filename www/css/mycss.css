@@ -125,7 +125,6 @@ a {text-decoration: none;}
 
 /* ===== graph ======== */
 .canvas-container {
-	margin: 20px auto;
     min-height: 300px;
     max-height: 600px;
     position: relative;

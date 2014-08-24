@@ -312,30 +312,48 @@ $(document).on("pagebeforeshow", "#cap_paste", function (){
 });			
 	
 	
-$(document).on("pagebeforeshow", "#graph", function (){	
+$(document).on("pageshow", "#graph", function (){	
 
-		var data = {
-			labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+	var data = $.jStorage.get("chartData");
+	var labels = $.jStorage.get("chartLabels");
+	var limit = $.jStorage.get("chartLimit");
+	var data = {
+			labels: labels,
 			datasets: [
 
 				{
-					label: "My Second dataset",
-					fillColor: "rgba(151,187,205,0.2)",
-					strokeColor: "rgba(151,187,205,1)",
-					pointColor: "rgba(151,187,205,1)",
+					label: "My First dataset",
+					fillColor: "rgba(151,187,205,0)",
+					strokeColor: "rgba(88,88,88,1)",
+					pointColor: "rgba(88,88,88,1)",
 					pointStrokeColor: "#fff",
 					pointHighlightFill: "#fff",
 					pointHighlightStroke: "rgba(151,187,205,1)",
-					data: [0, 1, 3, 3, 4, 5, 6, 5, 4, 3]
+					data: data
+				},
+				{
+					label: "limit",
+					fillColor: "rgba(124,209,0,0.1)",
+					strokeColor: "rgba(124,209,0,0.3)",
+					pointColor: "rgba(124,209,0,0.3)",
+					pointStrokeColor: "#fff",
+					pointHighlightFill: "#fff",
+					pointHighlightStroke: "rgba(151,187,205,0.3)",
+					data: limit
 				}
 			]
-		};
+		};	
     var graph = document.getElementById("myChart");
     graph.height = window.innerHeight/2;
-	graph.width = window.innerWidth -20;
+	graph.width = window.innerWidth -40;
 	var ctx = graph.getContext("2d");
 	var myNewChart = new Chart(ctx).Line(data);
 	$("#graph").trigger("create");
+});	
+
+$(document).on("pagebeforehide", "#graph", function (){	
+			$.jStorage.set("chartLabels", []);
+			$.jStorage.set("chartData", []);
 });		
 
 /*================= EVENTS =================*/

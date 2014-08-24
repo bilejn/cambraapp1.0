@@ -59,6 +59,20 @@
 			}
 		}
 
+/*function drawGraph */
+
+		function drawGraph (object) {
+		
+	
+		
+			$.jStorage.set("chartLabels", [1,2,3,4,5,6,7,8,9]);
+			$.jStorage.set("chartData", [1,2,3,4,5,6,7,-1,9]);
+			$.jStorage.set("chartLimit", [3,3,3,3,3,3,3,3,3,3]);
+		
+			$.mobile.changePage("#graph");
+
+		}	
+		
 
 			
 
