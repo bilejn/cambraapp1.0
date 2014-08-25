@@ -59,6 +59,78 @@
 			}
 		}
 
+		
+/*function adherence calculates current patients adherence  out of data available in registration attribute of particular object. only for objects with strict attribute set to true. The function is called from view.js. outputs string and class for li span */
+
+			function adherence (object){
+				var result = {};
+				var model = $.jStorage.get(object);
+				var days = model.registration.length;
+				var sum = 0;
+				for (var i = 0; i < model.registration.length; i ++){
+				
+					sum = sum + model.registration[i][1];
+				
+				}
+				var mark = 0;
+				if (sum > 0)
+					mark = sum / days;
+					
+				if (model.id == "snack"){
+					if (mark <= 3){
+						result.color = "greenWhite";
+						result.text = "good: "+ mark + " /day";
+					} else {
+						result.color = "redWhite";
+						result.text = "bad: "+ mark + " /day";
+					}
+				} else {
+					if (mark >= model.daily){
+						result.color = "greenWhite";
+						result.text = "good: "+ mark + " /day";
+					} else {
+						result.color = "redWhite";
+						result.text = "bad: "+ mark + " /day";
+					}				
+				}
+				return result;
+			}
+		
+/*function refresh resets registering, last and start variables of object. Tracking of adherence starts from the beginning */	
+
+		function refresh (object){
+		
+			var r = confirm("Are you sure?");
+			if (r == true) {
+				var model = $.jStorage.get(object);		
+				var today = new XDate().toString("yyyy-MM-dd");
+				
+				 if (model.id == "snack"){
+					snackCount("reset");						
+				 } else {
+					var add = model.today;
+					toDoCount(add);
+				 }
+
+				model.start = today;
+				model.nextMonth = new XDate().addMonths(1,true).toString("yyyy-MM-dd");
+				model.today = 0;
+				model.thisMonth = 0;
+				model.last = today;
+				model.registration = [[today,0]];
+				
+
+				$.jStorage.set(model.id, model);
+
+				$("#compliance").trigger("pagebeforeshow");
+			} else {
+				alert("Canceled");
+			}		
+
+		}
+
+	
+		
 /*function drawGraph */
 
 		function drawGraph (object) {

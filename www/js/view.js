@@ -95,28 +95,6 @@ $(document).on("pagebeforeshow", "#brushing", function (){
 
 });
 
-/* =========================== CURRENT THERAPY INFO =====================================*/
-
-$(document).on("pagebeforeshow", "#current_therapy_info", function (){
-
-	var output = "<li><h2>Dietary regimen</h2><p class=\"wrap\">No matter what your current caries risk level is, you should reduce eating sugar containing food as much as possible. At least keep frequency of eating it below three times a day (refer to info section).</p></li><li><h2>Keeping oral hygiene</h2><p class=\"wrap\">Brush your teeth two times daily - after breakfast and at bed time. Floss your teeth once daily after teeth brushing. Refer to info section to learn about correct technique and duration of teeth brushing and flossing.</p></li><li><h2>Regular dental visits</h2><p class=\"wrap\">You should regularly visit your dentist for recall exams.</p></li><li data-role=\"list-divider\" class=\"wrap\">Specific therapy prescribed by your dentist:</li>";
-	var objects = $.jStorage.get("objects");
-	for (var i = 0; i < objects.length; i++){
-	
-		model = $.jStorage.get(objects[i]);
-		if (model.specific)
-			output = output + "<li><h2>" + model.publicName + "</h2><p class='wrap'>" + model.text + "</p></li>";
-
-	}
-
-	$("#current_therapy_list").html(output).listview("refresh");;
-	
-
-
-
-});
-
-
 
 /* =========================== CURRENT STATUS INFO =====================================*/
 
@@ -139,8 +117,48 @@ $(document).on("pagebeforeshow", "#current_status_info", function (){
 });
 
 
+/* =========================== CURRENT THERAPY INFO =====================================*/
+
+$(document).on("pagebeforeshow", "#current_therapy_info", function (){
+
+	var output = "<li><h2>Dietary regimen</h2><p class=\"wrap\">No matter what your current caries risk level is, you should reduce eating sugar containing food as much as possible. At least keep frequency of eating it below three times a day (refer to info section).</p></li><li><h2>Keeping oral hygiene</h2><p class=\"wrap\">Brush your teeth two times daily - after breakfast and at bed time. Floss your teeth once daily after teeth brushing. Refer to info section to learn about correct technique and duration of teeth brushing and flossing.</p></li><li><h2>Regular dental visits</h2><p class=\"wrap\">You should regularly visit your dentist for recall exams.</p></li><li data-role=\"list-divider\" class=\"wrap\">Specific therapy prescribed by your dentist:</li>";
+	var objects = $.jStorage.get("objects");
+	for (var i = 0; i < objects.length; i++){
+	
+		model = $.jStorage.get(objects[i]);
+		if (model.specific)
+			output = output + "<li><h2>" + model.publicName + "</h2><p class='wrap'>" + model.text + "</p></li>";
+
+	}
+
+	$("#current_therapy_list").html(output).listview("refresh");
+	
 
 
+
+});
+
+
+
+/* =========================== ADHERENCE INFO =====================================*/
+
+$(document).on("pagebeforeshow", "#compliance", function (){
+
+	var output = "";
+	var objects = $.jStorage.get("objects");
+	for (var i = 0; i < objects.length; i++){
+	
+		var model = $.jStorage.get(objects[i]);	
+		if (model.strict){
+			var result = adherence(model.id);
+			output = output + "<li id='" +model.id + "_adherence'><a href='#' onclick=\"drawGraph('" + model.id + "')\"><h4>" + model.publicName + "</h4><p class='wrap'>Compliance: <span class='" + result.color + "'> " + result.text  + "</span></p></a> <a href='#'  onclick=\"refresh('" + model.id + "')\" data-icon='refresh'></a></li>";		
+		}
+	}	
+	
+	$("#adherence_list").html(output).listview("refresh");	
+});
+
+			
 /* =================================== GENERAL DATA =========================================*/
 
 $(document).on("pagebeforeshow", "#general_data", function (){
@@ -312,6 +330,9 @@ $(document).on("pagebeforeshow", "#cap_paste", function (){
 });			
 	
 	
+	
+/* =================================== GRAPH FOR EACH ADHERENCE REGISTRATION =========================================*/
+
 $(document).on("pageshow", "#graph", function (){	
 
 	var data = $.jStorage.get("chartData");
@@ -355,6 +376,13 @@ $(document).on("pagebeforehide", "#graph", function (){
 			$.jStorage.set("chartLabels", []);
 			$.jStorage.set("chartData", []);
 });		
+
+
+
+
+
+
+
 
 /*================= EVENTS =================*/
 $(function(){
