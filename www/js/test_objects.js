@@ -79,18 +79,18 @@
 				if (model.id == "snack"){
 					if (mark <= 3){
 						result.color = "greenWhite";
-						result.text = "good: "+ mark + " /day";
+						result.text = "good ("+ mark.toFixed(1) + " /day)";
 					} else {
 						result.color = "redWhite";
-						result.text = "bad: "+ mark + " /day";
+						result.text = "bad ("+ mark.toFixed(1) + " /day)";
 					}
 				} else {
 					if (mark >= model.daily){
 						result.color = "greenWhite";
-						result.text = "good: "+ mark + " /day";
+						result.text = "good ("+ mark.toFixed(1) + " /day)";
 					} else {
 						result.color = "redWhite";
-						result.text = "bad: "+ mark + " /day";
+						result.text = "bad ("+ mark.toFixed(1) + " /day)";
 					}				
 				}
 				return result;
@@ -100,7 +100,7 @@
 
 		function refresh (object){
 		
-			var r = confirm("Are you sure?");
+			var r = confirm("Start new tracking of this item, are you sure?");
 			if (r == true) {
 				var model = $.jStorage.get(object);		
 				var today = new XDate().toString("yyyy-MM-dd");
@@ -160,15 +160,20 @@
 		chartData = chartData.reverse();
 		
 		chartLimit =[];
-		limit = model.daily;
+		chartPlaceholder =[];
+		var limit = model.daily;
+		var placeholder = model.daily * 2;
+		
 		for (var i = 0; i< 10; i++){
 			chartLimit.push(limit);
+			chartPlaceholder.push(placeholder);
 		}
 		chartLimit = chartLimit.reverse();		
 		
 			$.jStorage.set("chartLabels", chartLabels);
 			$.jStorage.set("chartData", chartData);
 			$.jStorage.set("chartLimit", chartLimit);
+			$.jStorage.set("chartPlaceholder", chartPlaceholder);
 		
 			$.mobile.changePage("#graph");
 
@@ -365,6 +370,7 @@ ToDoCount handles to do counter if new objects are added or old ones removed dur
 		
 		this.daily = daily;
 		this.monthly = monthly;
+		this.therapyBegan =  new XDate().toString("yyyy-MM-dd");
 		this.start = new XDate().toString("yyyy-MM-dd");
 		this.nextMonth = new XDate().addMonths(1,true).toString("yyyy-MM-dd");
 		this.today = 0;

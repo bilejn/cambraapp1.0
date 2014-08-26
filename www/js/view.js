@@ -151,7 +151,7 @@ $(document).on("pagebeforeshow", "#compliance", function (){
 		var model = $.jStorage.get(objects[i]);	
 		if (model.strict){
 			var result = adherence(model.id);
-			output = output + "<li id='" +model.id + "_adherence'><a href='#' onclick=\"drawGraph('" + model.id + "')\"><h4>" + model.publicName + "</h4><p class='wrap'>Compliance: <span class='" + result.color + "'> " + result.text  + "</span></p></a> <a href='#'  onclick=\"refresh('" + model.id + "')\" data-icon='refresh'></a></li>";		
+			output = output + "<li id='" +model.id + "_adherence'><a href='#' onclick=\"drawGraph('" + model.id + "')\"><h4>" + model.publicName + "</h4><p class='wrap'>Adherence: <span class='" + result.color + "'> " + result.text  + "</span></p></a> <a href='#'  onclick=\"refresh('" + model.id + "')\" data-icon='refresh'></a></li>";		
 		}
 	}	
 	
@@ -338,6 +338,7 @@ $(document).on("pageshow", "#graph", function (){
 	var data = $.jStorage.get("chartData");
 	var labels = $.jStorage.get("chartLabels");
 	var limit = $.jStorage.get("chartLimit");
+	var placeholder = $.jStorage.get("chartPlaceholder");
 	var data = {
 			labels: labels,
 			datasets: [
@@ -354,13 +355,23 @@ $(document).on("pageshow", "#graph", function (){
 				},
 				{
 					label: "limit",
-					fillColor: "rgba(4,129,158,0.1)",
+					fillColor: "rgba(4,129,158,0)",
 					strokeColor: "rgba(4,129,158,0.3)",
 					pointColor: "rgba(4,129,158,0.3)",
 					pointStrokeColor: "#fff",
 					pointHighlightFill: "#fff",
 					pointHighlightStroke: "rgba(4,129,158,0.3)",
 					data: limit
+				},
+				{
+					label: "placeholder",
+					fillColor: "rgba(4,129,158,0)",
+					strokeColor: "rgba(4,129,158,0)",
+					pointColor: "rgba(4,129,158,0)",
+					pointStrokeColor: "#fff",
+					pointHighlightFill: "#fff",
+					pointHighlightStroke: "rgba(4,129,158,0)",
+					data: placeholder
 				}
 			]
 		};	
