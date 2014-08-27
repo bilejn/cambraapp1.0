@@ -763,6 +763,7 @@
 					<li><a href="#fluoride" >Fluoride therapy</a></li>
 					<li><a href="#ph_control" >Ph-control therapy</a>	</li>
 					<li><a href="#cap_paste" >Calcium phosphate paste</a>	</li>
+					<li><a href="#custom_entry" >Other...</a>	</li>
 			</ul>
 			
 		</div>
@@ -1046,19 +1047,21 @@
 		<div data-role="content">
 		
 		
-				<form name="custom" action="" onsubmit="return fCaPPaste();"  data-ajax="false" >
+				<form name="custom_prescription" action="" onsubmit="return fCustom();"  data-ajax="false" >
 	
-	
-				<fieldset data-role="controlgroup" >
 					<legend>Other Product:</legend>
-						<div  data-role="controlgroup" data-type="vertical">
-							<input type="text" name="first_name" id="first_name" value="" placeholder="Product name"/>
-							<input type="textarea" name="last_name" id="last_name" value="" placeholder="Instruction to the pati"  />
-							<input type="text" name="last_name" id="last_name" value="" placeholder="Use times daily"  />
-							<input type="text" name="last_name" id="last_name" value="" placeholder="Days in month"  />
-						</div>
-						</fieldset>
+							<input type="text" name="product_name" id="product_name" value="" placeholder="Product name"/>
+				
+
+					<label for="textarea-a">Directions to the patient:</label>
+					<textarea name="directions" id="directions" value=""/>
+					</textarea>
 		
+					<label for="slider-step">Use times daily:</label>
+					<input type="range" name="times_daily" id="times_daily" value="1" min="1" max="10" step="1" />
+					<label for="slider-step">Days in month:</label>
+					<input type="range" name="days_in_month" id="days_in_month" value="1" min="1" max="31" step="1" />
+					
 				<fieldset class="ui-grid-a">
 					<div class="ui-block-a"><input type="submit" value="Submit"  id="submit" data-role="button" data-icon="check"></div>
 					<div class="ui-block-b"><a href="#recommendations"  id="back" data-role="button" data-icon="back">Back</a></div>	   
