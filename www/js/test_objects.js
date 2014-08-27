@@ -35,6 +35,29 @@
 			
 			}
 
+/*function removeCustomTh deletes custom therapy objects. The function is called from custom_prescriptions section of index.html . */			
+
+			function removeCustomTh (objectName){
+			
+					var objects = $.jStorage.get("objects");
+				
+					var customObjects = $.jStorage.get("custom_objects");
+					customObjects.splice(customObjects.indexOf(objectName),1);
+					$.jStorage.set("custom_objects",customObjects);
+					
+					var customs = $.jStorage.get("customs");	
+					customs = customs -1;
+					$.jStorage.set("customs",customs);		
+					
+					handle("remove", objectName, objects);
+					$.jStorage.deleteKey(objectName);
+
+					$.mobile.changePage( "#custom_prescriptions", { allowSamePageTransition: true } );
+			
+			}
+			
+			
+			
 /*function clearAll deletes local storage. The function is called from settings section of index.html . */			
 			
 		function clearAll () {

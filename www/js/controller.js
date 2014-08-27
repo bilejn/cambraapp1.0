@@ -88,8 +88,15 @@ $(function (){
 	if ($.jStorage.get("fluoride_paste_5000_th") == undefined){	
 		$.jStorage.set("fluoride_paste_5000_th", "false");
 	}
-
 	
+	if ($.jStorage.get("customs") == undefined){	
+		$.jStorage.set("customs", 0);
+	}
+
+		if ($.jStorage.get("custom_objects") == undefined){
+		
+		$.jStorage.set("custom_objects", []);	
+	}
 	
 
 

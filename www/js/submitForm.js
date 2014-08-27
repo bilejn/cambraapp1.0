@@ -273,7 +273,7 @@ function fPhControl () {
 		alert("submitted");	
 		$.mobile.changePage( "#ph_control", { allowSamePageTransition: true } );
 		return false;
-	}
+}
 	
 	
 	function fCaPPaste() {
@@ -300,7 +300,54 @@ function fPhControl () {
 		return false;
 	}
 	
+	
+	function fCustom(){
+		var customs = $.jStorage.get("customs");
+		var daily;
+		var monthly;
+		var strict;
+		
+		var productName = document.custom_prescription.product_name.value;
+		var directions = document.custom_prescription.directions.value;
 
+
+		if (document.custom_prescription.take_as_needed.checked){
+			strict = false;
+			daily = 0;
+			monthly = "all";
+		}else{
+			strict = true;
+			daily = parseInt (document.custom_prescription.times_daily.value);
+			if (parseInt(document.custom_prescription.days_in_month.value) == 0){
+				monthly = "all";
+			}else{
+				monthly = parseInt(document.custom_prescription.days_in_month.value);
+			}
+		}	
+		
+		
+		customs = customs +1;
+		var id = "custom"+customs;
+
+			
+		var objects = $.jStorage.get("objects");
+		
+		var objectName = id;
+			var newCustomTh = new Therapy(id,productName,directions,true,strict,true,true,daily,monthly);
+			$.jStorage.set(objectName, newCustomTh);
+			$.jStorage.set("customs",customs);
+			
+			var customObjects = $.jStorage.get("custom_objects");
+			customObjects.push(id);
+			$.jStorage.set("custom_objects",customObjects);
+			
+			handle("add", objectName, objects);
+
+	
+		alert("submitted");	
+		$.mobile.changePage("#custom_entry", { allowSamePageTransition: true } );
+		return false;
+	}
 
 /* ====================================== tracking list =======================================*/
 

@@ -317,7 +317,7 @@ $(document).on("pagebeforeshow", "#ph_control", function (){
 	
 	
 	
-/* =================================== PH CONTROL THERAPY =========================================*/	
+/* =================================== CAP PASTE =========================================*/	
 	
 $(document).on("pagebeforeshow", "#cap_paste", function (){	
 	
@@ -327,10 +327,38 @@ $(document).on("pagebeforeshow", "#cap_paste", function (){
 	
 	
 		$("#cap_paste").trigger("create");
-});			
+});		
+
+
+/* =============================== 	CUSTOM prescriptions  ======================================= */
+
+$(document).on("pagebeforeshow", "#custom_prescriptions", function (){
+
+	var output = "";
+	var objects = $.jStorage.get("custom_objects");
+	for (var i = 0; i < objects.length; i++){
+	
+		var model = $.jStorage.get(objects[i]);
+			output = output + "<li id='" +model.id + "_therapy'><a href='#' ><h4>" + model.publicName + "</h4><p class='wrap'>Directions: "+model.text+"</p><p>Daily: "+model.daily+" &nbsp &nbsp  &nbsp  &nbsp   Days in month: "+model.monthly+"</p></a> <a href='#'  onclick=\"removeCustomTh('" + model.id + "')\" data-icon='delete'></a></li>";		
+	}	
+
+	$("#custom_entries").html(output).listview("refresh");	
+	
+});	
 	
 	
+/* =============================== 	CUSTOM entry  ======================================= 	
 	
+$(document).on("pagebeforeshow", "#custom_entry", function (){
+
+	document.custom_prescription.product_name.value = "";
+	document.custom_prescription.directions.value = "";
+	document.custom_prescription.take_as_needed.checked = false;
+	$("#custom_entry").trigger("create");
+	
+});	*/
+
+
 /* =================================== GRAPH FOR EACH ADHERENCE REGISTRATION =========================================*/
 
 $(document).on("pageshow", "#graph", function (){	
@@ -428,6 +456,7 @@ $(function(){
 	});
 
 
+	
 
 	$( "#place_holder" ).bind( "tap", function () {
 	
@@ -438,9 +467,12 @@ $(function(){
 	
 	
 	
-  
-	
-	
+	$( "#take_as_needed" ).change(function() {
+		$("#times_daily").toggleClass("ui-disabled");
+		$("#days_in_month").toggleClass("ui-disabled");
+		$("#custom_entry").trigger("create");
+	});
+
 });
 
 

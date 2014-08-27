@@ -763,7 +763,7 @@
 					<li><a href="#fluoride" >Fluoride therapy</a></li>
 					<li><a href="#ph_control" >Ph-control therapy</a>	</li>
 					<li><a href="#cap_paste" >Calcium phosphate paste</a>	</li>
-					<li><a href="#custom_entry" >Other...</a>	</li>
+					<li><a href="#custom_prescriptions" >Other...</a>	</li>
 			</ul>
 			
 		</div>
@@ -1032,6 +1032,48 @@
 			</div>
 	</div>	
 </section>
+
+
+				<!-- =============================== 	CUSTOM prescriptions  ======================================= -->
+				
+		<section id="custom_prescriptions" data-role="page" data-theme="a">
+		<div data-role="header"  data-position="fixed" data-theme="b">
+			<h4>Custom Prescriptions</h4>
+			<a href="#home" data-icon="back">Back</a>
+		</div>
+		
+		
+		<div data-role="content">
+		
+			<ul id="custom_entries" data-role="listview" data-split-icon="delete">
+
+			</ul>
+			
+			<br /><br />
+			
+			<a href="#custom_entry" data-role="button">Enter new</a>
+
+		
+
+		</div>
+		
+		
+		
+		<div data-role="footer" data-position="fixed" data-theme="b">
+              	<div data-role="navbar">
+					<ul>
+					  <li><a href="#home"  data-icon="home" >Home</a></li>
+					  <li><a href="#profile" data-icon="user">Profile</a></li>
+					  <li><a href="#info" data-icon="info">Info</a></li>
+					  <li><a href="#settings" data-icon="gear">Settings</a></li>
+					</ul>
+				</div>
+        </div>	
+	</section>							
+				
+				
+				
+				
 		
 				<!-- =============================== 	CUSTOM ENTRY  ======================================= -->	
 
@@ -1039,7 +1081,7 @@
 	
 		<div data-role="header"  data-position="fixed" data-theme="b">
 			<h4>Custom</h4>
-			<a href="#recommendations" data-icon="back">Back</a>
+			<a href="#custom_prescriptions" data-icon="back">Back</a>
 		</div>
 		
 		
@@ -1057,10 +1099,13 @@
 					<textarea name="directions" id="directions" value=""/>
 					</textarea>
 		
+					  <label for="take_as_needed">Take as needed:</label>
+					  <input type="checkbox" name="take_as_needed" id="take_as_needed" value="take_as_needed">
 					<label for="slider-step">Use times daily:</label>
 					<input type="range" name="times_daily" id="times_daily" value="1" min="1" max="10" step="1" />
-					<label for="slider-step">Days in month:</label>
-					<input type="range" name="days_in_month" id="days_in_month" value="1" min="1" max="31" step="1" />
+					<label for="slider-step">Days in month (0 = every day):</label>
+					<input type="range" name="days_in_month" id="days_in_month" value="0" min="0" max="31" step="1" />
+
 					
 				<fieldset class="ui-grid-a">
 					<div class="ui-block-a"><input type="submit" value="Submit"  id="submit" data-role="button" data-icon="check"></div>
