@@ -73,7 +73,7 @@
 				
 				<p class="clear"></p>
 				<ul  data-role="listview">
-					  <li id="time"  data-theme="a" class="emphasize">Next dental visit: <span>not set.</span> </li>
+					  <li id="time"  data-theme="a" class="emphasize"><span>Next dental visit: not set.</span> </li>
 
 				</ul>
 
@@ -750,7 +750,7 @@
 	<section id="recommendations" data-role="page" data-theme="a">
 	
 		<div data-role="header"  data-position="fixed" data-theme="b">
-			<h4>Recommendations</h4>
+			<h4 class="wrap">Recommendations</h4>
 			<a href="#dental_visit" data-icon="back">Back</a>
 		</div>
 		
@@ -758,12 +758,14 @@
 		<div data-role="content">
 		
 			<ul data-role="listview">
-					<li><a href="#next_appointment" >Next dental appointment</a></li>	
-					<li><a href="#antibacterials" >Antibacterial therapy</a>	</li>
+					<li><a href="#next_appointment" >Next dental appointment</a></li>
+					<li  data-role="list-divider" class=\"wrap\">CAMBRA therapeutics:</li>
+					<li><a href="#antibacterials" >Antibacterial therapy</a></li>
 					<li><a href="#fluoride" >Fluoride therapy</a></li>
-					<li><a href="#ph_control" >Ph-control therapy</a>	</li>
-					<li><a href="#cap_paste" >Calcium phosphate paste</a>	</li>
-					<li><a href="#custom_prescriptions" >Other...</a>	</li>
+					<li><a href="#ph_control" >Ph-control therapy</a></li>
+					<li><a href="#cap_paste" >Calcium phosphate paste</a></li>
+					<li  data-role="list-divider" class=\"wrap\">Custom therapeutics:</li>
+					<li><a href="#custom_prescriptions" >Enter/delete</a></li>
 			</ul>
 			
 		</div>
@@ -782,7 +784,10 @@
         </div>	
 	</section>	
 	
-	
+					<li><a href="#antibacterials" >Antibacterial therapy</a></li>
+					<li><a href="#fluoride" >Fluoride therapy</a></li>
+					<li><a href="#ph_control" >Ph-control therapy</a></li>
+					<li><a href="#cap_paste" >Calcium phosphate paste</a></li>	
 		<!-- =============================== 	Recall exams   ======================================= -->
 
 	
@@ -1039,7 +1044,7 @@
 		<section id="custom_prescriptions" data-role="page" data-theme="a">
 		<div data-role="header"  data-position="fixed" data-theme="b">
 			<h4>Custom Prescriptions</h4>
-			<a href="#home" data-icon="back">Back</a>
+			<a href="#recommendations" data-icon="back">Back</a>
 		</div>
 		
 		
@@ -1174,7 +1179,7 @@
 	
 	<section id="current_status_info" data-role="page" data-theme="a">
 		<div data-role="header"  data-position="fixed" data-theme="b">
-			<h4>Current Dental Status</h4>
+			<h4>Status</h4>
 			<a href="#profile" data-icon="back">Back</a>
 		</div>
 		
@@ -1182,10 +1187,7 @@
 		<div data-role="content">
 			
 			
-			<ul id="current_status_list" data-role="listview">
-					
-
-					
+			<ul id="current_status_list" data-role="listview">		
 			</ul>
 			
 
@@ -1281,12 +1283,12 @@
 		
 		
 		<div data-role="content">
+		
 			<h4>Last 10 days:</h4>
 			<div class="canvas-container">
 				<canvas id="myChart"></canvas>
 			</div>
-
-
+			
 		</div>
 		
 		

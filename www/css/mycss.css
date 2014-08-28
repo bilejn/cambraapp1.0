@@ -130,6 +130,10 @@ a {text-decoration: none;}
     position: relative;
 }
 
+.graph{font-size: 12px;}
+.up{ text-align: left;}
+.down{text-align: right;}
+
 
 
 

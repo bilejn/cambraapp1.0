@@ -106,7 +106,11 @@ $(document).on("pagebeforeshow", "#current_status_info", function (){
 		var diagnostic = $.jStorage.get("diagnostic");
 		for (var i = 0; i < diagnostic.length; i++){
 			model = $.jStorage.get(diagnostic[i]);
-
+			if (model.id = "riskLevel"){
+				var overall;
+				if (model.count == "low1" || model.count == "low2") model.count = "low";
+				if (model.count == "high1" || model.count == "high2") model.count = "high";
+			}
 				output = output + "<li><h2>" + model.publicName + ": <span class=\"ui-li-count ui-btn-corner-all countBubl \">" + model.count +"</span></h2><p class='wrap'>" + model.text + "</p></li>";
 
 		}
@@ -249,11 +253,6 @@ $(document).on("pagebeforeshow", "#protective_factors", function (){
 
 
 
-
-
-
-
-
 /* =================================== ANTIBACTERIALS =========================================*/
 
 
@@ -269,6 +268,8 @@ $(document).on("pagebeforeshow", "#antibacterials", function (){
 	
 		$("#antibacterials").trigger("create");
 });	
+	
+	
 	
 	
 /* =================================== FLUORIDE THERAPY =========================================*/
@@ -346,17 +347,7 @@ $(document).on("pagebeforeshow", "#custom_prescriptions", function (){
 	
 });	
 	
-	
-/* =============================== 	CUSTOM entry  ======================================= 	
-	
-$(document).on("pagebeforeshow", "#custom_entry", function (){
 
-	document.custom_prescription.product_name.value = "";
-	document.custom_prescription.directions.value = "";
-	document.custom_prescription.take_as_needed.checked = false;
-	$("#custom_entry").trigger("create");
-	
-});	*/
 
 
 /* =================================== GRAPH FOR EACH ADHERENCE REGISTRATION =========================================*/
@@ -458,12 +449,21 @@ $(function(){
 
 	
 
-	$( "#place_holder" ).bind( "tap", function () {
+	$( "#place_holder" ).bind( "click", function () {
 	
 	var message = $.jStorage.get("risk_level").message;
 	
 	alert( message);
 	});
+	
+	
+	
+	$( "#time" ).bind( "click", function () {
+	
+	alert("Next dental visit.");
+	
+	});
+	
 	
 	
 	
