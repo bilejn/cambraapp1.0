@@ -73,7 +73,7 @@
 				
 				<p class="clear"></p>
 				<ul  data-role="listview">
-					  <li id="time"  data-theme="a" class="emphasize"><span>Next dental visit: not set.</span> </li>
+					  <li id="time"  data-theme="a" class="emphasize wrap"><span>Next dental visit: not set.</span> </li>
 
 				</ul>
 
@@ -264,7 +264,6 @@
 				<li><a href="#general_data" >General Data</a></li>	
 				<li><a href="#current_status" >Current Status</a></li>
 				<li><a href="#recommendations" >Recommendations</a></li>
-				<li><a href="#list" >List</a></li>
 		</ul>
 		
 
@@ -301,9 +300,9 @@
 		<div data-role="content">
 		
 			<ul data-role="listview" >
-				<li><a href="#current_status_info" data-theme="d">Current status</a></li>
-				<li><a href="#current_therapy_info" data-theme="d" >Current recomended therapy</a></li>
-				<li><a href="#compliance" data-theme="d" >Adherence</a></li>
+				<li><a href="#current_status_info" class="wrap" data-theme="d">Current status</a></li>
+				<li><a href="#current_therapy_info" data-theme="d"  class="wrap"  >Current recomended therapy</a></li>
+				<li><a href="#compliance" data-theme="d"  class="wrap" >Adherence</a></li>
 			</ul>
 			
 			<br /><br />
@@ -454,7 +453,7 @@
 	<section id="general_data" data-role="page" data-theme="a">
 	
 		<div data-role="header"  data-position="fixed" data-theme="b">
-			<h4>General data</h4>
+			<h4 class="wrap" >General</h4>
 			<a href="#dental_visit" data-icon="back">Back</a>
 		</div>
 		
@@ -466,9 +465,9 @@
 					<legend>Patient name:</legend>
 						<div  data-role="controlgroup" data-type="vertical">
 							<label for="first_name" class="ui-hidden-accessible">First name:</label>
-							<input type="text" name="first_name" id="first_name" value="" placeholder="Product name"/>
+							<input type="text" name="first_name" id="first_name" value="" placeholder="First name"/>
 							<label for="last_name" class="ui-hidden-accessible">Last name:</label>
-							<input type="text" name="last_name" id="last_name" value="" placeholder="Last name"  />
+							<input type="text" name="last_name" id="last_name" value="" placeholder="Last name"/>
 						</div>
 						
 					<div data-role="controlgroup" data-type="vertical" >
@@ -525,7 +524,7 @@
 	<section id="current_status" data-role="page" data-theme="a">
 	
 		<div data-role="header"  data-position="fixed" data-theme="b">
-			<h4>Current status</h4>
+			<h4 class="wrap" >Status</h4>
 			<a href="#dental_visit" data-icon="back">Back</a>
 		</div>
 		
@@ -561,7 +560,7 @@
 	
 	<section id="disease_indicators" data-role="page" data-theme="a">
 		<div data-role="header"  data-position="fixed" data-theme="b">
-			<h4>Disease indicators</h4>
+			<h4 class="wrap" >Disease indicators</h4>
 			<a href="#current_status" data-icon="back">Back</a>
 		</div>
 		
@@ -617,7 +616,7 @@
 	
 	<section id="risk_factors" data-role="page" data-theme="a">
 		<div data-role="header"  data-position="fixed" data-theme="b">
-			<h4>Risk factors</h4>
+			<h4 class="wrap" >Risk factors</h4>
 			<a href="#current_status" data-icon="back">Back</a>
 		</div>
 		
@@ -682,7 +681,7 @@
 	<section id="protective_factors" data-role="page" data-theme="a">
 	
 		<div data-role="header" data-position="fixed" data-theme="b">
-			<h4>Protective factors</h4>
+			<h4 class="wrap" >Protective factors</h4>
 			<a href="#current_status" data-icon="back">Back</a>
 		</div>
 		
@@ -758,14 +757,14 @@
 		<div data-role="content">
 		
 			<ul data-role="listview">
-					<li><a href="#next_appointment" >Next dental appointment</a></li>
+					<li><a href="#next_appointment" class="wrap"  >Next dental appointment</a></li>
 					<li  data-role="list-divider" class=\"wrap\">CAMBRA therapeutics:</li>
-					<li><a href="#antibacterials" >Antibacterial therapy</a></li>
-					<li><a href="#fluoride" >Fluoride therapy</a></li>
-					<li><a href="#ph_control" >Ph-control therapy</a></li>
-					<li><a href="#cap_paste" >Calcium phosphate paste</a></li>
+					<li><a href="#antibacterials" class="wrap"  >Antibacterial therapy</a></li>
+					<li><a href="#fluoride"  class="wrap" >Fluoride therapy</a></li>
+					<li><a href="#ph_control" class="wrap"  >Ph-control therapy</a></li>
+					<li><a href="#cap_paste" class="wrap"  >Calcium phosphate paste</a></li>
 					<li  data-role="list-divider" class=\"wrap\">Custom therapeutics:</li>
-					<li><a href="#custom_prescriptions" >Enter/delete</a></li>
+					<li><a href="#custom_prescriptions" class="wrap"  >Enter/delete</a></li>
 			</ul>
 			
 		</div>
@@ -784,10 +783,8 @@
         </div>	
 	</section>	
 	
-					<li><a href="#antibacterials" >Antibacterial therapy</a></li>
-					<li><a href="#fluoride" >Fluoride therapy</a></li>
-					<li><a href="#ph_control" >Ph-control therapy</a></li>
-					<li><a href="#cap_paste" >Calcium phosphate paste</a></li>	
+
+					
 		<!-- =============================== 	Recall exams   ======================================= -->
 
 	
@@ -1043,7 +1040,7 @@
 				
 		<section id="custom_prescriptions" data-role="page" data-theme="a">
 		<div data-role="header"  data-position="fixed" data-theme="b">
-			<h4>Custom Prescriptions</h4>
+			<h4 class="wrap" >Custom Prescriptions</h4>
 			<a href="#recommendations" data-icon="back">Back</a>
 		</div>
 		
@@ -1082,94 +1079,58 @@
 		
 				<!-- =============================== 	CUSTOM ENTRY  ======================================= -->	
 
+				
 	<section id="custom_entry" data-role="page" data-theme="a">
-	
-		<div data-role="header"  data-position="fixed" data-theme="b">
-			<h4>Custom</h4>
-			<a href="#custom_prescriptions" data-icon="back">Back</a>
-		</div>
 		
+			<div data-role="header"  data-position="fixed" data-theme="b">
+				<h4 class="wrap" >New prescription</h4>
+				<a href="#custom_prescriptions" data-icon="back">Back</a>
+			</div>
+			
+			
+			
+			<div data-role="content">
+			
+			
+					<form name="custom_prescription" action="" onsubmit="return fCustom();"  data-ajax="false" >
 		
-		
-		<div data-role="content">
-		
-		
-				<form name="custom_prescription" action="" onsubmit="return fCustom();"  data-ajax="false" >
-	
-					<legend>Other Product:</legend>
-							<input type="text" name="product_name" id="product_name" value="" placeholder="Product name"/>
-				
-
-					<label for="textarea-a">Directions to the patient:</label>
-					<textarea name="directions" id="directions" value=""/>
-					</textarea>
-		
-					  <label for="take_as_needed">Take as needed:</label>
-					  <input type="checkbox" name="take_as_needed" id="take_as_needed" value="take_as_needed">
-					<label for="slider-step">Use times daily:</label>
-					<input type="range" name="times_daily" id="times_daily" value="1" min="1" max="10" step="1" />
-					<label for="slider-step">Days in month (0 = every day):</label>
-					<input type="range" name="days_in_month" id="days_in_month" value="0" min="0" max="31" step="1" />
-
+						<legend>Other Product:</legend>
+								<input type="text" name="product_name" id="product_name" value="" placeholder="Product name"/>
 					
-				<fieldset class="ui-grid-a">
-					<div class="ui-block-a"><input type="submit" value="Submit"  id="submit" data-role="button" data-icon="check"></div>
-					<div class="ui-block-b"><a href="#recommendations"  id="back" data-role="button" data-icon="back">Back</a></div>	   
-				</fieldset>
-		
-				</form>
-		
-		</div>
-		
-		
-			<div data-role="footer" data-position="fixed" data-theme="b">
-			<div data-role="navbar">
-				<ul>
-				  <li><a href="#home"  data-icon="home" >Home</a></li>
-				  <li><a href="#profile" data-icon="user">Profile</a></li>
-				  <li><a href="#info" data-icon="info">Info</a></li>
-				  <li><a href="#settings" data-icon="gear">Settings</a></li>
-				</ul>
+
+						<label for="textarea-a">Directions to the patient:</label>
+						<textarea name="directions" id="directions" value=""/>
+						</textarea>
+			
+						  <label for="take_as_needed">Take as needed:</label>
+						  <input type="checkbox" name="take_as_needed" id="take_as_needed" value="take_as_needed">
+						<label for="slider-step">Use times daily:</label>
+						<input type="range" name="times_daily" id="times_daily" value="1" min="1" max="10" step="1" />
+						<label for="slider-step">Days in month (0 = every day):</label>
+						<input type="range" name="days_in_month" id="days_in_month" value="0" min="0" max="31" step="1" />
+
+						
+					<fieldset class="ui-grid-a">
+						<div class="ui-block-a"><input type="submit" value="Submit"  id="submit" data-role="button" data-icon="check"></div>
+						<div class="ui-block-b"><a href="#recommendations"  id="back" data-role="button" data-icon="back">Back</a></div>	   
+					</fieldset>
+			
+					</form>
+			
 			</div>
-	</div>	
-</section>
-
-
-
-
-
-
-				
-		
-				<!-- =============================== 	list   ======================================= -->
-
-	
-	<section id="list" data-role="page" data-theme="b">
-	
-		<div data-role="header"  data-position="fixed">
-			<h4>List</h4>
-			<a href="#dental_visit" data-icon="back">Back</a>
-		</div>
-		
-		
-		
-		<div data-role="content">
-	
-					<p id="list_output"></p>	
-		</div>
-		
-		
-			<div data-role="footer" data-position="fixed">
-			<div data-role="navbar">
-				<ul>
-				  <li><a href="#home" data-icon="home">Home</a></li>
-				  <li><a href="#profile" data-icon="user">Profile</a></li>
-				  <li><a href="#info" data-icon="info">Info</a></li>
-				  <li><a href="#settings" data-icon="gear">Settings</a></li>
-				</ul>
-			</div>
+			
+			
+				<div data-role="footer" data-position="fixed" data-theme="b">
+				<div data-role="navbar">
+					<ul>
+					  <li><a href="#home"  data-icon="home" >Home</a></li>
+					  <li><a href="#profile" data-icon="user">Profile</a></li>
+					  <li><a href="#info" data-icon="info">Info</a></li>
+					  <li><a href="#settings" data-icon="gear">Settings</a></li>
+					</ul>
+				</div>
 		</div>	
-</section>
+	</section>
 
 
 
@@ -1272,7 +1233,10 @@
         </div>	
 	</section>			
 
+	
+	
 <!-- =============================== 	graph  ======================================= -->
+
 
 	
 	<section id="graph" data-role="page" data-theme="a">

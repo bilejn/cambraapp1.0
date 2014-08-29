@@ -102,18 +102,18 @@
 				if (model.id == "snack"){
 					if (mark <= 3){
 						result.color = "greenWhite";
-						result.text = "good ("+ mark.toFixed(1) + " /day)";
+						result.text = "good ("+ mark.toFixed(1) + " / " +model.daily+ " a day)";
 					} else {
 						result.color = "redWhite";
-						result.text = "bad ("+ mark.toFixed(1) + " /day)";
+						result.text = "bad ("+ mark.toFixed(1) + " / " +model.daily+ " a day)";
 					}
 				} else {
 					if (mark >= model.daily){
 						result.color = "greenWhite";
-						result.text = "good ("+ mark.toFixed(1) + " /day)";
+						result.text = "good ("+ mark.toFixed(1) + " / " +model.daily+ " a day)";
 					} else {
 						result.color = "redWhite";
-						result.text = "bad ("+ mark.toFixed(1) + " /day)";
+						result.text = "bad ("+ mark.toFixed(1) + " / " +model.daily+ " a day)";
 					}				
 				}
 				return result;

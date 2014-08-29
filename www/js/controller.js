@@ -2,6 +2,7 @@ $(function (){
 	$.jStorage.set("init", true);
 	
 
+	
 /* ================== DIAGNOSTIC OBJECTS INITIALIZATION ================== */	
 	
 	 if ($.jStorage.get("disease_indicators")== undefined){
@@ -157,7 +158,11 @@ $(function (){
 		toDoCount("reset");
 		snackCount("reset");
 	}
-
+	
+	 if ($.jStorage.get("first_time")== undefined){
+		alert ("Hey, you are new here. Please refer to info section to learn how to use IntacTooth app.");
+		$.jStorage.set("first_time","defined");		
+	}
 	
 	
 	$.jStorage.set("tracking_day", today);
