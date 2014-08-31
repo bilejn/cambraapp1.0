@@ -20,6 +20,7 @@
 			<script type="text/javascript" src="js/submitForm.js"></script>
 			<script type="text/javascript" src="js/test_objects.js"></script>
 			<script type="text/javascript" src="js/controller.js"></script>
+			<script type="text/javascript" src="js/info_text.js"></script>
 			<script type="text/javascript">
 				$(document).bind("mobileinit", function() {
 					$.mobile.defaultPageTransition = "none";
@@ -301,8 +302,8 @@
 		
 			<ul data-role="listview" >
 				<li><a href="#current_status_info" class="wrap" data-theme="d">Current status</a></li>
-				<li><a href="#current_therapy_info" data-theme="d"  class="wrap"  >Current recomended therapy</a></li>
-				<li><a href="#compliance" data-theme="d"  class="wrap" >Adherence</a></li>
+				<li><a href="#current_therapy_info" class="wrap"  >Current recomended therapy</a></li>
+				<li><a href="#compliance" class="wrap" >Adherence</a></li>
 			</ul>
 			
 			<br /><br />
@@ -332,9 +333,9 @@
 <!-- =============================== 	INFO  ======================================= -->
 
 	
-	<section id="info" data-role="page"  data-theme="b">
+	<section id="info" data-role="page"  data-theme="a">
 	
-		<div data-role="header"  data-position="fixed">
+		<div data-role="header"  data-position="fixed"  data-theme="b">
 			<h4>Info</h4>
 			<a href="#home" data-icon="back">Back</a>
 		</div>
@@ -342,61 +343,20 @@
 		
 		<div data-role="content" data-theme="a">
 		
-		<h4>Welcome</h4>
-
-						<p>Our primary intention is to help you keep your teeth free of dental caries.</p>
-						<p>If you use app on your own it will assist you track your behavior related to dietary and oral hygiene recommendations. This will help you to become more aware and modify your risky habits.</p>
-						<p>Usage of the app is much more efficient if you use it in cooperation with your dentist. Dentist will clinically determine your current dental status. Based on this the app will automatically calculate your caries risk level (that is likelihood of having new caries lesions in comming months or years). Apart from in-office treatment dentist may decide to prescribe you additional therapeutic agents aimed to lower your current caries risk level (agents containing fluoride, chlorhexidine, xylitol etc). Protectooth app can help you track your usage of these agents too - if dentist enter his prescriptions in corresponding fields under Recommendations tab.</p>
-						<p>Whether you use this app or not, you should follow these recommendations:<br />
-						1. Eat sugar containing food as little as possible. At least you should keep frequency of eating it below three times a day. Rinse your mouth with water after these sweet snacks.<br />
-						2. Maintain good oral hygiene. Brush your teeth at least two times a day, after breakfast and before bed time. Teeth brushing should last at least two minutes. Use standard over-the-counter tooth paste unless your dentist recommended therapeutic toothpaste. Floss once - before brushing. Proper tecnique of brushing and flossing is of greatest importance.<br />
-						3. Regularly visit your dentist, at least once in six months.</p>
-						<p>Refer to External resources tab to learn more about dental caries and prevention.</p>
-						
-						
-		<h4>Home screen</h4>					
-						<p>Home screen consists of following parts (from top to bottom):</p>
-						<p>1. "To do list button"<br />
-						Press to enter To do list. Colored number shows number of activities left to be done by the end of the day.</p>
-						<p>2. Caries risk level info<br />
-						Indicates your current caries risk level. This can be determined only by your dentist.</p>
-						<p>3. Next dental visit info<br />
-						Info about next dental visit (should be scheduled or date of next visit).</p>
-						<p>4. Registration buttons<br />
-						These buttons will help you track your behaviour related to dental caries. They are placed on home screen for quick and easy access. You should press them when committing corresponding activity (press snack when eating or drinking sugar-containing food. Press oral hygiene when brushing or flossing etc). By pressing registration button you are registering activity which will reflect on to do list and other fields showing you your compliance  to dental care recommendations. <br />
-						Snack and oral hygiene buttons are always present. If your dentist prescribe therapeutic agents (under visit to dentist/recommendations tab) buttons for tracking usage of these agents will appear below.
-						</p>
-										
-		<h4>Profile tab</h4>
-
-						<p>1. current status
-						Your current dental status ( caries risk level, present and treated caries lesions, risk and protective factors). this part will be updated after your dentist conduct clinical examinations and enter findings in corresponding fields in visit to dentist/current status tab.</p>
-						<p>2. current therapy
-						Summary of general preventive measures and specific therapeutic agents prescribed by your dentist ( under visit to dentist/ recommendations tab).</p>
-						<p>3. compliance
-						Your compliance to the different parts of  recommended regimen (regularity of visits to dentist, dietary and oral hygiene habits and usage of prescribed therapeutic agents).</p>
-						<p>4. Visit to dentist button
-						Should be pressed when visiting dentist. Opens visit to dentist screen - only for your dentist. </p>
-
-
-		<h4>Visit to dentist</h4>
-
-						<p>There are fields which should be filled by dentist after clinical examination, eventual therapeutic procedures and decision which therapeutic agents should be prescribed to the patient.</p>
-						<p>1. General data</p>
-						<p>2. Current status
-						Clinical findings related to dental caries ( disease indicators, risk and protective factors).  If dental office is not equipped for conducting specific tests ( Streptococcus mutans or lactobacillus coun, saliva tests etc) - fields for those tests should be left blank.
-						 After entering these data the app will calculate caries risk level for the patient and show it on home screen. 
-						This part of application is  taken from Caries Risk Assesment form ...</p>
-						<p>3. Recommended therapy
-						If any additional agents are prescribed (therapeutic toothpaste, mouthrinses etc.) it should be also entered here in coresponding fields. This way dentist will enable tracking and reminding of the patient for particular agent same as for other activities. Only toothpaste usage (standard or therapeutic) is tracked together with teeth brushing and does not have separate registering button.
-						There are several pre entered therapeutic agents with regimens according to the... But it is also possible to enter other agents in the other tab or to change existing.</p>
-
-								
+	<ul data-role="listview" >
+				<li><a href="#" class="wrap" onclick = "fInfoText('about')">About IntacTooth app</a></li>
+				<li><a href="#" class="wrap" onclick = "fInfoText('disease')" >Dental caries and gum disease</a></li>
+				<li><a href="#" class="wrap" onclick = "fInfoText('interface')" >App interface</a></li>
+				<li><a href="#" class="wrap" onclick = "fInfoText('rules')" >Rules of the game</a></li>
+				<li><a href="#" class="wrap" onclick = "fInfoText('resources')" >Resources</a></li>
+				<li><a href="#" class="wrap" onclick = "fInfoText('disclaimer')" >Disclaimer</a></li>
+			</ul>		
+		
 		</div>
 		
 		
 		
-		<div data-role="footer" data-position="fixed">
+		<div data-role="footer" data-position="fixed"  data-theme="b">
               	<div data-role="navbar">
 					<ul>
 					  <li><a href="#home"  data-icon="home">Home</a></li>
@@ -409,6 +369,34 @@
 	</section>		
 	
 	
+	
+	
+	<section id="info_text" data-role="page"  data-theme="a">
+	
+		<div data-role="header"  data-position="fixed"  data-theme="b">
+			<h4 id="info_title">Resources</h4>
+			<a href="#info" data-icon="back">Back</a>
+		</div>
+		
+		
+		<div data-role="content" data-theme="a">
+		<div id = "info_text_division"></div>		
+		
+		</div>
+		
+		
+		
+		<div data-role="footer" data-position="fixed"  data-theme="b">
+              	<div data-role="navbar">
+					<ul>
+					  <li><a href="#home"  data-icon="home">Home</a></li>
+					  <li><a href="#profile" data-icon="user">Profile</a></li>
+					  <li><a href="#info" data-icon="info" class="ui-btn-active ui-state-persist" >Info</a></li>
+					  <li><a href="#settings" data-icon="gear">Settings</a></li>
+					</ul>
+				</div>
+        </div>
+	</section>	
 	
 
 	
