@@ -347,7 +347,7 @@ $(document).on("pagebeforeshow", "#custom_prescriptions", function (){
 		var model = $.jStorage.get(objects[i]);
 			var regimen = model.daily;
 			if (model.daily == 0) var regimen = "as needed";
-			output = output + "<li id='" +model.id + "_therapy'><a href='#' ><h4>" + model.publicName + "</h4><p class='wrap'>Directions: "+model.text+"</p><p>Daily: "+regimen+" &nbsp &nbsp  &nbsp  &nbsp   Days in month: "+model.monthly+"</p></a> <a href='#'  onclick=\"removeCustomTh('" + model.id + "')\" data-icon='delete'></a></li>";		
+			output = output + "<li id='" +model.id + "_therapy'><a href='#' ><h4>" + model.publicName + "</h4><p class='wrap'>Directions: "+model.text+"</p><p>Daily: "+regimen+" &nbsp &nbsp  &nbsp  &nbsp   Days in month: "+model.monthly/model.daily+"</p></a> <a href='#'  onclick=\"removeCustomTh('" + model.id + "')\" data-icon='delete'></a></li>";		
 	}	
 
 	$("#custom_entries").html(output).listview("refresh");	
