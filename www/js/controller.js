@@ -115,6 +115,13 @@ $(function (){
 		if (todaysDate.diffDays(nextMonth) <= 0){
 			model.nextMonth = nextMonth.addMonths(1,true).toString("yyyy-MM-dd");
 			model.thisMonth = 0;
+			if (model.monthly != "all"){
+			model.today = 0;
+			model.thisMonth = 0;
+			model.last = new XDate().toString("yyyy-MM-dd");
+			model.registration = [[new XDate().toString("yyyy-MM-dd"),0]];
+			toDoCount(model.daily);
+			}
 		}
 		
 		if (model.monthly != "all"){
@@ -126,7 +133,7 @@ $(function (){
 		}
 		
 
-		if(model.last != today){
+		if(model.last!=today && model.active){
 			var today = new XDate().toString("yyyy-MM-dd");
 			var last = new XDate(model.last);
 			while (last.diffDays(today)>0){

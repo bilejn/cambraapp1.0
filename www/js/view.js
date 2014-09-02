@@ -155,7 +155,11 @@ $(document).on("pagebeforeshow", "#compliance", function (){
 		var model = $.jStorage.get(objects[i]);	
 		if (model.strict){
 			var result = adherence(model.id);
-			output = output + "<li id='" +model.id + "_adherence'><a href='#' onclick=\"drawGraph('" + model.id + "')\"><h4>" + model.publicName + "</h4><p class='wrap'>Adherence: <span class='" + result.color + "'> " + result.text  + "</span></p></a> <a href='#'  onclick=\"refresh('" + model.id + "')\" data-icon='refresh'></a></li>";		
+			if (model.active){
+			output = output + "<li id='" +model.id + "_adherence'><a href='#' onclick=\"drawGraph('" + model.id + "')\"><h4>" + model.publicName + "</h4><p class='wrap'>Adherence: <span class='" + result.color + "'> " + result.text  + "</span></p></a> <a href='#'  onclick=\"refresh('" + model.id + "')\" data-icon='refresh'></a></li>";
+			} else {
+			output = output + "<li id='" +model.id + "_adherence'><a href='#' ><h4>" + model.publicName + "</h4><p class='wrap'>Adherence: Inactive until &nbsp  <b>"+model.nextMonth+"</b></p></a> <a href='#' data-icon='refresh'></a></li>";
+			}
 		}
 	}	
 	

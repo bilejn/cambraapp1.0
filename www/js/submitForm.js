@@ -322,6 +322,7 @@ function fPhControl () {
 				monthly = "all";
 			}else{
 				monthly = parseInt(document.custom_prescription.days_in_month.value);
+				monthly = monthly * daily;
 			}
 		}	
 		
