@@ -131,7 +131,8 @@
 				 if (model.id == "snack"){
 					snackCount("reset");						
 				 } else {
-					var add = model.today;
+					if(model.today > model.daily) model.today = model.daily;
+					var add = model.daily + (model.today - model.daily);
 					toDoCount(add);
 				 }
 
