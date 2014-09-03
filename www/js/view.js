@@ -345,9 +345,12 @@ $(document).on("pagebeforeshow", "#custom_prescriptions", function (){
 
 	
 		var model = $.jStorage.get(objects[i]);
-			var regimen = model.daily;
-			if (model.daily == 0) var regimen = "as needed";
-			output = output + "<li id='" +model.id + "_therapy'><a href='#' ><h4>" + model.publicName + "</h4><p class='wrap'>Directions: "+model.text+"</p><p>Daily: "+regimen+" &nbsp &nbsp  &nbsp  &nbsp   Days in month: "+model.monthly/model.daily+"</p></a> <a href='#'  onclick=\"removeCustomTh('" + model.id + "')\" data-icon='delete'></a></li>";		
+
+			if (model.daily == 0){ 
+			output = output + "<li id='" +model.id + "_therapy'><a href='#' ><h4>" + model.publicName + "</h4><p class='wrap'>Directions: "+model.text+"</p><p>Regimen: as needed</p><p>Starting day: "+model.therapyBegan+"</p></a> <a href='#'  onclick=\"removeCustomTh('" + model.id + "')\" data-icon='delete'></a></li>";
+			} else {
+			output = output + "<li id='" +model.id + "_therapy'><a href='#' ><h4>" + model.publicName + "</h4><p class='wrap'>Directions: "+model.text+"</p><p>Regimen: "+model.daily+"/day &nbsp &nbsp "+model.monthly/model.daily+" days/month</p><p>Starting day: "+model.therapyBegan+"</p></a> <a href='#'  onclick=\"removeCustomTh('" + model.id + "')\" data-icon='delete'></a></li>";		
+			}
 	}	
 
 	$("#custom_entries").html(output).listview("refresh");	
