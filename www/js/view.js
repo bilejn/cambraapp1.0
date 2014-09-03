@@ -349,7 +349,13 @@ $(document).on("pagebeforeshow", "#custom_prescriptions", function (){
 			if (model.daily == 0){ 
 			output = output + "<li id='" +model.id + "_therapy'><a href='#' ><h4>" + model.publicName + "</h4><p class='wrap'>Directions: "+model.text+"</p><p>Regimen: as needed</p><p>Starting day: "+model.therapyBegan+"</p></a> <a href='#'  onclick=\"removeCustomTh('" + model.id + "')\" data-icon='delete'></a></li>";
 			} else {
-			output = output + "<li id='" +model.id + "_therapy'><a href='#' ><h4>" + model.publicName + "</h4><p class='wrap'>Directions: "+model.text+"</p><p>Regimen: "+model.daily+"/day &nbsp &nbsp "+model.monthly/model.daily+" days/month</p><p>Starting day: "+model.therapyBegan+"</p></a> <a href='#'  onclick=\"removeCustomTh('" + model.id + "')\" data-icon='delete'></a></li>";		
+			var mjesecno;
+			if (model.monthly == "all"){
+				mjesecno = "all";
+			}else{
+				mjesecno = model.monthly/model.daily;
+			}
+			output = output + "<li id='" +model.id + "_therapy'><a href='#' ><h4>" + model.publicName + "</h4><p class='wrap'>Directions: "+model.text+"</p><p>Regimen: "+model.daily+"/day &nbsp &nbsp "+mjesecno+" days/month</p><p>Starting day: "+model.therapyBegan+"</p></a> <a href='#'  onclick=\"removeCustomTh('" + model.id + "')\" data-icon='delete'></a></li>";		
 			}
 	}	
 
