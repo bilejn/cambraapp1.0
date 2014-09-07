@@ -134,9 +134,15 @@ a {text-decoration: none;}
 .up{ text-align: left;}
 .down{text-align: right;}
 
-
-
-
+/*========= info ===========*/
+.info_naslov {
+	border-bottom: 1px solid gray;
+	height: 80px;
+}
+.info_naslov  h4 {
+	text-align: center;
+	padding-top: 10px;
+}
 
 /* 16px > 1em */
 .ui-bar,
