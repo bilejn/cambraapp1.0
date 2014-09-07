@@ -161,11 +161,21 @@
 		var objects = $.jStorage.get("objects");
 		
 		if (document.fluoride_th.fluoride_paste_5000_th.checked){
-			$.jStorage.set("fluoride_paste_5000_th", "true");
-		} else {
-			$.jStorage.set("fluoride_paste_5000_th", "false");
+		var objectName = "fluoride_paste_5000_th";
+				if (objects.indexOf(objectName) == -1){
+					var fluoride_paste_5000_th = new Therapy("fluoride_paste_5000_th","Therapeutic tooth paste 5000ppm F","Use instead of regular over-the-counter tooth paste.",true,false,true,true,0,"all");
+					$.jStorage.set(objectName, fluoride_paste_5000_th);
+					handle("add", objectName, objects);
+				}
+		}  else {
+				var objectName = "fluoride_paste_5000_th";
+				if (objects.indexOf(objectName) != -1){
+					handle("remove", objectName, objects);			
+					$.jStorage.deleteKey(objectName);	
+				}
 		}
-
+		
+		
 		if (document.fluoride_th.fluoride_mouthrinse_th_once.checked){
 				var objectName = "fluoride_mouthrinse_th_once";
 				if (objects.indexOf(objectName) == -1){

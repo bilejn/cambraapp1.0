@@ -127,7 +127,7 @@
 			if (r == true) {
 				var model = $.jStorage.get(object);		
 				var today = new XDate().toString("yyyy-MM-dd");
-				
+	/*			
 				 if (model.id == "snack"){
 					snackCount("reset");						
 				 } else {
@@ -139,9 +139,9 @@
 				model.start = today;
 				model.nextMonth = new XDate().addMonths(1,true).toString("yyyy-MM-dd");
 				model.today = 0;
-				model.thisMonth = 0;
+				model.thisMonth = 0;*/
 				model.last = today;
-				model.registration = [[today,0]];
+				model.registration = [[today,model.today]];
 				
 
 				$.jStorage.set(model.id, model);

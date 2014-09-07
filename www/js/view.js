@@ -65,7 +65,7 @@ $(document).on("pagebeforeshow", "#to_do", function (){
 		}
 	}
 	
-	output = output + "<li data-role=\"list divider\"  data-theme=\"b\">As needed:</li>";
+	output = output + "<li data-role=\"list divider\"  data-theme=\"b\">As needed/toothpaste:</li>";
 			
 	for (var i = 0; i < objects.length; i++){
 		model = $.jStorage.get(objects[i]);
@@ -85,12 +85,7 @@ $(document).on("pagebeforeshow", "#to_do", function (){
 
 $(document).on("pagebeforeshow", "#brushing", function (){
 
-	if ($.jStorage.get("fluoride_paste_5000_th") == "true"){
-		$("#tooth_paste").html("Use therapeutic toothpaste (5000ppmF) prescribed by your dentist.");
-	} else {
 
-		$("#tooth_paste").html("Use standard over-the-counter tooth paste (1100 - 1450 ppm F).");
-	}
 	$("#brushing").trigger("create");
 
 });
@@ -281,7 +276,7 @@ $(document).on("pagebeforeshow", "#antibacterials", function (){
 
 $(document).on("pagebeforeshow", "#fluoride", function (){
 
-	if ($.jStorage.get("fluoride_paste_5000_th") == "true"){
+	if ($.jStorage.get("fluoride_paste_5000_th") != null){
 		document.fluoride_th.fluoride_paste_5000_th.checked = true;
 	}
 
