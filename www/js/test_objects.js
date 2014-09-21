@@ -174,8 +174,8 @@
 
 		var chartData = [];
 		for (var i = 0; i < 10; i++){
-			var value = model.registration[counter -1][1];
-			if (value != undefined){
+			if (model.registration[counter-1] != undefined){
+				var value = model.registration[counter -1][1];
 				chartData.push(value);
 			} else {
 				chartData.push(0);			
