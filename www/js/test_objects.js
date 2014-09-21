@@ -173,14 +173,16 @@
 		var counter = model.registration.length;
 
 		var chartData = [];
-		for (var i = 0; i < model.registration.length; i++){
+		for (var i = 0; i < 10; i++){
 			var value = model.registration[counter -1][1];
-			chartData.push(value);
+			if (value != undefined){
+				chartData.push(value);
+			} else {
+				chartData.push(0);			
+			}
 			counter = counter -1;
 		}
-		for (var i = chartData.length; i < 10; i++){
-			chartData.push(0);
-		}
+
 		chartData = chartData.reverse();
 		
 		chartLimit =[];
