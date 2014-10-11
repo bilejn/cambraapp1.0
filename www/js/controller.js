@@ -228,8 +228,8 @@ function registration (model){
 		snackCount(1);
 	}
 	
-	
-	alert (model.publicName+" registered. "+model.text);
+	showAlert();
+	//alert (model.publicName+" registered. "+model.text);
 	$.jStorage.set(model.id, model);
 
 }
