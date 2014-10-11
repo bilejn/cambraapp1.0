@@ -1,7 +1,22 @@
 $(function (){
+
+
 	$.jStorage.set("init", true);
 	
+	
+	
+/* ==================== Determine how many times app has been executed ======================*/
 
+	var openingTimes = $.jStorage.get("opening_times");
+	if (openingTimes == null){
+		openingTimes = 0;
+	}else {
+		openingTimes = openingTimes + 1;
+	}
+	$.jStorage.set("opening_times", openingTimes);
+
+	
+	
 	
 /* ================== DIAGNOSTIC OBJECTS INITIALIZATION ================== */	
 	
@@ -152,6 +167,7 @@ $(function (){
 
 	/* ================== TO DO LIST & COUNT & snack count RESET ================== */	
 	
+	
 	if (today != trackingDay){
 		var objects = $.jStorage.get("objects");
 		for (var i = 0; i < objects.length; i++){
@@ -163,9 +179,15 @@ $(function (){
 		snackCount("reset");
 	}
 	
-	 if ($.jStorage.get("first_time")== undefined){
-		alert ("Hey, you are new here. Please refer to info section to learn how to use IntacTooth app.");
-		$.jStorage.set("first_time","defined");		
+	
+	/*==================== FIRST TIME AND RATING MESSAGES ========================*/
+	var timesExecuted = $.jStorage.get("opening_times")
+	
+	if (timesExecuted == 0 || timesExecuted == null){
+		showAlert();
+
+    }else if(timesExecuted % 10 == 0){
+		alert ("Hey, you are new here. Please refer to info section to learn how to use IntacTooth app.");		
 	}
 	
 	
@@ -211,6 +233,21 @@ function registration (model){
 	$.jStorage.set(model.id, model);
 
 }
+
+  function alertDismissed() {
+        // do something
+    }
+
+    // Show a custom alert
+    //
+    function showAlert() {
+        navigator.notification.alert(
+            'You are the winner!',  // message
+            alertDismissed,         // callback
+            'Game Over',            // title
+            'Done'                  // buttonName
+        );
+    }
 
 
 
