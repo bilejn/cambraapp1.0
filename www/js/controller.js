@@ -181,15 +181,24 @@ $(function (){
 	
 	
 	/*==================== FIRST TIME AND RATING MESSAGES ========================*/
+	
 	var timesExecuted = $.jStorage.get("opening_times")
 	
-	if (timesExecuted == 0 || timesExecuted == null){
-		showAlert();
+	if (timesExecuted == 1 || timesExecuted == null){
+	var welcomeTitle = "New User";
+	var welcomeMessage = "Please refer to info section to learn how to use IntacTooth app.";
+	showAlert(welcomeTitle, emptyFunction, welcomeMessage, 'OK');
 
-    }else if(timesExecuted % 10 == 0){
-		alert ("Hey, you are new here. Please refer to info section to learn how to use IntacTooth app.");		
+    }else if(timesExecuted != 0 && timesExecuted % 10 == 0){
+		var ratingTitle = "Do You Like IntacTooth?";
+		var ratingMessage = "If you have time, please rate our app.";
+		var callback = function (index){
+			if (index == 1){ navigator.app.loadUrl('https://play.google.com/store/apps/details?id=com.phonegap.intactooth', { openExternal:true });}
+		}
+		var buttons =  ['OK','Later'];
+		showConfirm (ratingTitle, callback, ratingMessage, buttons);
 	}
-	
+
 	
 	$.jStorage.set("tracking_day", today);
 	$.jStorage.set("init", false);
@@ -228,7 +237,7 @@ function registration (model){
 		snackCount(1);
 	}
 	
-	var registrationTitle = model.publicName + " registered";
+	var registrationTitle = model.publicName + " Registered";
 	showAlert(registrationTitle, emptyFunction, model.text, 'OK');
 	//alert (model.publicName+" registered. "+model.text);
 	$.jStorage.set(model.id, model);
