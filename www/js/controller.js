@@ -179,7 +179,7 @@ $(function (){
 		snackCount("reset");
 	}
 	
-	
+		/*==================== FIRST TIME AND RATING MESSAGES ========================
  var timesExecuted = $.jStorage.get("opening_times");
 	
 	if (timesExecuted == 0 || timesExecuted == null){
@@ -202,12 +202,10 @@ $(function (){
 
 	/*==================== FIRST TIME AND RATING MESSAGES ========================*/
 
-document.addEventListener("deviceready", onDeviceReady, false);
 
-function onDeviceReady() {
-   
-
-}
+ document.addEventListener("deviceready", function(){
+      alert("123");
+ },true);
 
 
 
