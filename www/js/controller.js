@@ -182,7 +182,7 @@ $(function (){
 	
 	/*==================== FIRST TIME AND RATING MESSAGES ========================*/
 	
-	var timesExecuted = $.jStorage.get("opening_times")
+	var timesExecuted = $.jStorage.get("opening_times");
 	
 	if (timesExecuted == 0 || timesExecuted == null){
 		var welcomeTitle = "New User";
@@ -191,9 +191,9 @@ $(function (){
     }else if(timesExecuted != 0 && timesExecuted % 10 == 0){
 		var ratingTitle = "Do You Like IntacTooth?";
 		var ratingMessage = "If you have time, please rate our app.";
-		var callback = goRate;
-		var buttons =  ['OK','Later'];
-		showConfirm (ratingTitle, callback, ratingMessage, buttons);
+		var ratingCallback = goRate;
+		var ratingButtons =  ['OK','Later'];
+		showConfirm (ratingTitle, ratingCallback, ratingMessage, ratingButtons);
 	}
 
 	
