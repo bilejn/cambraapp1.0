@@ -179,8 +179,20 @@ $(function (){
 		snackCount("reset");
 	}
 	
-		/*==================== FIRST TIME AND RATING MESSAGES ========================
- var timesExecuted = $.jStorage.get("opening_times");
+
+	
+	$.jStorage.set("tracking_day", today);
+	$.jStorage.set("init", false);
+});
+
+
+
+
+ document.addEventListener("deviceready", function(){
+ 
+ 		/*==================== FIRST TIME AND RATING MESSAGES ========================*/
+		
+	var timesExecuted = $.jStorage.get("opening_times");
 	
 	if (timesExecuted == 0 || timesExecuted == null){
 		var welcomeTitle = "New User";
@@ -194,17 +206,7 @@ $(function (){
 		showConfirm (ratingTitle, ratingCallback, ratingMessage, ratingButtons);
 	}
 	
-==================== FIRST TIME AND RATING MESSAGES ========================*/	
 	
-	$.jStorage.set("tracking_day", today);
-	$.jStorage.set("init", false);
-});
-
-
-
-
- document.addEventListener("deviceready", function(){
-      alert("123");
  },true);
 
 
