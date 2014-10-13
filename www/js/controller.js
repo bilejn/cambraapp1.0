@@ -194,13 +194,13 @@ $(function (){
 		showConfirm (ratingTitle, ratingCallback, ratingMessage, ratingButtons);
 	}
 	
-	
+==================== FIRST TIME AND RATING MESSAGES ========================*/	
 	
 	$.jStorage.set("tracking_day", today);
 	$.jStorage.set("init", false);
 });
 
-	/*==================== FIRST TIME AND RATING MESSAGES ========================*/
+
 
 
  document.addEventListener("deviceready", function(){
