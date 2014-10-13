@@ -256,7 +256,7 @@ ToDoCount handles to do counter if new objects are added or old ones removed dur
             title,            // title
             callback,         // callback
             message,          // message
-            'OK'              // buttonName
+            button              // buttonName
         );
     }	
 	

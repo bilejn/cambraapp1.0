@@ -229,7 +229,7 @@ function registration (model){
 	}
 	
 	var registrationTitle = model.publicName + " registered";
-	showAlert(registrationTitle, emptyFunction, model.text);
+	showAlert(registrationTitle, emptyFunction, model.text, 'OK');
 	//alert (model.publicName+" registered. "+model.text);
 	$.jStorage.set(model.id, model);
 
