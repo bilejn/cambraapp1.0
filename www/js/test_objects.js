@@ -250,7 +250,7 @@ ToDoCount handles to do counter if new objects are added or old ones removed dur
     }
 	
 	function goRate (index){
-		if (index == 1){ navigator.app.loadUrl('https://play.google.com/store/apps/details?id=com.phonegap.intactooth', { openExternal:true });
+		if (index == 1){ navigator.app.loadUrl('https://play.google.com/store/apps/details?id=com.phonegap.intactooth', { openExternal:true })};
 	}
 
     // Show a custom alert

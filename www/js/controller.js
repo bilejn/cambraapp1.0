@@ -180,9 +180,20 @@ $(function (){
 	}
 	
 	
-	/*==================== FIRST TIME AND RATING MESSAGES ========================*/
+
 	
-	var timesExecuted = $.jStorage.get("opening_times");
+	
+	
+	$.jStorage.set("tracking_day", today);
+	$.jStorage.set("init", false);
+});
+
+	/*==================== FIRST TIME AND RATING MESSAGES ========================*/
+
+document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() {
+    var timesExecuted = $.jStorage.get("opening_times");
 	
 	if (timesExecuted == 0 || timesExecuted == null){
 		var welcomeTitle = "New User";
@@ -196,14 +207,11 @@ $(function (){
 		showConfirm (ratingTitle, ratingCallback, ratingMessage, ratingButtons);
 	}
 
-	
-	$.jStorage.set("tracking_day", today);
-	$.jStorage.set("init", false);
-});
+}
 
 
 
-
+/*==================== REGISTRATION ========================*/
 
 function registration (model){
 
