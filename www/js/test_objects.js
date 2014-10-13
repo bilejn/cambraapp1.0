@@ -253,10 +253,10 @@ ToDoCount handles to do counter if new objects are added or old ones removed dur
     //
     function showAlert(title, callback, message, button) {
         navigator.notification.alert(
-            title,            // title
+            message,          // title
             callback,         // callback
-            message,          // message
-            button              // buttonName
+            title,            // message
+            button            // buttonName
         );
     }	
 	
