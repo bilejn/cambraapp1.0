@@ -184,7 +184,7 @@ $(function (){
 	
 	var timesExecuted = $.jStorage.get("opening_times")
 	
-	if (timesExecuted == 1 || timesExecuted == null){
+	if (timesExecuted == 0 || timesExecuted == null){
 	var welcomeTitle = "New User";
 	var welcomeMessage = "Please refer to info section to learn how to use IntacTooth app.";
 	showAlert(welcomeTitle, emptyFunction, welcomeMessage, 'OK');
