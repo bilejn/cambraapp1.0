@@ -240,7 +240,27 @@ ToDoCount handles to do counter if new objects are added or old ones removed dur
 			$.jStorage.set("snack_count", snackCount);					
 			}		
 			
-			
+	
+
+/*======================== MESSAGE FUNCTIONS ==============================*/
+
+
+  function emptyFunction() {
+        // do something
+    }
+
+    // Show a custom alert
+    //
+    function showAlert(title, callback, message, button) {
+        navigator.notification.alert(
+            title,            // title
+            callback,         // callback
+            message,          // message
+            'OK'              // buttonName
+        );
+    }	
+	
+	
 			
 /*====================== DIAGNOSTIC OBJECTS CONSTRUCTORS ====================*/
 	

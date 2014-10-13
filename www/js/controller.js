@@ -228,26 +228,14 @@ function registration (model){
 		snackCount(1);
 	}
 	
-	showAlert();
+	var registrationTitle = model.publicName + " registered";
+	showAlert(registrationTitle, emptyFunction, model.text);
 	//alert (model.publicName+" registered. "+model.text);
 	$.jStorage.set(model.id, model);
 
 }
 
-  function alertDismissed() {
-        // do something
-    }
 
-    // Show a custom alert
-    //
-    function showAlert() {
-        navigator.notification.alert(
-            'You are the winner!',  // message
-            alertDismissed,         // callback
-            'Game Over',            // title
-            'Done'                  // buttonName
-        );
-    }
 
 
 
