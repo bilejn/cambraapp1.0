@@ -180,20 +180,7 @@ $(function (){
 	}
 	
 	
-
-	
-	
-	
-	$.jStorage.set("tracking_day", today);
-	$.jStorage.set("init", false);
-});
-
-	/*==================== FIRST TIME AND RATING MESSAGES ========================*/
-
-document.addEventListener("deviceready", onDeviceReady, false);
-
-function onDeviceReady() {
-    var timesExecuted = $.jStorage.get("opening_times");
+ var timesExecuted = $.jStorage.get("opening_times");
 	
 	if (timesExecuted == 0 || timesExecuted == null){
 		var welcomeTitle = "New User";
@@ -206,6 +193,19 @@ function onDeviceReady() {
 		var ratingButtons =  ['OK','Later'];
 		showConfirm (ratingTitle, ratingCallback, ratingMessage, ratingButtons);
 	}
+	
+	
+	
+	$.jStorage.set("tracking_day", today);
+	$.jStorage.set("init", false);
+});
+
+	/*==================== FIRST TIME AND RATING MESSAGES ========================*/
+
+document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() {
+   
 
 }
 
