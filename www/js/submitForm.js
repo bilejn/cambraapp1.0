@@ -11,7 +11,7 @@
 			var generalData = new GeneralData(firstName,lastName,gender,age);
 			$.jStorage.set("general_data",generalData);
 		
-		alert("submitted");
+		showAlert("Submitted", emptyFunction, "Thank you.", 'OK');
 		$.mobile.changePage( "#general_data", { allowSamePageTransition: true } );
 		return false;
 	}
@@ -27,7 +27,7 @@
 			var diseaseIndicators = new DiseaseIndicators(visibleCavities,radiographic,whiteSpots,last3y);
 			$.jStorage.set("disease_indicators",diseaseIndicators);		
 
-		alert("submitted");
+		showAlert("Submitted", emptyFunction, "Submit all three Current Status forms in order to calculate caries risk level.", 'OK');
 		var riskLevel = new RiskLevel();
 		$.jStorage.set("risk_level", riskLevel);		
 		$.mobile.changePage( "#disease_indicators", { allowSamePageTransition: true } );
@@ -51,7 +51,7 @@
 			$.jStorage.set("risk_factors",riskFactors);	
 		
 	
-		alert("submitted");
+		showAlert("Submitted", emptyFunction, "Submit all three Current Status forms in order to calculate caries risk level.", 'OK');
 		var riskLevel = new RiskLevel();
 		$.jStorage.set("risk_level", riskLevel);		
 		$.mobile.changePage( "#risk_factors", { allowSamePageTransition: true } );
@@ -76,7 +76,7 @@
 			var protectiveFactors = new ProtectiveFactors(fluoridatedCommunity,fluoridePasteOnce,fluoridePasteTwice,fluorideMouthrinse,fluoridePasteHighF,fluorideVarnish,fluorideTopical,chlorhexidine,xylitol,cap,adequateSaliva);
 			$.jStorage.set("protective_factors",protectiveFactors);	
 		
-		alert("submitted");	
+		showAlert("Submitted", emptyFunction, "Submit all three Current Status forms in order to calculate caries risk level.", 'OK');
 		var riskLevel = new RiskLevel();
 		$.jStorage.set("risk_level", riskLevel);		
 		$.mobile.changePage( "#protective_factors", { allowSamePageTransition: true } );
@@ -99,7 +99,7 @@
 	
 	
 
-		alert("submitted");	
+		showAlert("Submitted", emptyFunction, "Thank you.", 'OK');	
 		$.mobile.changePage( "#next_appointment", { allowSamePageTransition: true } );
 		return false;
 	}
@@ -143,7 +143,7 @@
 		
 
 		
-		alert("submitted");	
+		showAlert("Submitted", emptyFunction, "Thank you.", 'OK');		
 		$.mobile.changePage( "#antibacterials", { allowSamePageTransition: true } );
 		return false;
 	}
@@ -237,7 +237,7 @@
 				}
 		}
 	
-		alert("submitted");	
+		showAlert("Submitted", emptyFunction, "Thank you.", 'OK');		
 		$.mobile.changePage( "#fluoride", { allowSamePageTransition: true } );
 		return false;
 	}
@@ -280,7 +280,7 @@ function fPhControl () {
 				}
 		}
 	
-		alert("submitted");	
+		showAlert("Submitted", emptyFunction, "Thank you.", 'OK');		
 		$.mobile.changePage( "#ph_control", { allowSamePageTransition: true } );
 		return false;
 }
@@ -305,7 +305,7 @@ function fPhControl () {
 				}
 		}
 	
-		alert("submitted");	
+		showAlert("Submitted", emptyFunction, "Thank you.", 'OK');	
 		$.mobile.changePage( "#cap_paste", { allowSamePageTransition: true } );
 		return false;
 	}
@@ -355,7 +355,7 @@ function fPhControl () {
 			handle("add", objectName, objects);
 
 	
-		alert("submitted");	
+		showAlert("Submitted", emptyFunction, "Thank you.", 'OK');		
 		$.mobile.changePage("#custom_entry", { allowSamePageTransition: true } );
 		return false;
 	}
