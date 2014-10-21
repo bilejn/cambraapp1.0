@@ -15,7 +15,9 @@ function delayedLoop(){
 	$("#timer").html(pad2(min)+":"+pad2(sec));
 	secTrue = secTrue - 1;
 
+	if (secTrue == 60){ playBeep(1); }
 	if (secTrue<0) { 
+	playBeep(2);
 	$("#timer").html("00:00");
 	registration("brushing");
 	$("#timer-button").removeClass('ui-disabled'); 
@@ -34,3 +36,7 @@ function pad2(n){
   return n < 10 ? '0' + n : n;
   
 }
+
+ function playBeep(x) {
+        navigator.notification.beep(x);
+    }

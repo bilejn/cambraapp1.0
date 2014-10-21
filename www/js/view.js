@@ -464,15 +464,19 @@ $(function(){
 	
 	var message = $.jStorage.get("risk_level").message;
 	
-	alert( message);
+	showAlert("Caries Risk Level", emptyFunction, message, 'OK');
 	});
 	
 	
 	
 	$( "#time" ).bind( "click", function () {
+	var message = "Not set";
+	var date = $.jStorage.get("next_appointment");
+	if (date != undefined){
+		message = date;
+	}
 	
-	alert("Next dental visit.");
-	
+	showAlert("Next dental visit", emptyFunction, message, 'OK');	
 	});
 	
 	
