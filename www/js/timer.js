@@ -15,7 +15,7 @@ function delayedLoop(){
 	$("#timer").html(pad2(min)+":"+pad2(sec));
 	secTrue = secTrue - 1;
 
-	if (secTrue == 62){ playBeep(1); }
+	if (secTrue == 58){ playBeep(1); }
 	if (secTrue<0) { 
 	playBeep(2);
 	$("#timer").html("00:00");
