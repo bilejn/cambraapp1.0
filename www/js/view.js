@@ -120,7 +120,7 @@ $(document).on("pagebeforeshow", "#current_status_info", function (){
 
 $(document).on("pagebeforeshow", "#current_therapy_info", function (){
 
-	var output = "<li><h2>Dietary regimen</h2><p class=\"wrap\">No matter what your current caries risk level is, you should reduce eating sugar containing food as much as possible. At least keep frequency of eating it below three times a day (refer to info section).</p></li><li><h2>Keeping oral hygiene</h2><p class=\"wrap\">Brush your teeth two times daily - after breakfast and at bed time. Floss your teeth once daily after teeth brushing. Refer to info section to learn about correct technique and duration of teeth brushing and flossing.</p></li><li><h2>Regular dental visits</h2><p class=\"wrap\">You should regularly visit your dentist for recall exams.</p></li><li data-role=\"list-divider\" class=\"wrap\">Specific therapy prescribed by your dentist:</li>";
+	var output = "<li><h2>Dietary regimen</h2><p class=\"wrap\">No matter what your current caries risk level is, you should reduce eating sugar containing food as much as possible. At least keep frequency of eating it below three times a day (refer to info section).</p></li><li><h2>Keeping oral hygiene</h2><p class=\"wrap\">Brush your teeth two times daily - after breakfast and at bed time. Floss your teeth once daily before brushing. Refer to info section to learn about correct technique and duration of teeth brushing and flossing.</p></li><li><h2>Regular dental visits</h2><p class=\"wrap\">You should regularly visit your dentist for recall exams.</p></li><li data-role=\"list-divider\" class=\"wrap\">Specific therapy prescribed by your dentist:</li>";
 	var objects = $.jStorage.get("objects");
 	for (var i = 0; i < objects.length; i++){
 	
