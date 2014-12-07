@@ -155,9 +155,14 @@
 		
 		<div data-role="content">
 		
-				<a href="#brushing"  data-role="button" >Brushing</a>		
-				<a href="#flossing"  data-role="button" >Flossing</a>
-		
+				<a href="#"  data-role="button" id="timer-button" >Brushing</a>	
+				<a href="#" data-role="button" id="flossing_registration_button" data-theme="a" onclick="registration('flossing')">Flossing</a>
+				<label for="brushingTimerFlip">Use brushing timer:</label>
+				<select name="brushingTimerFlip" id="brushingTimerFlip" data-role="slider">
+					<option value="off">Off</option>
+					<option value="on">On</option>
+				</select> 
+				<p id="timer"></p>	
 		</div>
 		
 		

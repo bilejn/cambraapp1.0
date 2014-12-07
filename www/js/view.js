@@ -81,12 +81,19 @@ $(document).on("pagebeforeshow", "#to_do", function (){
 
 
 
-/* =========================== BRUSHING =====================================*/
+/* =========================== ORAL HYGIENE =====================================*/
 
-$(document).on("pagebeforeshow", "#brushing", function (){
+$(document).on("pagebeforeshow", "#oral_hygiene", function (){
 
-
-	$("#brushing").trigger("create");
+	if ($.jStorage.get("brushigTimerToggle")=="on"){
+			$("#timer-button").attr("onclick","timer(120);");
+			$("#timer").html("02:00");		
+	}else{
+			$("#timer-button").attr("onclick","registration('brushing')");	
+			$("#timer").html("");
+	}
+	
+	$("#oral_hygiene").trigger("create");
 
 });
 
@@ -487,7 +494,19 @@ $(function(){
 		$("#days_in_month").toggleClass("ui-disabled");
 		$("#custom_entry").trigger("create");
 	});
-
+	
+	$("#brushingTimerFlip").on( 'slidestop', function( event ) {
+		var value = $("#brushingTimerFlip").val();
+		if (value == "on"){
+			$.jStorage.set("brushigTimerToggle", "on");
+		}else{
+			$.jStorage.set("brushigTimerToggle", "off");
+		}
+		$("#oral_hygiene").trigger("pagebeforeshow");		
+	});
+	
 });
+
+
 
 

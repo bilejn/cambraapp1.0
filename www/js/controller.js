@@ -94,7 +94,7 @@ $(function (){
 		var brushing = new Therapy("brushing","Brushing","Brush your teeth two times daily (after breakfast and before bed).",true,true,false,true,2,"all");
 		$.jStorage.set("brushing", brushing);
 		
-		var flossing = new Therapy("flossing","Flossing","Floss your teeth once daily (after brushing).",true,true,false,true,1,"all");
+		var flossing = new Therapy("flossing","Flossing","Floss your teeth once daily before brushing.",true,true,false,true,1,"all");
 		$.jStorage.set("flossing", flossing);
 		
 		$.jStorage.set("objects", ["snack","brushing","flossing"]);	
@@ -179,7 +179,12 @@ $(function (){
 		snackCount("reset");
 	}
 	
-
+	/* ========== SETTINGS =============*/
+	
+	if ($.jStorage.get("brushigTimerToggle")==undefined){
+			$.jStorage.set("brushigTimerToggle", "off");	
+	}
+	
 	
 	$.jStorage.set("tracking_day", today);
 	$.jStorage.set("init", false);
