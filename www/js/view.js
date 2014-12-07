@@ -87,9 +87,11 @@ $(document).on("pagebeforeshow", "#oral_hygiene", function (){
 
 	if ($.jStorage.get("brushigTimerToggle")=="on"){
 			$("#timer-button").attr("onclick","timer(120);");
+			$("#brushingTimerFlip").val('on').slider("refresh");
 			$("#timer").html("02:00");		
 	}else{
-			$("#timer-button").attr("onclick","registration('brushing')");	
+			$("#timer-button").attr("onclick","registration('brushing')");
+			$("#brushingTimerFlip").val('off').slider("refresh");
 			$("#timer").html("");
 	}
 	
