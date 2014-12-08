@@ -428,10 +428,48 @@ $(document).on("pagebeforehide", "#graph", function (){
 });		
 
 
+/*================= INFO SECTION=================*/
+$(document).on("pagebeforeshow", "#info_about", function (){	
+	
+		$("#info_about_text").html(infoText.about);
+	
+		$("#info_about").trigger("create");
+});
 
+$(document).on("pagebeforeshow", "#info_prevention", function (){	
+	
+		$("#info_prevention_text").html(infoText.prevention);
+	
+		$("#info_prevention").trigger("create");
+});
 
+$(document).on("pagebeforeshow", "#info_cambra", function (){	
+	
+		$("#info_cambra_text").html(infoText.cambra);
+	
+		$("#info_cambra").trigger("create");
+});
 
+$(document).on("pagebeforeshow", "#info_interface", function (){	
+	
+		$("#info_interface_text").html(infoText.infoInterface);
+	
+		$("#info_interface").trigger("create");
+});
 
+$(document).on("pagebeforeshow", "#info_goal", function (){	
+	
+		$("#info_goal_text").html(infoText.goal);
+	
+		$("#info_goal").trigger("create");
+});
+
+$(document).on("pagebeforeshow", "#info_disclaimer", function (){	
+	
+		$("#info_disclaimer_text").html(infoText.disclaimer);
+	
+		$("#info_disclaimer").trigger("create");
+});
 
 
 /*================= EVENTS =================*/
