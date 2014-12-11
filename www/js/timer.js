@@ -2,7 +2,7 @@ function timer (interval){
 
 	window.plugins.insomnia.keepAwake();
 	$("#timer-button").addClass('ui-disabled');
-	$("#brushingTimerFlip").addClass('ui-disabled');
+	$("#brushingTimerFlip").slider('disable');
 	var secTrue= interval;
 	var sec;
 	var min;
@@ -22,7 +22,7 @@ function delayedLoop(){
 	$("#timer").html("00:00");
 	registration("brushing");
 	$("#timer-button").removeClass('ui-disabled'); 
-	$("#brushingTimerFlip").removeClass('ui-disabled'); 
+	$("#brushingTimerFlip").slider('enable'); 
 	$("#timer").html("02:00");
 	window.plugins.insomnia.allowSleepAgain();
 	return; 
