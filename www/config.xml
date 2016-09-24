@@ -50,7 +50,7 @@
     <!-- Plugins can also be added here. -->
 	<gap:plugin name="nl.x-services.plugins.insomnia" version="4.0.1" />
 	<gap:plugin name="org.apache.cordova.dialogs" version="0.2.0" />
-	<gap:plugin name="org.apache.cordova.inappbrowser" version="1.5.0" />
+	<gap:plugin name="org.apache.cordova.inappbrowser" version="0.5.2" />
 	<gap:plugin name="nl.x-services.plugins.toast" version="1.0" />
 
     <!--
